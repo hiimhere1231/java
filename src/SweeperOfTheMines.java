@@ -150,11 +150,11 @@ public class SweeperOfTheMines {
             System.out.println();
             System.out.println();
             printCutesyBoard();
-            System.out.println();
-            System.out.println();
-            printMeanBoard();
+            //System.out.println();
+            //System.out.println();
+            //printMeanBoard();
             action();
-            printMeanBoard();
+            //printMeanBoard();
             System.out.println();
             System.out.println();
             printCutesyBoard();
