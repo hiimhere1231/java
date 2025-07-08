@@ -9,6 +9,7 @@ public class SweeperOfTheMines {
     public static int bomb;
     public static int bombNumbel;
     public static int emptySpaces;
+    public static final double MINE_DENSITY = .2;
 
     public static void baord(){ 
         System.out.println("What do you want the length of the board to be?");
@@ -32,7 +33,7 @@ public class SweeperOfTheMines {
                 bombs[i][j] = '□';
             }
         }
-        for(int i = 0; i < minedBoared.length * minedBoared.length * .2; i++){
+        for(int i = 0; i < minedBoared.length * minedBoared.length * MINE_DENSITY; i++){
             bombs[rand.nextInt(minedBoared.length)][rand.nextInt(minedBoared.length)] = 'o';
         }
         for(int i = 0; i < bombs.length; i++){
@@ -81,11 +82,16 @@ public class SweeperOfTheMines {
             if(check == 0){
                 bombs[row][col] = '-';
                 minedBoared[row][col] = '-';
-                clear(row, col);
+                for(int i = row-1; i <= row+1 ; i++){
+                    for(int j = col-1; j <= col+1; j++){
+                        clear(i, j);
+                    }
+                }
             }
             else{
-                bombs[row][col] = (char)(getNumber(row, col));
-                minedBoared[row][col] = (char)(getNumber(row, col));
+                bombs[row][col] = Integer.toString(check).charAt(0);
+                minedBoared[row][col] = Integer.toString(check).charAt(0);
+                
             }
         }
     }
@@ -100,7 +106,12 @@ public class SweeperOfTheMines {
             System.out.println("What column?");
             int col = scan.nextInt()-1;
             scan.nextLine();
-            minedBoared[row][col] = 'P';
+            if(minedBoared[row][col] == 'P'){
+                minedBoared[row][col] = '□';
+            }
+            else{
+                minedBoared[row][col] = 'P';
+            }
         }
         else if(activite.equals("s")){
             System.out.println("What row?");
@@ -113,10 +124,7 @@ public class SweeperOfTheMines {
                 System.out.println("you died");
                 System.exit(0);
             }
-            String value = Integer.toString(getNumber(row, col));
-            minedBoared[row][col] = value.charAt(0);
-            bombs[row][col] = value.charAt(0);
-            //clear();
+            clear(row, col);
         }
     }
 
@@ -142,9 +150,11 @@ public class SweeperOfTheMines {
             System.out.println();
             System.out.println();
             printCutesyBoard();
-            //printMeanBoard();
+            System.out.println();
+            System.out.println();
+            printMeanBoard();
             action();
-            //printMeanBoard();
+            printMeanBoard();
             System.out.println();
             System.out.println();
             printCutesyBoard();
