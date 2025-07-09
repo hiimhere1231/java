@@ -56,12 +56,55 @@ public class ListLinks {
     public void add(int ewNumberN){
         Node NewNumber = new Node(ewNumberN);
         NewNumber.setNode(nodeOne);
+        nodeOne = NewNumber;
+        nodeSize += 1;
+    }
+
+    public void addEnd(int ewNumberN){
+        Node NewNumber = new Node(ewNumberN);
+        Node nodeAtFinal = get(nodeSize-1);
+        nodeAtFinal.setNode(NewNumber);
+        nodeSize += 1;
+    }
+
+    public void addAt(int ewNumberN, int index){
+        if(index == 0){
+            add(ewNumberN);
+        }
+        else{
+            Node NewNumber = new Node(ewNumberN);
+            Node nodeAtIndex = get(index-1);
+            Node newNumberNext = nodeAtIndex.getNode();
+            nodeAtIndex.setNode(NewNumber);
+            NewNumber.setNode(newNumberNext);
+            nodeSize += 1;
+        }
+    }
+
+    public void remove(int emoveRumberN){
+        if(emoveRumberN == 0){
+            nodeOne = get(1);
+            nodeSize -= 1;
+        }
+        else{
+            
+            Node removal = get(emoveRumberN-1);
+            removal.setNode(removal.getNode().getNode());
+            nodeSize -= 1;
+        }
+    }
+
+    public int find(int value){
+        for(int i = 0; i < nodeSize; i++){
+            if(getInt(i) == value){
+                return i;
+            }
+        }
+        return -2;
     }
 
 
     /* 
-     * add
-     * remove
      * find
      */
 
