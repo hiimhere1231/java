@@ -26,9 +26,4 @@ public class Node {
         String e = Integer.toString(getValue());
         return e;
     }
-
-    public static int get(int emoveRumberN) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'get'");
-    }
 }

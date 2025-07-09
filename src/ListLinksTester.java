@@ -8,8 +8,12 @@ public class ListLinksTester {
         list.remove(1);
         System.out.println(list);
         list.addAt(14, 0);
+        list.addEnd(7965);
         System.out.println(list);
-        int value = 5; 
+        int value = 7965; 
         System.out.println("the value "+value+" has been found at position "+(list.find(value)+1));
+        for(int i: list.asArray()){
+            System.out.print(i);
+        }
     }
 }

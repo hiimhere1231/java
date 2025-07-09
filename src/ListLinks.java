@@ -95,17 +95,23 @@ public class ListLinks {
     }
 
     public int find(int value){
+        Node node = nodeOne;
         for(int i = 0; i < nodeSize; i++){
-            if(getInt(i) == value){
+            if(node.getValue() == value){
                 return i;
             }
+            node = node.getNode();   
         }
         return -2;
     }
 
-
-    /* 
-     * find
-     */
-
+    public int[] asArray(){
+        int[] numbers = new int[nodeSize];
+        Node node = nodeOne;
+        for(int i = 0; i < nodeSize; i++){
+            numbers[i] = node.getValue();
+            node = node.getNode();
+        }
+        return numbers;
+    }
 }
