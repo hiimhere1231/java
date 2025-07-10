@@ -25,7 +25,7 @@ public class Stacks {
 
     public int getTop(){
         int top = blank.size();
-        if(top != 1){
+        if(top != 0){
             int topVal = blank.get(top-1);
             return topVal;
         }
@@ -35,6 +35,9 @@ public class Stacks {
     }
 
     public int pop(){
+        if(blank.size() == 0){
+            return -1;
+        }
         return blank.remove(blank.size()-1);
     }
 
