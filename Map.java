@@ -15,8 +15,13 @@ public class Map {
     }
 
     public void put(String word, String def){
-        words.add(word);
-        defs.add(def);
+        if(containsKey(word)){
+            defs.set(words.indexOf(word), def);
+        }
+        else{
+            words.add(word);
+            defs.add(def);
+        }
     }
 
     public boolean containsKey(String word){
@@ -26,5 +31,13 @@ public class Map {
             }
         }
         return false;
+    }
+
+    public String toString(){
+        String h = "";
+        for(int i = 0; i < words.size(); i++){
+            h += "the word "+words.get(i)+" means "+defs.get(i)+"\n";
+        }
+        return h;
     }
 }
