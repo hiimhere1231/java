@@ -22,16 +22,42 @@ public class AlfonsoClicker implements  Runnable{
     static String[] locationAbility = new String[]{"makes items x% cheaper", "can attract female sabas (glorious photo of saba with wig and bow and pink hearts with pink border), unlocks marriage MUST BE UNLOCKED WITH HUB", "unlocks more locations", "holding 's' will provide x sabucks per 10 seconds MUST BE UNLOCKED WITH HUB", "passively gains 25% of sabas invested in bank every TBD minutes MUST BE UNLOCKED WITH HUB"};
     static Location[] allTheLocationsGathered = new Location[locationCount.length];
 
-    public static double multSabucksSubtraction(int sabaPos, Saba[] allTheSabasGathered, double sabucks){
-        double newCost = allTheSabasGathered[sabaPos].getCost() * 1.1;
-        allTheSabasGathered[sabaPos].setCost(newCost);
-        return allTheSabasGathered[sabaPos].getCost();
+    public static double multSabucksSubtractionItems(int itemPos, Items[] allTheItemsGathered, double sabucks){
+        double newCost = allTheItemsGathered[itemPos].getItemCost() * 1.1;
+        allTheItemsGathered[itemPos].setItemCost(newCost);
+        return allTheItemsGathered[itemPos].getItemCost();
     }
+    public static double multSabucksSubtractionLocation(int locationPos, Location[] allTheLocationsGathered, double sabucks){
+        double newCost = allTheLocationsGathered[locationPos].getLocationCost() * 1.1;
+        allTheLocationsGathered[locationPos].setLocationCost(newCost);
+        return allTheLocationsGathered[locationPos].getLocationCost();
+    }
+    public static int getSabaPos(Saba[] allTheSabasGathered, String purchase, int sabaPos){
+        for(int i = 0; i < allTheSabasGathered.length-1; i++){
+            String sabaPurchase = allTheSabasGathered[i].getName().toLowerCase();
+            if(sabaPurchase.equals(purchase)){
+                return sabaPos = i;
+            }
+        }
+        return sabaPos = -1;
+    }
+    public static void buyItem(Items[] allTheItemsGathered, int itemPos){
+        int itemCounted = allTheItemsGathered[itemPos].getItemCount();
+        allTheItemsGathered[itemPos].setItemCount(itemCounted += 1);
+        multSabucksSubtractionItems(itemPos, allTheItemsGathered, itemCounted);
+    }
+    public static void buyLocation(Location[] allTheLocationsGathered, int locationPos){
+        int locationCounted = allTheLocationsGathered[locationPos].getLocationCount();
+        allTheLocationsGathered[locationPos].setLocationCount(locationCounted += 1);
+        multSabucksSubtractionLocation(locationPos, allTheLocationsGathered, locationCounted);
+    }
+
     public void run(){
 
     }
     public static double getSPStotal(){
-        return sps = allTheItemsGathered[0].getItemCount()*0.1 + allTheItemsGathered[1].getItemCount()*0.4 + allTheItemsGathered[2].getItemCount()*1.3 + allTheItemsGathered[3].getItemCount()*6 + allTheItemsGathered[4].getItemCount()*15 + allTheItemsGathered[5].getItemCount()*30 + allTheItemsGathered[6].getItemCount()*45 + allTheItemsGathered[7].getItemCount()*75 + allTheItemsGathered[8].getItemCount()*allTheItemsGathered[0].getItemCount() + allTheLocationsGathered[0].getLocationCount()*110 + allTheLocationsGathered[1].getLocationCount()*130 + allTheLocationsGathered[2].getLocationCount()*150 + allTheLocationsGathered[3].getLocationCount()*30;
+        sps = allTheItemsGathered[0].getItemCount()*0.1 + allTheItemsGathered[1].getItemCount()*0.4 + allTheItemsGathered[2].getItemCount()*1.3 + allTheItemsGathered[3].getItemCount()*6 + allTheItemsGathered[4].getItemCount()*15 + allTheItemsGathered[5].getItemCount()*30 + allTheItemsGathered[6].getItemCount()*45 + allTheItemsGathered[7].getItemCount()*75 + allTheItemsGathered[8].getItemCount()*allTheItemsGathered[0].getItemCount() + allTheLocationsGathered[0].getLocationCount()*110 + allTheLocationsGathered[1].getLocationCount()*130 + allTheLocationsGathered[2].getLocationCount()*150 + allTheLocationsGathered[3].getLocationCount()*30;
+        return sps;
     }
     public static void main(String[] args) {
         
@@ -59,13 +85,13 @@ public class AlfonsoClicker implements  Runnable{
 
         // sabas
 
-        String[] nameOfSaba = new String[]{"Saba", "Green Saba", "Incredibly demure Saba", "Evil Saba", "Business Saba", "Rich Saba", "Bank Saba", "Pokemon Trainer Saba", "Alien Saba", "Oompa Loompa Saba", "Investor Saba", "Lucky Saba", " Non-political Presidential Saba", "Old Saba", "Balatro Saba",  "High Contrast Saba"}; // hc saba kills all sabas + new sabas with him in hand are negative but perm 10% cheaper while in hand plus 10% sps increase
-        int[] sabaCount = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        String[] nameOfSaba = new String[]{"saba", "green saba", "incredibly demure saba", "evil saba", "business saba", "rich saba", "bank saba", "pokemon trainer saba", "alien saba", "oompa loompa saba", "investor saba", "lucky saba", "non-political presidential saba", "old saba", "balatro saba",  "high contrast saba"}; // hc saba kills all sabas + new sabas with him in hand are negative but perm 10% cheaper while in hand plus 10% sps increase
+        boolean[] sabaOwns = new boolean[]{false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
         double[] sabaCost = new double[]{10000, 12500, 22222, 66666, 211212, 777777, 2000000, 75000000, 100000000, 231514111, 300000000, 777777777, 1000000000, 2000000000, 2147483647, -1};
         double[] sabaSPSstat = new double[]{60, 65, 75, 80, 212, 350, 1000, 75000, 85000, 100000, 100000, 777777, 1000000, 1960, 0, -1};
         Saba[] allTheSabasGathered = new Saba[nameOfSaba.length];
-        for(int i = 0; i < sabaCount.length; i++){
-            allTheSabasGathered[i] = new Saba (sabaCost[i], sabaSPSstat[i], nameOfSaba[i]);
+        for(int i = 0; i < sabaOwns.length; i++){
+            allTheSabasGathered[i] = new Saba (sabaCost[i], sabaSPSstat[i], nameOfSaba[i], sabaOwns[i]);
         }
         for(int i = 0; i < itemCount.length; i++){
             allTheItemsGathered[i] = new Items (itemCost[i], itemSPS[i], itemName[i], itemCount[i]);
@@ -81,7 +107,9 @@ public class AlfonsoClicker implements  Runnable{
             String purchase = scan.nextLine().toLowerCase();
             if(purchase.equals("chef")){
                 sabucks -= 12;
-                itemCount[1] += 1;
+                int itemOfTheCount = allTheItemsGathered[1].getItemCount();
+                allTheItemsGathered[1].setItemCount(itemOfTheCount += 1);
+                System.out.println(allTheItemsGathered[1].getItemCount());
                 System.out.println("You've acquired a chef");
             }
             else if(purchase.equals("self serve machine")){
@@ -89,42 +117,15 @@ public class AlfonsoClicker implements  Runnable{
                 sabucks -= 12;
                 itemCount[0] += 1;
             }
-            else if(purchase.equals("saba")){
-                System.out.println("youve acquired a saba");
-                for(int i = 0; i < allTheSabasGathered.length-1; i++){
-                    if(allTheSabasGathered[i].getName().toLowerCase().equals("saba")){
-                        sabaPos = i;
-                    }
-                }
-                if(sabaCount[sabaPos] == 0){
-                    sabaCount[sabaPos] += 1;
-                    sps += allTheSabasGathered[sabaPos].getSPS();
-                    sabucks -= allTheSabasGathered[sabaPos].getCost();
-                }
-                else{
-                    sabaCount[sabaPos] += 1;
-                    sps += allTheSabasGathered[sabaPos].getSPS();
-                    sabucks -= multSabucksSubtraction(sabaPos, allTheSabasGathered, sabucks);
-                    System.out.println("The new cost is "+allTheSabasGathered[sabaPos].getCost());
-                } 
-            }
             else{
-                if(sabaPos != -1){
-                    for(int i = 0; i < allTheSabasGathered.length-1; i++){
-                        if(allTheSabasGathered[i].getName().toLowerCase().equals(purchase)){
-                            sabaPos = i;
-                        }
-                    }
-                    
-                    if (sabaCount[sabaPos] == 0){
-                        sabaCount[sabaPos] += 1;
-                        sps += allTheSabasGathered[sabaPos].getSPS();
+                sabaPos = getSabaPos(allTheSabasGathered, purchase, sabaPos);
+                if(sabaPos != -1){   
+                    if (allTheSabasGathered[sabaPos].getOwn() == false){
+                        allTheSabasGathered[sabaPos].setOwn(true);
                         sabucks -= allTheSabasGathered[sabaPos].getCost();
                     }
                     else{
-                        sabaCount[sabaPos] += 1;
-                        sps += allTheSabasGathered[sabaPos].getSPS();
-                        sabucks -= multSabucksSubtraction(sabaPos, allTheSabasGathered, sabucks);
+                        System.out.println("You already own this saba.");
                     }
                 }
             }
