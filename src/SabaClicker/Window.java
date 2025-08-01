@@ -38,11 +38,11 @@ public class Window {
         locationInv.setSize(1920, 1080);
         locationInv.getContentPane().setBackground(Color.YELLOW);
         locationInv.setTitle("You're very own location inventory!");
-        ImageIcon lInvIcon = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\location icon.png");
+        ImageIcon lInvIcon = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\location icon.png");
         locationInv.setIconImage(lInvIcon.getImage());
         locationInv.setVisible(true);
         if(AlfonsoClicker.allTheLocationsGathered[1].getLocationOwn()){
-            ImageIcon pdh = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\purchase dining hall.png");
+            ImageIcon pdh = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\purchase dining hall.png");
             JLabel label = new JLabel();  
             JButton pdhButton = new JButton(pdh);
             pdhButton.setBorderPainted(false);
@@ -63,7 +63,7 @@ public class Window {
             });
         }
         if(AlfonsoClicker.allTheLocationsGathered[2].getLocationOwn()){
-            ImageIcon h = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\dining hub.jpg");
+            ImageIcon h = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\dining hub.jpg");
             JLabel label2 = new JLabel();  
             JButton hButton = new JButton(h);
             hButton.setBorderPainted(false);
@@ -84,7 +84,7 @@ public class Window {
             });
         }
         if(AlfonsoClicker.allTheLocationsGathered[1].getLocationOwn()){
-            ImageIcon sb = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\sawbucks.png");
+            ImageIcon sb = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\sawbucks.png");
             Image img = sb.getImage();
             Image scaledImg = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
             sb = new ImageIcon(scaledImg);
@@ -108,7 +108,7 @@ public class Window {
             });
         }
         if(AlfonsoClicker.allTheLocationsGathered[3].getLocationOwn()){
-            ImageIcon ss = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\snack store.jpg");
+            ImageIcon ss = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\snack store.jpg");
             Image img2 = ss.getImage();
             Image scaledImg2 = img2.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
             ss = new ImageIcon(scaledImg2);
@@ -131,7 +131,7 @@ public class Window {
                 }
             });
         }
-        ImageIcon bs = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\saba bank ad.jpg");
+        ImageIcon bs = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\saba bank ad.jpg");
         Image img3 = bs.getImage();
         Image scaledImg3 = img3.getScaledInstance(500, 315, java.awt.Image.SCALE_SMOOTH);
         bs = new ImageIcon(scaledImg3);
@@ -153,7 +153,7 @@ public class Window {
             }
         });
 
-        makeIcon(locationInv, 1825, 25, 50, 50, "C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\x.png");
+        makeIcon(locationInv, 1825, 25, 50, 50, "C:\\Users\\User\\Desktop\\Saba\\x.png");
         JButton xButton = new JButton();
         xButton.setBounds(1825, 25, 50, 50);
         xButton.setVisible(true);
@@ -173,14 +173,14 @@ public class Window {
         
         bonitaFrames.setVisible(false);
         JFrame invFrame = new JFrame();
-        ImageIcon invIcon = new ImageIcon("C:\\\\Users\\\\SAMUEL KIM REPLACE HERE\\\\Desktop\\\\Saba\\\\inventory.png");
+        ImageIcon invIcon = new ImageIcon("C:\\\\Users\\\\User\\\\Desktop\\\\Saba\\\\inventory.png");
         invFrame.setIconImage(invIcon.getImage());
         invFrame.setSize(1920, 1080);
         invFrame.getContentPane().setBackground(Color.yellow);
         invFrame.setTitle("Saba's very own inventory opener");
         invFrame.setVisible(true);
         
-        ImageIcon lIcon = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\location icon.png");
+        ImageIcon lIcon = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\location icon.png");
         Image img = lIcon.getImage();
         Image l = img.getScaledInstance(500, 500, java.awt.Image.SCALE_SMOOTH);
         lIcon = new ImageIcon(l);
@@ -203,7 +203,7 @@ public class Window {
         });
         label.add(lButton);
 
-        ImageIcon sIcon = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\saba cookie.png");
+        ImageIcon sIcon = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\saba cookie.png");
         Image img2 = sIcon.getImage();
         Image s = img2.getScaledInstance(500, 500, java.awt.Image.SCALE_SMOOTH);
         sIcon = new ImageIcon(s);
@@ -221,9 +221,9 @@ public class Window {
         locationShop.setTitle("Saba's very own basic location shop");
         locationShop.getContentPane().setBackground(Color.PINK);
         locationShop.setVisible(true);
-        ImageIcon basicSubscription = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\basic subscription.png");
+        ImageIcon basicSubscription = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\basic subscription.png");
         locationShop.setIconImage(basicSubscription.getImage());
-        makeIcon(locationShop, 1825, 25, 50, 50, "C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\x.png");
+        makeIcon(locationShop, 1825, 25, 50, 50, "C:\\Users\\User\\Desktop\\Saba\\x.png");
         JButton xButton = new JButton();
         xButton.setBounds(1825, 25, 50, 50);
         xButton.setVisible(true);
@@ -238,7 +238,7 @@ public class Window {
                 deactivatelocationShop(locationShop, bonitaFrames);
             }
         });
-        makeIcon(locationShop, 250, 350, 700, 500, "C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\purchase dining hall.png");
+        makeIcon(locationShop, 250, 350, 700, 500, "C:\\Users\\User\\Desktop\\Saba\\purchase dining hall.png");
         JButton dHButton = new JButton();
         dHButton.setBounds(500, 500, 400, 500);
         dHButton.setVisible(true);
@@ -283,7 +283,7 @@ public class Window {
         din.setVisible(false);
         locationShop.add(din);
         
-        makeIcon(locationShop, 950, 350, 700, 500, "C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\dining hub.jpg");
+        makeIcon(locationShop, 950, 350, 700, 500, "C:\\Users\\User\\Desktop\\Saba\\dining hub.jpg");
         JButton hButton = new JButton();
         hButton.setBounds(950, 350, 700, 500);
         hButton.setVisible(true);
@@ -350,9 +350,9 @@ public class Window {
         itemShop.getContentPane().setBackground(Color.yellow);
         itemShop.setTitle("Saba's very own basic item shop");
         itemShop.setVisible(true);
-        ImageIcon basicSubscription = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\basic subscription.png");
+        ImageIcon basicSubscription = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\basic subscription.png");
         itemShop.setIconImage(basicSubscription.getImage());
-        makeIcon(itemShop, 1825, 25, 50, 50, "C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\x.png");
+        makeIcon(itemShop, 1825, 25, 50, 50, "C:\\Users\\User\\Desktop\\Saba\\x.png");
         JButton xButton = new JButton();
         xButton.setBounds(1825, 25, 50, 50);
         xButton.setVisible(true);
@@ -372,7 +372,7 @@ public class Window {
         ssmLabel.setBounds(375, 100, 500, 100);
         ssmLabel.setVisible(true);
         itemShop.add(ssmLabel);
-        ImageIcon ssm = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\self serve machine.png");
+        ImageIcon ssm = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\self serve machine.png");
         JLabel label = new JLabel();  
         JButton ssmButton = new JButton(ssm);
         ssmButton.setBorderPainted(false);
@@ -402,7 +402,7 @@ public class Window {
                     JFrame huang = new JFrame();
                     huang.setSize(500, 700);
                     huang.setVisible(true);
-                    ImageIcon bs = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\cachedImage.png");
+                    ImageIcon bs = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\cachedImage.png");
                     Image img3 = bs.getImage();
                     Image scaledImg3 = img3.getScaledInstance(500, 700, java.awt.Image.SCALE_SMOOTH);
                     bs = new ImageIcon(scaledImg3);
@@ -432,7 +432,7 @@ public class Window {
         chefLabel.setBounds(1100, 100, 500, 100);
         chefLabel.setVisible(true);
         itemShop.add(chefLabel);
-        ImageIcon chef = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\mario.png");
+        ImageIcon chef = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\mario.png");
         JLabel labelChef = new JLabel();  
         JButton chefButton = new JButton(chef);
         chefButton.setBorderPainted(false);
@@ -462,7 +462,7 @@ public class Window {
                 System.out.println("Button clicked!");
             }
         });
-        ImageIcon sign = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\for sale sign.png");
+        ImageIcon sign = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\for sale sign.png");
         JLabel signLabel = new JLabel();  
         JButton signButton = new JButton(sign);
         signButton.setBorderPainted(false);
@@ -573,11 +573,11 @@ public class Window {
         bonitaFrames.add(label);
     }
     public static void createStartUI(JFrame bonitaFrames){
-        makeIcon(bonitaFrames, 0, 300, 600, 400, "C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\AlfonsoClicker\\java\\src\\SabaClicker\\saba item shop.jpg");
-        makeIcon(bonitaFrames, 1400, 300, 400, 150, "C:\\\\Users\\\\SAMUEL KIM REPLACE HERE\\\\Desktop\\\\AlfonsoClicker\\\\java\\\\src\\\\SabaClicker\\\\purchase dining logo.png");
-        makeIcon(bonitaFrames, 0, 700 , 1910, 312, "C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\AlfonsoClicker\\java\\src\\SabaClicker\\adOfElestrals.jpg");
-        makeIcon(bonitaFrames, 450, -45, 1000, 400, "C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\AlfonsoClicker\\java\\src\\SabaClicker\\the nether.png");
-        makeIcon(bonitaFrames, 100, 100, 100, 100, "C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\AlfonsoClicker\\java\\src\\SabaClicker\\inventory.png");
+        makeIcon(bonitaFrames, 0, 300, 600, 400, "C:\\Users\\User\\Desktop\\AlfonsoClicker\\java\\src\\SabaClicker\\saba item shop.jpg");
+        makeIcon(bonitaFrames, 1400, 300, 400, 150, "C:\\\\Users\\\\User\\\\Desktop\\\\AlfonsoClicker\\\\java\\\\src\\\\SabaClicker\\\\purchase dining logo.png");
+        makeIcon(bonitaFrames, 0, 700 , 1910, 312, "C:\\Users\\User\\Desktop\\AlfonsoClicker\\java\\src\\SabaClicker\\adOfElestrals.jpg");
+        makeIcon(bonitaFrames, 450, -45, 1000, 400, "C:\\Users\\User\\Desktop\\AlfonsoClicker\\java\\src\\SabaClicker\\the nether.png");
+        makeIcon(bonitaFrames, 100, 100, 100, 100, "C:\\Users\\User\\Desktop\\AlfonsoClicker\\java\\src\\SabaClicker\\inventory.png");
         JButton inv = new JButton();
         inv.setBounds(100, 100, 100, 100);
         inv.setVisible(true);
@@ -645,9 +645,9 @@ public class Window {
         Color lightBlue = new Color(0, 209, 255);
         bonitaFrames.getContentPane().setBackground(lightBlue);
         bonitaFrames.setVisible(true);
-        ImageIcon sabaIconCookie = new ImageIcon("C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\balatro saba.jpg");
+        ImageIcon sabaIconCookie = new ImageIcon("C:\\Users\\User\\Desktop\\Saba\\balatro saba.jpg");
         bonitaFrames.setIconImage(sabaIconCookie.getImage());
-        makePhotoButton(bonitaFrames, 1000, 350, 1000, 350, 300, 300, 250, 350, "", "C:\\Users\\SAMUEL KIM REPLACE HERE\\Desktop\\Saba\\saba cookie.png");
+        makePhotoButton(bonitaFrames, 1000, 350, 1000, 350, 300, 300, 250, 350, "", "C:\\Users\\User\\Desktop\\Saba\\saba cookie.png");
         createStartUI(bonitaFrames);
         
         Runnable spsing = ()->{
