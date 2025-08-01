@@ -1,0 +1,7 @@
+make:
+elite item shop
+elite location shop
+elestrals powerups store
+saba store
+saba inventory
+the hand
