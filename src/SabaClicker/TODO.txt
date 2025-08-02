@@ -3,5 +3,5 @@ elite item shop
 elite location shop
 elestrals powerups store
 saba store
-saba inventory
+saba inventory - make the icons appear if hasSaba is true
 the hand
