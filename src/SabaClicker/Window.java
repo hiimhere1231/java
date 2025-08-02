@@ -66,7 +66,8 @@ public class Window {
         String sabaFilePath;
         boolean hasSaba = false;
         //static String[] nameOfSaba = new String[]{"saba", "green saba", "incredibly demure saba", "evil saba", "business saba", "saba item shop", "rich saba", "bank saba", "pokemon trainer saba", "alien saba", "oompa loompa saba", "investor saba", "lucky saba", "non-political presidential saba", "old saba", "balatro saba",  "high contrast saba"}; // hc saba kills all sabas + new sabas with him in hand are negative but perm 10% cheaper while in hand plus 10% sps increase | balatro saba gives mult | shop keeper saba unlocks items beyond self serve machine and chefs
-        for(int i = 0; i < AlfonsoClicker.allTheSabasGathered.length; i++){
+        for(int iindex = 0; iindex < AlfonsoClicker.allTheSabasGathered.length; iindex++){
+            final int i = iindex;
             if(i == 0){
                 sabaFilePath = "C:/Users/setha/Saba/IMG_3360.PNG";
                 if(AlfonsoClicker.allTheSabasGathered[0].getOwn()){
@@ -163,13 +164,74 @@ public class Window {
                     hasSaba = true;
                 }
             }
-            else if(i == 16){
+            else{
                 sabaFilePath = "C:\\Users\\setha\\Saba\\high contrast saba.jpg";
                 if(AlfonsoClicker.allTheSabasGathered[16].getOwn()){
                     hasSaba = true;
                 }
             }
-
+            int sabaInvXPos;
+            JButton sabaButton = new JButton();
+            if(i < 7){
+                sabaInvXPos = 75 + (200 * i);
+                makeIcon(sabaInv, sabaInvXPos, 100, 200, 200, sabaFilePath);
+                sabaButton.setBounds(sabaInvXPos, 100, 200, 200);
+            }
+            else if(i < 14){
+                int xTempPos = 75 + (200 * (i-7));
+                makeIcon(sabaInv, xTempPos, 450, 200, 200, sabaFilePath);
+                sabaButton.setBounds(xTempPos, 450, 200, 200);
+            }
+            else{
+                int xTempPos = 75 + (200 * (i-14));
+                makeIcon(sabaInv, xTempPos, 750, 200, 200, sabaFilePath);
+                sabaButton.setBounds(xTempPos, 750, 200, 200); 
+            }
+            sabaButton.setVisible(true);
+            sabaButton.setOpaque(false);
+            sabaButton.setContentAreaFilled(false);
+            sabaButton.setBorderPainted(false);
+            sabaInv.add(sabaButton);
+            sabaButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Button clicked!");
+                    if(AlfonsoClicker.hand[0] == null){
+                        AlfonsoClicker.hand[0] = AlfonsoClicker.allTheSabasGathered[i];
+                    }
+                    else if(AlfonsoClicker.hand[1] == null){
+                        AlfonsoClicker.hand[1] = AlfonsoClicker.allTheSabasGathered[i];
+                    }
+                    else if(AlfonsoClicker.hand[2] == null){
+                        AlfonsoClicker.hand[2] = AlfonsoClicker.allTheSabasGathered[i];
+                    }
+                    else if(AlfonsoClicker.hand[0] == AlfonsoClicker.allTheSabasGathered[i]){
+                        AlfonsoClicker.hand[0] = null;
+                        if(AlfonsoClicker.hand[1] != null){
+                            AlfonsoClicker.hand[0] = AlfonsoClicker.hand[1];
+                            AlfonsoClicker.hand[1] = null;
+                            if(AlfonsoClicker.hand[2] != null){
+                                AlfonsoClicker.hand[1] = AlfonsoClicker.hand[2];
+                                AlfonsoClicker.hand[2] = null;
+                            }
+                        }
+                    }
+                    else if(AlfonsoClicker.hand[1] == AlfonsoClicker.allTheSabasGathered[i]){
+                        AlfonsoClicker.hand[1] = null;
+                        if(AlfonsoClicker.hand[2] != null){
+                            AlfonsoClicker.hand[1] = AlfonsoClicker.hand[2];
+                            AlfonsoClicker.hand[2] = null;
+                        }
+                    }
+                    else if(AlfonsoClicker.hand[2] == AlfonsoClicker.allTheSabasGathered[i]){
+                        AlfonsoClicker.hand[2] = null;
+                    }
+                    else{
+                        System.out.println("Hand is full");
+                    }
+                    System.out.println(AlfonsoClicker.hand);
+                }
+            });
         }
     }
     static void activateLocationInv(JFrame frame, JFrame bonitaFrames){
@@ -350,7 +412,21 @@ public class Window {
         label2.setIcon(sIcon);
         label2.setVisible(true);
         invFrame.add(label2, BorderLayout.EAST);    
-         
+        JButton sButton = new JButton();
+        sButton.setBounds(0, 215, 500, 500);
+        label2.add(sButton);
+        sButton.setVisible(true);
+        sButton.setOpaque(false);
+        sButton.setContentAreaFilled(false);
+        sButton.setBorderPainted(false);
+        sButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Button clicked!");
+                activateSabaInv(invFrame, bonitaFrames);
+            }
+        });
+
     }
     static void activateBasicLocationShop(JFrame itemShop, JFrame bonitaFrames){
         itemShop.setVisible(false);

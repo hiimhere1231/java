@@ -119,9 +119,12 @@ public class AlfonsoClicker implements  Runnable{
     static Saba[] hand = new Saba[3];
     public static double getSPStotal(){
         int sabaSPStatol = 0;
-        for(int i = 0; i < allTheSabasGathered.length; i++){
-            if(allTheSabasGathered[i].getOwn() == true){
-                sabaSPStatol += allTheSabasGathered[i].getSPS();
+        for(int i = 0; i < hand.length; i++){
+            if(hand[0] == null){
+                continue;
+            }
+            else{
+                sabaSPStatol += hand[i].getSPS();
             }
         }
         double locSPS;

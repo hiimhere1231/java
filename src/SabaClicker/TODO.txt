@@ -5,3 +5,4 @@ elestrals powerups store
 saba store
 saba inventory - make the icons appear if hasSaba is true
 the hand
+make location abilites work
