@@ -9,7 +9,7 @@ public class AlfonsoClicker implements  Runnable{
 
     public static Location eLocation;
     public static Saba eSaba;
-    public static double sabucks = 0;
+    public static double sabucks = 100000000;
     public static double getSabucks(){
         return sabucks;
     }
@@ -33,14 +33,9 @@ public class AlfonsoClicker implements  Runnable{
     static Location[] allTheLocationsGathered = new Location[locationOwn.length];
 
     public static double multSabucksSubtractionItems(int itemPos, Items[] allTheItemsGathered, double sabucks){
-        double newCost = allTheItemsGathered[itemPos].getItemCost() * 1.1;
+        double newCost = Math.ceil(allTheItemsGathered[itemPos].getItemCost() * 1.1 * 10) / 10;
         allTheItemsGathered[itemPos].setItemCost(newCost);
         return allTheItemsGathered[itemPos].getItemCost();
-    }
-    public static double multSabucksSubtractionLocation(int locationPos, Location[] allTheLocationsGathered, double sabucks){
-        double newCost = allTheLocationsGathered[locationPos].getLocationCost() * 1.1;
-        allTheLocationsGathered[locationPos].setLocationCost(newCost);
-        return allTheLocationsGathered[locationPos].getLocationCost();
     }
     public static int getSabaPos(Saba[] allTheSabasGathered, String purchase, int sabaPos){
         for(int i = 0; i < allTheSabasGathered.length-1; i++){
@@ -51,21 +46,54 @@ public class AlfonsoClicker implements  Runnable{
         }
         return sabaPos = -1;
     }
-    public static void buySaba(Saba[] allTheSabasGathered, int sabaPos){
+    public static boolean buySaba(Saba[] allTheSabasGathered, int sabaPos){
+        if(eLocation == allTheLocationsGathered[0]){
+            if(sabucks >= allTheSabasGathered[sabaPos].getCost()*.95){
+                if(allTheSabasGathered[sabaPos].getOwn()){
+                    System.out.println("You already own this Saba!");
+                    return false;
+                }
+                else{
+                    allTheSabasGathered[sabaPos].setOwn(true);
+                    sabucks -= allTheSabasGathered[sabaPos].getCost();
+                    return true;
+                }
+            }
+            else{
+                System.out.println("take a look at ur money, ur broke");
+                return false;
+            }
+        }
         if(sabucks >= allTheSabasGathered[sabaPos].getCost()){
             if(allTheSabasGathered[sabaPos].getOwn()){
                 System.out.println("You already own this Saba!");
+                return false;
             }
             else{
                 allTheSabasGathered[sabaPos].setOwn(true);
                 sabucks -= allTheSabasGathered[sabaPos].getCost();
+                return true;
             }
         }
         else{
             System.out.println("take a look at ur money, ur broke");
+            return false;
         }
     }
     public static boolean buyItem(Items[] allTheItemsGathered, int itemPos){
+        if(eLocation == allTheLocationsGathered[0]){
+            if(sabucks >= allTheItemsGathered[itemPos].getItemCost()*.95){
+            int itemCounted = allTheItemsGathered[itemPos].getItemCount();
+            allTheItemsGathered[itemPos].setItemCount(itemCounted += 1);
+            sabucks -= allTheItemsGathered[itemPos].getItemCost();
+            multSabucksSubtractionItems(itemPos, allTheItemsGathered, itemCounted);
+            return true;
+        }
+        else{
+            System.out.println("take a look at ur money, ur broke");
+            return false;
+        }
+        }
         if(sabucks >= allTheItemsGathered[itemPos].getItemCost()){
             int itemCounted = allTheItemsGathered[itemPos].getItemCount();
             allTheItemsGathered[itemPos].setItemCount(itemCounted += 1);
@@ -79,6 +107,20 @@ public class AlfonsoClicker implements  Runnable{
         }
     }
     public static boolean buyLocation(Location[] allTheLocationsGathered, int locationPos){
+        if(eLocation == allTheLocationsGathered[0]){
+            if(sabucks >= allTheLocationsGathered[locationPos].getLocationCost()*.95){
+            if(allTheLocationsGathered[locationPos].getLocationOwn() == false){
+                allTheLocationsGathered[locationPos].setLocationOwn(true);
+                sabucks -= allTheLocationsGathered[locationPos].getLocationCost();
+                return true;
+            }
+            return false;
+        }
+        else{
+            System.out.println("take a look at ur money, ur broke");
+            return false;
+        }
+        }
         if(sabucks >= allTheLocationsGathered[locationPos].getLocationCost()){
             if(allTheLocationsGathered[locationPos].getLocationOwn() == false){
                 allTheLocationsGathered[locationPos].setLocationOwn(true);
