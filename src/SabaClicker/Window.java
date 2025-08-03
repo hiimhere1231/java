@@ -38,6 +38,7 @@ public class Window {
     static void activateSabaInv(JFrame frame, JFrame bonitaFrames){
         frame.setVisible(false);
         JFrame sabaInv = new JFrame();
+        sabaInv.setLayout(null);
         sabaInv.setSize(1920, 1080);
         sabaInv.getContentPane().setBackground(Color.YELLOW);
         sabaInv.setTitle("You're very own Saba inventory!");
@@ -173,19 +174,61 @@ public class Window {
             int sabaInvXPos;
             JButton sabaButton = new JButton();
             if(i < 7){
-                sabaInvXPos = 75 + (200 * i);
-                makeIcon(sabaInv, sabaInvXPos, 100, 200, 200, sabaFilePath);
-                sabaButton.setBounds(sabaInvXPos, 100, 200, 200);
+                if(AlfonsoClicker.allTheSabasGathered[i].getOwn()){
+                    sabaInvXPos = 75 + (200 * i);
+                    makeIcon(sabaInv, sabaInvXPos, 100, 200, 200, sabaFilePath);
+                    sabaButton.setBounds(sabaInvXPos, 100, 200, 200);
+                    JLabel sabaName = new JLabel();
+                    sabaName.setText(AlfonsoClicker.allTheSabasGathered[i].getName());
+                    sabaName.setBounds(sabaInvXPos, 50, 200, 30);
+                    sabaName.setVisible(true);
+                    sabaInv.add(sabaName);
+                    JLabel sabaSPS = new JLabel();
+                    double spspsps = AlfonsoClicker.allTheSabasGathered[i].getSPS();
+                    String textSPS = Double.toString(spspsps);
+                    sabaSPS.setText(textSPS+" sps");
+                    sabaSPS.setBounds(sabaInvXPos, 75, 200, 30);
+                    sabaSPS.setVisible(true);
+                    sabaInv.add(sabaSPS);
+                }
             }
             else if(i < 14){
-                int xTempPos = 75 + (200 * (i-7));
-                makeIcon(sabaInv, xTempPos, 450, 200, 200, sabaFilePath);
-                sabaButton.setBounds(xTempPos, 450, 200, 200);
+                if(AlfonsoClicker.allTheSabasGathered[i].getOwn()){
+                    int xTempPos = 75 + (200 * (i-7));
+                    makeIcon(sabaInv, xTempPos, 450, 200, 200, sabaFilePath);
+                    sabaButton.setBounds(xTempPos, 450, 200, 200);
+                    JLabel sabaName = new JLabel();
+                    sabaName.setText(AlfonsoClicker.allTheSabasGathered[i].getName());
+                    sabaName.setBounds(xTempPos, 400, 200, 30);
+                    sabaName.setVisible(true);
+                    sabaInv.add(sabaName);
+                    JLabel sabaSPS = new JLabel();
+                    double spspsps = AlfonsoClicker.allTheSabasGathered[i].getSPS();
+                    String textSPS = Double.toString(spspsps);
+                    sabaSPS.setText(textSPS+" sps");
+                    sabaSPS.setBounds(xTempPos, 425, 200, 30);
+                    sabaSPS.setVisible(true);
+                    sabaInv.add(sabaSPS);
+                }
             }
             else{
-                int xTempPos = 75 + (200 * (i-14));
-                makeIcon(sabaInv, xTempPos, 750, 200, 200, sabaFilePath);
-                sabaButton.setBounds(xTempPos, 750, 200, 200); 
+                if(AlfonsoClicker.allTheSabasGathered[i].getOwn()){
+                    int xTempPos = 75 + (200 * (i-14));
+                    makeIcon(sabaInv, xTempPos, 750, 200, 200, sabaFilePath);
+                    sabaButton.setBounds(xTempPos, 750, 200, 200); 
+                    JLabel sabaName = new JLabel();
+                    sabaName.setText(AlfonsoClicker.allTheSabasGathered[i].getName());
+                    sabaName.setBounds(xTempPos, 700, 200, 30);
+                    sabaName.setVisible(true);
+                    sabaInv.add(sabaName);
+                    JLabel sabaSPS = new JLabel();
+                    double spspsps = AlfonsoClicker.allTheSabasGathered[i].getSPS();
+                    String textSPS = Double.toString(spspsps);
+                    sabaSPS.setText(textSPS+" sps");
+                    sabaSPS.setBounds(xTempPos, 725, 200, 30);
+                    sabaSPS.setVisible(true);
+                    sabaInv.add(sabaSPS);
+                }
             }
             sabaButton.setVisible(true);
             sabaButton.setOpaque(false);
@@ -614,7 +657,7 @@ public class Window {
                     ssmLabel.setText("This costs "+AlfonsoClicker.allTheItemsGathered[0].getItemCost()+" It give 0.4 sps!");
                 }
                 else{
-                     SwingUtilities.invokeLater(() -> {
+                    SwingUtilities.invokeLater(() -> {
                     // Create splash screen
                     JWindow splash = new JWindow();
 
@@ -672,6 +715,29 @@ public class Window {
                 System.out.println("item bought");
                 if(AlfonsoClicker.buyItem(AlfonsoClicker.allTheItemsGathered, itemPos)){
                     chefLabel.setText("This costs "+AlfonsoClicker.allTheItemsGathered[1].getItemCost()+" It give 0.4 sps!");
+                }
+                else{
+                    SwingUtilities.invokeLater(() -> {
+                    // Create splash screen
+                    JWindow splash = new JWindow();
+
+                    String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                    ImageIcon icon = new ImageIcon(path);
+
+                    JLabel label = new JLabel(icon);
+                    splash.getContentPane().add(label);
+
+                    splash.pack(); // size window to fit image
+                    splash.setLocationRelativeTo(null); // center on screen
+
+                    splash.setVisible(true);
+
+                    // Timer to hide after 1 seconds
+                    new Timer(1000, erxtx -> {
+                        splash.setVisible(false);
+                        splash.dispose();
+                    }).start();
+                });
                 }
                 System.out.println(AlfonsoClicker.allTheItemsGathered[itemPos].getItemCount());
                 System.out.println("Button clicked!");
