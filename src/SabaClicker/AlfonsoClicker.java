@@ -18,7 +18,7 @@ public class AlfonsoClicker implements  Runnable{
     }
     static double sps = 0;
     //saba unlockes the ability to buy more/different sabas
-    static String[] itemName = new String[]{"self serve machine", "chef", "john risman", "julian morello", "osbourne hoilett", "martin keanneally", "shawn carvajal", "cesar", "alfonso saba"};
+    static String[] itemName = new String[]{"self serve machine", "chef", "john risman", "dominic marino", "osbourne hoilett", "martin keanneally", "shawn carvajal", "cesar", "alfonso saba"};
     static int[] itemCost = new int[]{4, 12, 1000, 20000, 50000, 100000, 300000, 1000000, 10000000};
     static int[] itemCount = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
     static double[] itemSPS = new double[]{0.1, 0.4, 1.3, 6, 15, 30, 45, 75, itemCount[0]};

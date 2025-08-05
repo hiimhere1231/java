@@ -863,11 +863,28 @@ public class Window {
         itemShop.add(xButton);
         xButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent e) { 
                 System.out.println("Button clicked!");
                 deactivateItemShop(bonitaFrames, itemShop);
             }
         });
+        if(AlfonsoClicker.allTheSabasGathered[5].getOwn()){
+            makeIcon(itemShop, 0, 725, 200, 200, "C:\\Users\\setha\\Saba\\come here saba.png");
+            JButton chsButton = new JButton();
+            chsButton.setBounds(0, 725, 200, 200);
+            chsButton.setVisible(true);
+            chsButton.setOpaque(false);
+            chsButton.setContentAreaFilled(false);
+            chsButton.setBorderPainted(false);
+            itemShop.add(chsButton);
+            chsButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) { 
+                    System.out.println("Button clicked!");
+                    activateEliteItemShop(itemShop);
+                }
+            });
+        }
         JLabel ssmLabel = new JLabel();
         ssmLabel.setText("This costs "+AlfonsoClicker.allTheItemsGathered[0].getItemCost()+". It give 0.1 sps!");
         ssmLabel.setBounds(275, 100, 500, 100);
@@ -1140,14 +1157,9 @@ public class Window {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Button clicked!");
-            if(AlfonsoClicker.allTheSabasGathered[5].getOwn() == false){
                 activateBasicItemShop(bonitaFrames);
             }
-            else{
-                activateEliteItemShop(bonitaFrames);
-            }
-        }
-    });
+        });
     }
     public static JLabel spsDisplay = new JLabel();
     public static void displaySPScountLive(JFrame bonitaFrames){
