@@ -2,9 +2,6 @@ make:
 elite item shop
 elite location shop
 elestrals powerups store
-saba store
 the hand
 make location abilites work
 make saba abilites work
-cannot buy dining hall
-able to buy all sabas no matter cost

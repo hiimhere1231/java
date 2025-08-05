@@ -9,7 +9,7 @@ public class AlfonsoClicker implements  Runnable{
 
     public static Location eLocation;
     public static Saba eSaba;
-    public static double sabucks = 100000000;
+    public static double sabucks = 10000;
     public static double getSabucks(){
         return sabucks;
     }
@@ -76,7 +76,9 @@ public class AlfonsoClicker implements  Runnable{
             }
         }
         else{
-            System.out.println("take a look at ur money, ur broke");
+            System.out.println(sabucks);
+            System.out.println(allTheSabasGathered[sabaPos].getCost());
+            System.out.println("take a look at ur money, ur broke aiaiaia");
             return false;
         }
     }
