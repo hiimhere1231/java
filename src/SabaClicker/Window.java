@@ -439,6 +439,30 @@ public class Window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Button clicked!");
+                    boolean added = false;
+                    // saba cant be in hand
+                    // saba must be placed in null
+                    // clicking a saba in hand results in removing that saba from hand
+                    for(int j = 0; j < 3; j++){
+                         if (AlfonsoClicker.hand[j] == AlfonsoClicker.allTheSabasGathered[i]) {
+                        // Shift everything left
+                        for (int k = j; k < AlfonsoClicker.hand.length - 1; k++) {
+                            AlfonsoClicker.hand[k] = AlfonsoClicker.hand[k + 1];
+                        }
+                        // Null out the last slot
+                        AlfonsoClicker.hand[AlfonsoClicker.hand.length - 1] = null;
+                        break; // stop after removing once
+    }
+                        else if(AlfonsoClicker.hand[j] == null && added == false){
+                            AlfonsoClicker.hand[j] = AlfonsoClicker.allTheSabasGathered[i];
+                            added = true;
+                            break;
+                        }
+                        else{
+                            System.out.println("Hand is full");
+                        }
+                    }
+                    /*
                     if(AlfonsoClicker.hand[0] == null){
                         AlfonsoClicker.hand[0] = AlfonsoClicker.allTheSabasGathered[i];
                     }
@@ -472,7 +496,14 @@ public class Window {
                     else{
                         System.out.println("Hand is full");
                     }
-                    System.out.println(AlfonsoClicker.hand);
+                        */
+                    for(int i = 0; i < AlfonsoClicker.hand.length; i++){
+                        if(AlfonsoClicker.hand[i] == null){
+                            System.out.println(AlfonsoClicker.hand[i]);
+                            continue;
+                        }
+                        System.out.println(AlfonsoClicker.hand[i].getName());
+                    }
                 }
             });
         }
