@@ -1,5 +1,4 @@
 make:
-the hand
 elite location shop
 elestrals powerups store
 make location abilites work

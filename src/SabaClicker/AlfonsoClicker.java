@@ -138,7 +138,7 @@ public class AlfonsoClicker implements  Runnable{
     }
     public static void fillSabaList(){
         for(int i = 0; i < sabaOwns.length; i++){
-            allTheSabasGathered[i] = new Saba (sabaCost[i], sabaSPSstat[i], nameOfSaba[i], sabaOwns[i]);
+            allTheSabasGathered[i] = new Saba (sabaCost[i], sabaSPSstat[i], nameOfSaba[i], sabaOwns[i], sabaFilePaths[i]);
         }
     }
     public static void fillItemList(){
@@ -158,6 +158,7 @@ public class AlfonsoClicker implements  Runnable{
     static String[] nameOfSaba = new String[]{"saba", "green saba", "incredibly demure saba", "evil saba", "business saba", "Shop Keeper Saba", "rich saba", "bank saba", "pokemon trainer saba", "alien saba", "oompa loompa saba", "investor saba", "lucky saba", "non-political presidential saba", "old saba", "balatro saba",  "high contrast saba"}; // hc saba kills all sabas + new sabas with him in hand are negative but perm 10% cheaper while in hand plus 10% sps increase | balatro saba gives mult | shop keeper saba unlocks items beyond self serve machine and chefs
     static boolean[] sabaOwns = new boolean[]{true, false, true, false, true, true, false, false, false, false, false, true, false, false, false, false, false};
     static double[] sabaCost = new double[]{10000, 12500, 22222, 66666, 211212, 500000, 777777, 2000000, 75000000, 100000000, 231514111, 300000000, 777777777, 1000000000, 2000000000, 2147483647, -1};
+    static String[] sabaFilePaths = {"C:\\Users\\setha\\Saba\\IMG_3360.PNG","C:\\Users\\setha\\Saba\\green saba.jpg","C:\\Users\\setha\\Saba\\real incredibly demure saba.jpg","C:\\Users\\setha\\Saba\\real evil saba.jpg","C:\\Users\\setha\\Saba\\business saba.jpg","C:\\Users\\setha\\Saba\\saba item shop.jpg","C:\\Users\\setha\\Saba\\rich saba.jpg","C:\\Users\\setha\\Saba\\bank saba.jpg","C:\\Users\\setha\\Saba\\pokemon trainer saba.jpg","C:\\Users\\setha\\Saba\\alien saba.jpg","C:\\Users\\setha\\Saba\\oompa loompa saba.jpg","C:\\Users\\setha\\Saba\\mark cuban saba.jpg","C:\\Users\\setha\\Saba\\idk how to spell it saba.jpg","C:\\Users\\setha\\Saba\\non political presidential saba.jpg","C:\\Users\\setha\\Saba\\old saba.jpg","C:\\Users\\setha\\Saba\\balatro saba.jpg","C:\\Users\\setha\\Saba\\high contrast saba.jpg"};
     static double[] sabaSPSstat = new double[]{60, 65, 75, 80, 212, 100 ,350, 1000, 75000, 85000, 100000, 100000, 777777, 1000000, 1960, 0, -1};
     static Saba[] allTheSabasGathered = new Saba[nameOfSaba.length];
     static Saba[] hand = new Saba[3];

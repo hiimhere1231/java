@@ -260,8 +260,26 @@ public class Window {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Button clicked!");
                 deactivateItemShop(bonitaFrames, sabaInv);
-            }
-        });
+                
+                // the hand
+                bonitaFrames.getContentPane().removeAll();
+                createStartUI(bonitaFrames);
+                int xPos = 375;
+                String sabaPath;
+                for(int i = 0; i < AlfonsoClicker.hand.length; i++){
+                    if(AlfonsoClicker.hand[i] != null){
+                        sabaPath = AlfonsoClicker.hand[i].getPath();
+                    }
+                    else{
+                        sabaPath = null;
+                    }
+                    xPos = 525 + (250*i);
+                    System.out.println("Drawing Saba at x=" + xPos + " path=" + sabaPath);
+                    makeIcon(bonitaFrames, xPos, 87, 125, 125, sabaPath);
+                    bonitaFrames.repaint();
+                }
+                    }
+                });
 
         // saba
         String sabaFilePath;
@@ -462,41 +480,6 @@ public class Window {
                             System.out.println("Hand is full");
                         }
                     }
-                    /*
-                    if(AlfonsoClicker.hand[0] == null){
-                        AlfonsoClicker.hand[0] = AlfonsoClicker.allTheSabasGathered[i];
-                    }
-                    else if(AlfonsoClicker.hand[1] == null){
-                        AlfonsoClicker.hand[1] = AlfonsoClicker.allTheSabasGathered[i];
-                    }
-                    else if(AlfonsoClicker.hand[2] == null){
-                        AlfonsoClicker.hand[2] = AlfonsoClicker.allTheSabasGathered[i];
-                    }
-                    else if(AlfonsoClicker.hand[0] == AlfonsoClicker.allTheSabasGathered[i]){
-                        AlfonsoClicker.hand[0] = null;
-                        if(AlfonsoClicker.hand[1] != null){
-                            AlfonsoClicker.hand[0] = AlfonsoClicker.hand[1];
-                            AlfonsoClicker.hand[1] = null;
-                            if(AlfonsoClicker.hand[2] != null){
-                                AlfonsoClicker.hand[1] = AlfonsoClicker.hand[2];
-                                AlfonsoClicker.hand[2] = null;
-                            }
-                        }
-                    }
-                    else if(AlfonsoClicker.hand[1] == AlfonsoClicker.allTheSabasGathered[i]){
-                        AlfonsoClicker.hand[1] = null;
-                        if(AlfonsoClicker.hand[2] != null){
-                            AlfonsoClicker.hand[1] = AlfonsoClicker.hand[2];
-                            AlfonsoClicker.hand[2] = null;
-                        }
-                    }
-                    else if(AlfonsoClicker.hand[2] == AlfonsoClicker.allTheSabasGathered[i]){
-                        AlfonsoClicker.hand[2] = null;
-                    }
-                    else{
-                        System.out.println("Hand is full");
-                    }
-                        */
                     for(int i = 0; i < AlfonsoClicker.hand.length; i++){
                         if(AlfonsoClicker.hand[i] == null){
                             System.out.println(AlfonsoClicker.hand[i]);
@@ -1258,6 +1241,8 @@ public class Window {
         makeIcon(bonitaFrames, 0, 700 , 1530, 312, "C:\\Users\\setha\\Saba\\real elestrals ad.jpg");
         makeIcon(bonitaFrames, 350, -45, 1000, 400, "C:\\Users\\setha\\Saba\\the nether.png");
         makeIcon(bonitaFrames, 100, 100, 100, 100, "C:\\Users\\setha\\Saba\\inventory.png");
+        makePhotoButton(bonitaFrames, 700, 350, 700, 350, 300, 300, 250, 350, "", "C:\\Users\\setha\\Saba\\saba cookie.png");
+
         JButton inv = new JButton();
         inv.setBounds(100, 100, 100, 100);
         inv.setVisible(true);
@@ -1298,6 +1283,8 @@ public class Window {
                 activateBasicItemShop(bonitaFrames);
             }
         });
+        bonitaFrames.revalidate();
+        bonitaFrames.repaint();
     }
     public static JLabel spsDisplay = new JLabel();
     public static void displaySPScountLive(JFrame bonitaFrames){
@@ -1328,6 +1315,7 @@ public class Window {
         t1.start();
 
         JFrame bonitaFrames = new JFrame();
+        bonitaFrames.setLayout(null);
         bonitaFrames.setSize(1550, 1080);
         bonitaFrames.setTitle("Saba Clicker. The super awesome game featuring the celebrity, ALFONSO SABA!!!!!! YOU CANT SEE HIM!!! AND HIS NAME IS ALFONSO SABA");
         Color lightBlue = new Color(0, 209, 255);
@@ -1335,7 +1323,6 @@ public class Window {
         bonitaFrames.setVisible(true);
         ImageIcon sabaIconCookie = new ImageIcon("C:\\Users\\setha\\Saba\\balatro saba.jpg");
         bonitaFrames.setIconImage(sabaIconCookie.getImage());
-        makePhotoButton(bonitaFrames, 700, 350, 700, 350, 300, 300, 250, 350, "", "C:\\Users\\setha\\Saba\\saba cookie.png");
         createStartUI(bonitaFrames);
         
         Runnable spsing = ()->{

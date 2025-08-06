@@ -4,12 +4,14 @@ public class Saba {
     private double sabaCostly; // how much a saba costs
     private double sabaSPS; // sps given by the saba
     private String sabaName; // name of the saba
-    private boolean owns;
-    public Saba(double sabaCostly, double sabaSPS, String sabaName, boolean owns){
+    private boolean owns; // if its owned
+    private String filePath; // file path of saba
+    public Saba(double sabaCostly, double sabaSPS, String sabaName, boolean owns, String filePath){
         this.sabaCostly = sabaCostly;
         this.sabaSPS = sabaSPS;
         this.sabaName = sabaName;
         this.owns = owns;
+        this.filePath = filePath;
     }
     public double getSPS(){
         return sabaSPS;
@@ -23,6 +25,9 @@ public class Saba {
     public Boolean getOwn(){
         return owns;
     }
+    public String getPath(){
+        return filePath;
+    }
 
     public void setSPS(double sabaSPS){
         this.sabaSPS = sabaSPS;
@@ -35,6 +40,9 @@ public class Saba {
     }
     public void setOwn(boolean owns){
         this.owns = owns;
+    }
+    public void setFilePath(String filePath){
+        this.filePath = filePath;
     }
 
     public String toString(){
