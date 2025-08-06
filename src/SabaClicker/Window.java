@@ -20,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
+import javax.swing.JOptionPane;
 
 
 public class Window {
@@ -881,7 +882,7 @@ public class Window {
                 @Override
                 public void actionPerformed(ActionEvent e) { 
                     System.out.println("Button clicked!");
-                    activateEliteItemShop(itemShop);
+                    activateEliteItemShop(bonitaFrames, itemShop);
                 }
             });
         }
@@ -1022,14 +1023,120 @@ public class Window {
             }
         });
     }
-    static void activateEliteItemShop(JFrame bonitaFrames){
-        bonitaFrames.setVisible(false);
+    static void activateEliteItemShop(JFrame bonitaFrames, JFrame preFrame){
+        preFrame.setVisible(false);
         JFrame itemShop = new JFrame();
+        itemShop.setLayout(null);
         itemShop.setSize(1920, 1080);
         itemShop.getContentPane().setBackground(Color.yellow);
         itemShop.setTitle("Saba's very own ELITE item shop");
         itemShop.setVisible(true);
+        ImageIcon eisIcon = new ImageIcon("C:\\Users\\setha\\Saba\\elite subscription.png");
+        itemShop.setIconImage(eisIcon.getImage());
+
+        //x button
+        makeIcon(itemShop, 1462, 25, 50, 50, "C:\\Users\\setha\\Saba\\x.png");
+        JButton xButton = new JButton();
+        xButton.setBounds(1462, 25, 50, 50);
+        xButton.setVisible(true);
+        xButton.setOpaque(false);
+        xButton.setContentAreaFilled(false);
+        xButton.setBorderPainted(false);
+        itemShop.add(xButton);
+        xButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { 
+                System.out.println("Button clicked!");
+                deactivateItemShop(bonitaFrames, itemShop);
+            }
+        });
+        
+        for (int iindex = 2; iindex < AlfonsoClicker.allTheItemsGathered.length; iindex++) {
+            final int i = iindex;
+            String itemFilePath;
+
+            // pick correct file path
+            if (i == 2){ itemFilePath = "C:\\Users\\setha\\Saba\\rizzman.PNG";}
+            else if (i == 3){ itemFilePath = "C:\\Users\\setha\\Saba\\dominic.png";}
+            else if (i == 4){ itemFilePath = "C:\\Users\\setha\\Saba\\osbourne.png";}
+            else if (i == 5){ itemFilePath = "C:\\Users\\setha\\Saba\\martin.png";}
+            else if (i == 6){ itemFilePath = "C:\\Users\\setha\\Saba\\shawn.png";}
+            else if (i == 7){ itemFilePath = "C:\\Users\\setha\\Saba\\cesar replacement.jpg";}
+            else{ itemFilePath = "C:\\Users\\setha\\Saba\\normal saba2.jpg";}
+
+                // scale image
+                ImageIcon icon = new ImageIcon(itemFilePath);
+                Image img = icon.getImage();
+                Image scaledImg = img.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
+                icon = new ImageIcon(scaledImg);
+
+                // make the button with the image
+                JButton itemButton = new JButton(icon);
+                itemButton.setOpaque(false);
+                itemButton.setContentAreaFilled(false);
+                itemButton.setBorderPainted(false);
+
+                int xPos = 75 + (200 * (i-2));
+                int yPos = 400;
+
+                itemButton.setBounds(xPos, yPos, 200, 200);
+
+                // add labels for name + SPS
+                JLabel itemName = new JLabel(AlfonsoClicker.allTheItemsGathered[i].getItemName());
+                itemName.setBounds(xPos, yPos - 50, 200, 30);
+                itemShop.add(itemName);
+
+                if(i != 8){
+                    JLabel itemSPS = new JLabel(AlfonsoClicker.allTheItemsGathered[i].getItemSPS() + " sps");
+                    itemSPS.setBounds(xPos, yPos - 25, 200, 30);
+                    itemShop.add(itemSPS);
+                }
+                else{
+                    JLabel itemSPS = new JLabel("sps = # of self serve machines owned");
+                    itemSPS.setBounds(xPos, yPos - 25, 400, 30);
+                    itemShop.add(itemSPS);
+                }
+
+                JLabel itemCost = new JLabel("$"+AlfonsoClicker.allTheItemsGathered[i].getItemCost());
+                itemCost.setBounds(xPos, yPos - 75, 200, 30);
+                itemShop.add(itemCost);
+
+                itemShop.add(itemButton);
+
+                itemButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e){
+                        if(AlfonsoClicker.buyItem(AlfonsoClicker.allTheItemsGathered, i)){
+                            AlfonsoClicker.allTheItemsGathered[i].setItemCount(AlfonsoClicker.allTheItemsGathered[i].getItemCount() + 1);
+                        }
+                        else{
+                            SwingUtilities.invokeLater(() -> {
+                            // Create splash screen
+                            JWindow splash = new JWindow();
+
+                            String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                            ImageIcon icon = new ImageIcon(path);
+
+                            JLabel label = new JLabel(icon);
+                            splash.getContentPane().add(label);
+
+                            splash.pack(); // size window to fit image
+                            splash.setLocationRelativeTo(null); // center on screen
+
+                            splash.setVisible(true);
+
+                            // Timer to hide after 1 seconds
+                            new Timer(1000, erxtx -> {
+                                splash.setVisible(false);
+                                splash.dispose();
+                            }).start();
+                            });
+                        }
+                    }
+                });
+            }
     }
+
 
     static void makeButton(JFrame bonitaFrames, int x, int y, int lw, int ll, int bw, int bl, String buttonText){
         JLabel label = new JLabel();

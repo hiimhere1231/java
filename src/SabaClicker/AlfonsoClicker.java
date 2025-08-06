@@ -9,7 +9,7 @@ public class AlfonsoClicker implements  Runnable{
 
     public static Location eLocation;
     public static Saba eSaba;
-    public static double sabucks = 10000;
+    public static double sabucks = 0;
     public static double getSabucks(){
         return sabucks;
     }
@@ -164,7 +164,7 @@ public class AlfonsoClicker implements  Runnable{
     public static double getSPStotal(){
         int sabaSPStatol = 0;
         for(int i = 0; i < hand.length; i++){
-            if(hand[0] == null){
+            if(hand[i] == null){
                 continue;
             }
             else{

@@ -1,5 +1,4 @@
 make:
-make elite item shop
 elite location shop
 elestrals powerups store
 the hand
