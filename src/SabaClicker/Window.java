@@ -36,6 +36,155 @@ public class Window {
         frame.setVisible(false);
         bonitaFrames.setVisible(true);
     }
+
+    static void activateEliteLocationShop(JFrame itemShopClose, JFrame bonitaFrames){
+        itemShopClose.setVisible(false);
+        JFrame els = new JFrame();
+        els.setLayout(null);
+        els.setSize(1920, 1080);
+        els.getContentPane().setBackground(Color.yellow);
+        els.setVisible(true);
+        els.setTitle("Saba's very own ELITE location shop!");
+        ImageIcon EliteIcon = new ImageIcon("C:\\Users\\setha\\Saba\\elite subscription.png");
+        els.setIconImage(EliteIcon.getImage());
+        
+        makeIcon(els, 1462, 25, 50, 50, "C:\\Users\\setha\\Saba\\x.png");
+        JButton xButton = new JButton();
+        xButton.setBounds(1462, 25, 50, 50);
+        xButton.setVisible(true);
+        xButton.setOpaque(false);
+        xButton.setContentAreaFilled(false);
+        xButton.setBorderPainted(false);
+        els.add(xButton);
+        xButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Button clicked!");
+                deactivateItemShop(bonitaFrames, els);
+            }
+        });
+
+        if(AlfonsoClicker.allTheLocationsGathered[1].getLocationOwn() == false){
+            JButton sawButton = new JButton();
+            sawButton.setLayout(null);
+            makeIcon(els, 300, 300, 200, 200, "C:\\Users\\setha\\Saba\\sawbucks.png");
+            sawButton.setBounds(100, 300, 200, 200);
+            sawButton.setVisible(true);
+            sawButton.setBorderPainted(false);
+            sawButton.setOpaque(false);
+            sawButton.setContentAreaFilled(false);
+            els.add(sawButton);
+            sawButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    System.out.println("Button clicked!");
+                    if(AlfonsoClicker.buyLocation(AlfonsoClicker.allTheLocationsGathered, 1) == false){
+                        SwingUtilities.invokeLater(() -> {
+                        // Create splash screen
+                        JWindow splash = new JWindow();
+
+                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        ImageIcon icon = new ImageIcon(path);
+
+                        JLabel label = new JLabel(icon);
+                        splash.getContentPane().add(label);
+
+                        splash.pack(); // size window to fit image
+                        splash.setLocationRelativeTo(null); // center on screen
+
+                        splash.setVisible(true);
+
+                        // Timer to hide after 1 seconds
+                        new Timer(1000, erxtx -> {
+                            splash.setVisible(false);
+                            splash.dispose();
+                        }).start();
+                        });
+                    }
+                }
+            });
+        }
+        if(AlfonsoClicker.allTheLocationsGathered[3].getLocationOwn() == false){
+            JButton snaButton = new JButton();
+            snaButton.setLayout(null);
+            makeIcon(els, 650, 300, 200, 200, "C:\\Users\\setha\\Saba\\snack store.jpg");
+            snaButton.setBounds(350, 300, 200, 200);
+            snaButton.setVisible(true);
+            snaButton.setBorderPainted(false);
+            snaButton.setContentAreaFilled(false);
+            snaButton.setOpaque(false);
+            els.add(snaButton);
+            snaButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    System.out.println("Button clicked!");
+                    if(AlfonsoClicker.buyLocation(AlfonsoClicker.allTheLocationsGathered, 3) == false){
+                        SwingUtilities.invokeLater(() -> {
+                        // Create splash screen
+                        JWindow splash = new JWindow();
+
+                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        ImageIcon icon = new ImageIcon(path);
+
+                        JLabel label = new JLabel(icon);
+                        splash.getContentPane().add(label);
+
+                        splash.pack(); // size window to fit image
+                        splash.setLocationRelativeTo(null); // center on screen
+
+                        splash.setVisible(true);
+
+                        // Timer to hide after 1 seconds
+                        new Timer(1000, erxtx -> {
+                            splash.setVisible(false);
+                            splash.dispose();
+                        }).start();
+                        });
+                    }
+                }
+            });
+        }
+        if(AlfonsoClicker.allTheLocationsGathered[4].getLocationOwn() == false){
+            JButton bankButton = new JButton();
+            bankButton.setLayout(null);
+            makeIcon(els, 950, 300, 200, 200, "C:\\Users\\setha\\Saba\\sabaBank.jpg");
+            bankButton.setBounds(950, 300, 200, 200);
+            bankButton.setVisible(true);
+            bankButton.setBorderPainted(false);
+            bankButton.setContentAreaFilled(false);
+            bankButton.setOpaque(false);
+            els.add(bankButton);
+            bankButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e){
+                    System.out.println("Button clicked!");
+                    if(AlfonsoClicker.buyLocation(AlfonsoClicker.allTheLocationsGathered, 4) == false){
+                        SwingUtilities.invokeLater(() -> {
+                        // Create splash screen
+                        JWindow splash = new JWindow();
+
+                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        ImageIcon icon = new ImageIcon(path);
+
+                        JLabel label = new JLabel(icon);
+                        splash.getContentPane().add(label);
+
+                        splash.pack(); // size window to fit image
+                        splash.setLocationRelativeTo(null); // center on screen
+
+                        splash.setVisible(true);
+
+                        // Timer to hide after 1 seconds
+                        new Timer(1000, erxtx -> {
+                            splash.setVisible(false);
+                            splash.dispose();
+                        }).start();
+                        });
+                    }
+                }
+            });
+        }
+    }
     static void activateSabaShop(JFrame bonitaFrames){
         bonitaFrames.setVisible(false);
         JFrame sash = new JFrame();
@@ -710,6 +859,23 @@ public class Window {
                 deactivatelocationShop(locationShop, bonitaFrames);
             }
         });
+        if(AlfonsoClicker.allTheLocationsGathered[2].getLocationOwn()){
+            makeIcon(locationShop, 0, 725, 200, 200, "C:\\Users\\setha\\Saba\\come here saba.png");
+            JButton elsButton = new JButton();
+            elsButton.setBounds(0, 725, 200, 200);
+            elsButton.setVisible(true);
+            elsButton.setOpaque(false);
+            elsButton.setContentAreaFilled(false);
+            elsButton.setBorderPainted(false);
+            locationShop.add(elsButton);
+            elsButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) { 
+                    System.out.println("Button clicked!");
+                    activateEliteLocationShop(locationShop, bonitaFrames);
+                }
+            });
+        }
         makeIcon(locationShop, 150, 300, 500, 300, "C:\\Users\\setha\\Saba\\purchase dining hall.png");
         JButton dHButton = new JButton();
         dHButton.setBounds(150, 300, 500, 300);
@@ -840,12 +1006,12 @@ public class Window {
         locationShop.add(hDisplayAbility);
         JLabel h = new JLabel();
         h.setText("sakjbdajhbs");
-        h.setBounds(1000, 200, 500, 100);
+        h.setBounds(750, 200, 500, 100);
         h.setVisible(false);
         locationShop.add(h);
         JLabel r = new JLabel();
         r.setText("You own this and cannot buy it again");
-        r.setBounds(1000, 225, 500, 100);
+        r.setBounds(750, 225, 500, 100);
         if(AlfonsoClicker.allTheLocationsGathered[2].getLocationOwn() == true){
             r.setVisible(true);
         }
@@ -855,7 +1021,7 @@ public class Window {
         locationShop.add(r);
         JLabel e = new JLabel();
         e.setText("You own this and cannot buy it again");
-        e.setBounds(1000, 225, 500, 100);
+        e.setBounds(750, 225, 500, 100);
         e.setVisible(false);
         locationShop.add(e);
     }
@@ -929,7 +1095,7 @@ public class Window {
                 }
                 System.out.println("item bought");
                 if(AlfonsoClicker.buyItem(AlfonsoClicker.allTheItemsGathered, itemPos)){
-                    ssmLabel.setText("This costs "+AlfonsoClicker.allTheItemsGathered[0].getItemCost()+" It give 0.4 sps!");
+                    ssmLabel.setText("This costs "+AlfonsoClicker.allTheItemsGathered[0].getItemCost()+" It give 0.1 sps!");
                 }
                 else{
                     SwingUtilities.invokeLater(() -> {
@@ -1288,7 +1454,7 @@ public class Window {
     }
     public static JLabel spsDisplay = new JLabel();
     public static void displaySPScountLive(JFrame bonitaFrames){
-        spsDisplay.setText(AlfonsoClicker.sps+" sps");
+        spsDisplay.setText(Math.ceil(AlfonsoClicker.sps * 10) / 10+" sps");
         spsDisplay.setBounds(700, 275, 250, 100);
         bonitaFrames.add(spsDisplay);
     }
