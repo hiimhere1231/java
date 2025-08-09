@@ -30,7 +30,7 @@ public class AlfonsoClicker implements  Runnable{
     static boolean[] locationOwn = new boolean[]{false, false, true, false, false};
     static double[] locationSPS = new double[]{110, 130, 150, 30, 0};
     static String[] locationAbility = new String[]{"makes items x% cheaper", "can attract female sabas (glorious photo of saba with wig and bow and pink hearts with pink border), unlocks marriage MUST BE UNLOCKED WITH HUB", "unlocks more locations", "holding 's' will provide x sabucks per 10 seconds MUST BE UNLOCKED WITH HUB", "passively gains 25% of sabas invested in bank every TBD minutes MUST BE UNLOCKED WITH HUB"};
-    static Location[] allTheLocationsGathered = new Location[locationOwn.length];
+    static Location[] allTheLocationsGathered = new Location[5];
 
     public static double multSabucksSubtractionItems(int itemPos, Items[] allTheItemsGathered, double sabucks){
         double newCost = Math.ceil(allTheItemsGathered[itemPos].getItemCost() * 1.1 * 10) / 10;
@@ -111,30 +111,32 @@ public class AlfonsoClicker implements  Runnable{
     public static boolean buyLocation(Location[] allTheLocationsGathered, int locationPos){
         if(eLocation == allTheLocationsGathered[0]){
             if(sabucks >= allTheLocationsGathered[locationPos].getLocationCost()*.95){
-            if(allTheLocationsGathered[locationPos].getLocationOwn() == false){
-                allTheLocationsGathered[locationPos].setLocationOwn(true);
-                sabucks -= allTheLocationsGathered[locationPos].getLocationCost();
-                return true;
-            }
-            return false;
-        }
-        else{
+                if(allTheLocationsGathered[locationPos].getLocationOwn() == false){
+                    allTheLocationsGathered[locationPos].setLocationOwn(true);
+                    sabucks -= allTheLocationsGathered[locationPos].getLocationCost();
+                    return true;
+                }
             System.out.println("take a look at ur money, ur broke");
             return false;
-        }
-        }
-        if(sabucks >= allTheLocationsGathered[locationPos].getLocationCost()){
-            if(allTheLocationsGathered[locationPos].getLocationOwn() == false){
-                allTheLocationsGathered[locationPos].setLocationOwn(true);
-                sabucks -= allTheLocationsGathered[locationPos].getLocationCost();
-                return true;
             }
-            return false;
         }
         else{
-            System.out.println("take a look at ur money, ur broke");
-            return false;
+            if(sabucks >= allTheLocationsGathered[locationPos].getLocationCost()){
+                if(allTheLocationsGathered[locationPos].getLocationOwn() == false){
+                    allTheLocationsGathered[locationPos].setLocationOwn(true);
+                    System.out.println("Requested purchase: index=" + locationPos 
+                    + " (" + allTheLocationsGathered[locationPos].getLocationName() + ")");
+                    sabucks -= allTheLocationsGathered[locationPos].getLocationCost();
+                    return true;
+                }
+                return false;
+            }
+            else{
+                System.out.println("take a look at ur money, ur broke");
+                return false;
+            }
         }
+        return false;
     }
     public static void fillSabaList(){
         for(int i = 0; i < sabaOwns.length; i++){

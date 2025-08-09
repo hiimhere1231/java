@@ -68,7 +68,7 @@ public class Window {
             JButton sawButton = new JButton();
             sawButton.setLayout(null);
             makeIcon(els, 300, 300, 200, 200, "C:\\Users\\setha\\Saba\\sawbucks.png");
-            sawButton.setBounds(100, 300, 200, 200);
+            sawButton.setBounds(300, 300, 200, 200);
             sawButton.setVisible(true);
             sawButton.setBorderPainted(false);
             sawButton.setOpaque(false);
@@ -101,6 +101,9 @@ public class Window {
                         }).start();
                         });
                     }
+                    else{
+                        System.out.println("ararararar");
+                    }
                 }
             });
         }
@@ -108,7 +111,7 @@ public class Window {
             JButton snaButton = new JButton();
             snaButton.setLayout(null);
             makeIcon(els, 650, 300, 200, 200, "C:\\Users\\setha\\Saba\\snack store.jpg");
-            snaButton.setBounds(350, 300, 200, 200);
+            snaButton.setBounds(650, 300, 200, 200);
             snaButton.setVisible(true);
             snaButton.setBorderPainted(false);
             snaButton.setContentAreaFilled(false);
@@ -140,6 +143,11 @@ public class Window {
                             splash.dispose();
                         }).start();
                         });
+                    }
+                    else{
+                        for(int i = 0; i < AlfonsoClicker.allTheLocationsGathered.length; i++){
+                            System.out.println(AlfonsoClicker.allTheLocationsGathered[i].getLocationOwn());
+                        }
                     }
                 }
             });
@@ -643,6 +651,7 @@ public class Window {
     static void activateLocationInv(JFrame frame, JFrame bonitaFrames){
         frame.setVisible(false);
         JFrame locationInv = new JFrame();
+        locationInv.setLayout(null);
         locationInv.setSize(1920, 1080);
         locationInv.getContentPane().setBackground(Color.YELLOW);
         locationInv.setTitle("You're very own location inventory!");
@@ -765,6 +774,7 @@ public class Window {
         JButton xButton = new JButton();
         xButton.setBounds(1462, 25, 50, 50);
         xButton.setVisible(true);
+        xButton.setLayout(null);
         xButton.setOpaque(false);
         xButton.setContentAreaFilled(false);
         xButton.setBorderPainted(false);
@@ -1479,7 +1489,6 @@ public class Window {
         
         Thread t1 = new Thread(idling);
         t1.start();
-
         JFrame bonitaFrames = new JFrame();
         bonitaFrames.setLayout(null);
         bonitaFrames.setSize(1550, 1080);
