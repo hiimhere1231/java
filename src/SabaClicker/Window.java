@@ -27,10 +27,12 @@ import javax.swing.JOptionPane;
 public class Window extends AlfonsoClicker{
     public static String strSabucks = Double.toString(sabucks);
     public static JLabel sabucksCountLive = new JLabel("You have $"+strSabucks+" sabucks");
-    public static int clickPower = 1;
+    public static int clickPower = 0;
     public static double doubleClickChance = 0;
     public static Random rand = new Random();
     public static boolean overdrive = false;
+    public static double critCost = 1000;
+    public static double powerCost = 1000;
 
     static void deactivateItemShop(JFrame bonitaFrames, JFrame itemShop){
         itemShop.setVisible(false);
