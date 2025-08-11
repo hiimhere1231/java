@@ -8,8 +8,7 @@ public class AlfonsoClicker implements  Runnable{
 
 
     public static Location eLocation;
-    public static Saba eSaba;
-    public static double sabucks = 1387461287;
+    public static double sabucks = 0;
     public static double getSabucks(){
         return sabucks;
     }

@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 public class Window {
     public static String strSabucks = Double.toString(AlfonsoClicker.sabucks);
     public static JLabel sabucksCountLive = new JLabel("You have $"+strSabucks+" sabucks");
+    public static int clickPower = 1;
 
     static void deactivateItemShop(JFrame bonitaFrames, JFrame itemShop){
         itemShop.setVisible(false);
@@ -37,6 +38,18 @@ public class Window {
         bonitaFrames.setVisible(true);
     }
 
+    static void activateElestralsShop(JFrame bonitaFrames){
+        bonitaFrames.setVisible(false);
+        JFrame elsS = new JFrame();
+        elsS.setLayout(null);
+        elsS.setSize(1920, 1080);
+        elsS.getContentPane().setBackground(Color.yellow);
+        elsS.setVisible(true);
+        elsS.setTitle("Saba's very own unique Elestrals power up store!");
+        ImageIcon eIcon = new ImageIcon("C:\\Users\\setha\\Saba\\elestrals logo.png");
+        elsS.setIconImage(eIcon.getImage());
+        
+    }
     static void activateEliteLocationShop(JFrame itemShopClose, JFrame bonitaFrames){
         itemShopClose.setVisible(false);
         JFrame els = new JFrame();
@@ -1379,7 +1392,6 @@ public class Window {
     static void makePhotoButton(JFrame bonitaFrames, int lx, int ly, int bx, int by, int lw, int ll, int bw, int bl, String buttonText, String fileName){
         ImageIcon sabaImage = new ImageIcon(fileName);
         JLabel label = new JLabel();  
-        System.out.println(Window.class.getResource(fileName));
         JButton button = new JButton(sabaImage);
         button.setBorderPainted(false);
         button.setContentAreaFilled(false); 
@@ -1396,7 +1408,7 @@ public class Window {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Button clicked!");
-            AlfonsoClicker.sabucks += 1;
+            AlfonsoClicker.sabucks += clickPower;
             System.out.println(AlfonsoClicker.sabucks);
             System.out.println(AlfonsoClicker.eLocation);
         }
@@ -1418,6 +1430,21 @@ public class Window {
         makeIcon(bonitaFrames, 350, -45, 1000, 400, "C:\\Users\\setha\\Saba\\the nether.png");
         makeIcon(bonitaFrames, 100, 100, 100, 100, "C:\\Users\\setha\\Saba\\inventory.png");
         makePhotoButton(bonitaFrames, 700, 350, 700, 350, 300, 300, 250, 350, "", "C:\\Users\\setha\\Saba\\saba cookie.png");
+
+        JButton ELESTRALS = new JButton();
+        ELESTRALS.setBounds(0, 700, 1530, 312);
+        ELESTRALS.setVisible(true);
+        ELESTRALS.setOpaque(false);
+        ELESTRALS.setContentAreaFilled(false);
+        ELESTRALS.setBorderPainted(false);
+        bonitaFrames.add(ELESTRALS);
+        ELESTRALS.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+                System.out.println("Button clicked!");
+                activateElestralsShop(bonitaFrames);
+            }
+        });
 
         JButton inv = new JButton();
         inv.setBounds(100, 100, 100, 100);

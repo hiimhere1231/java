@@ -1,6 +1,6 @@
 make:
-elite location shop
 elestrals powerups store
 make location abilites work
 make saba abilites work
 make bank of saba ui n stuff
+make hc saba do things
