@@ -10,6 +10,7 @@ import java.awt.font.ImageGraphicAttribute;
 import java.awt.image.ImagingOpException;
 import java.util.concurrent.TimeUnit;
 import SabaClicker.AlfonsoClicker;
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -23,10 +24,13 @@ import javax.swing.Timer;
 import javax.swing.JOptionPane;
 
 
-public class Window {
-    public static String strSabucks = Double.toString(AlfonsoClicker.sabucks);
+public class Window extends AlfonsoClicker{
+    public static String strSabucks = Double.toString(sabucks);
     public static JLabel sabucksCountLive = new JLabel("You have $"+strSabucks+" sabucks");
     public static int clickPower = 1;
+    public static double doubleClickChance = 0;
+    public static Random rand = new Random();
+    public static boolean overdrive = false;
 
     static void deactivateItemShop(JFrame bonitaFrames, JFrame itemShop){
         itemShop.setVisible(false);
@@ -49,6 +53,25 @@ public class Window {
         ImageIcon eIcon = new ImageIcon("C:\\Users\\setha\\Saba\\elestrals logo.png");
         elsS.setIconImage(eIcon.getImage());
         
+        makeIcon(elsS, 1462, 25, 50, 50, "C:\\Users\\setha\\Saba\\x.png");
+        JButton xButton = new JButton();
+        xButton.setBounds(1462, 25, 50, 50);
+        xButton.setVisible(true);
+        xButton.setOpaque(false);
+        xButton.setContentAreaFilled(false);
+        xButton.setBorderPainted(false);
+        elsS.add(xButton);
+        xButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Button clicked!");
+                deactivateItemShop(bonitaFrames, elsS);
+            }
+        });
+        
+        // +1 click power
+        // 2x click power
+        // double click chance
     }
     static void activateEliteLocationShop(JFrame itemShopClose, JFrame bonitaFrames){
         itemShopClose.setVisible(false);
@@ -77,7 +100,7 @@ public class Window {
             }
         });
 
-        if(AlfonsoClicker.allTheLocationsGathered[1].getLocationOwn() == false){
+        if(allTheLocationsGathered[1].getLocationOwn() == false){
             JButton sawButton = new JButton();
             sawButton.setLayout(null);
             makeIcon(els, 300, 300, 200, 200, "C:\\Users\\setha\\Saba\\sawbucks.png");
@@ -91,7 +114,7 @@ public class Window {
                 @Override
                 public void actionPerformed(ActionEvent e){
                     System.out.println("Button clicked!");
-                    if(AlfonsoClicker.buyLocation(AlfonsoClicker.allTheLocationsGathered, 1) == false){
+                    if(buyLocation(allTheLocationsGathered, 1) == false){
                         SwingUtilities.invokeLater(() -> {
                         // Create splash screen
                         JWindow splash = new JWindow();
@@ -120,7 +143,7 @@ public class Window {
                 }
             });
         }
-        if(AlfonsoClicker.allTheLocationsGathered[3].getLocationOwn() == false){
+        if(allTheLocationsGathered[3].getLocationOwn() == false){
             JButton snaButton = new JButton();
             snaButton.setLayout(null);
             makeIcon(els, 650, 300, 200, 200, "C:\\Users\\setha\\Saba\\snack store.jpg");
@@ -134,7 +157,7 @@ public class Window {
                 @Override
                 public void actionPerformed(ActionEvent e){
                     System.out.println("Button clicked!");
-                    if(AlfonsoClicker.buyLocation(AlfonsoClicker.allTheLocationsGathered, 3) == false){
+                    if(buyLocation(allTheLocationsGathered, 3) == false){
                         SwingUtilities.invokeLater(() -> {
                         // Create splash screen
                         JWindow splash = new JWindow();
@@ -158,14 +181,14 @@ public class Window {
                         });
                     }
                     else{
-                        for(int i = 0; i < AlfonsoClicker.allTheLocationsGathered.length; i++){
-                            System.out.println(AlfonsoClicker.allTheLocationsGathered[i].getLocationOwn());
+                        for(int i = 0; i < allTheLocationsGathered.length; i++){
+                            System.out.println(allTheLocationsGathered[i].getLocationOwn());
                         }
                     }
                 }
             });
         }
-        if(AlfonsoClicker.allTheLocationsGathered[4].getLocationOwn() == false){
+        if(allTheLocationsGathered[4].getLocationOwn() == false){
             JButton bankButton = new JButton();
             bankButton.setLayout(null);
             makeIcon(els, 950, 300, 200, 200, "C:\\Users\\setha\\Saba\\sabaBank.jpg");
@@ -179,7 +202,7 @@ public class Window {
                 @Override
                 public void actionPerformed(ActionEvent e){
                     System.out.println("Button clicked!");
-                    if(AlfonsoClicker.buyLocation(AlfonsoClicker.allTheLocationsGathered, 4) == false){
+                    if(buyLocation(allTheLocationsGathered, 4) == false){
                         SwingUtilities.invokeLater(() -> {
                         // Create splash screen
                         JWindow splash = new JWindow();
@@ -233,7 +256,7 @@ public class Window {
             }
         });
         // saba
-        for (int iindex = 0; iindex < AlfonsoClicker.allTheSabasGathered.length; iindex++) {
+        for (int iindex = 0; iindex < allTheSabasGathered.length; iindex++) {
             final int i = iindex;
             String sabaFilePath;
 
@@ -257,8 +280,8 @@ public class Window {
             else sabaFilePath = "C:\\Users\\setha\\Saba\\high contrast saba.jpg";
 
             // only display if player owns this Saba
-            if (AlfonsoClicker.allTheSabasGathered[i].getOwn() == false) {
-                if(AlfonsoClicker.allTheSabasGathered[0].getOwn() == true){
+            if (allTheSabasGathered[i].getOwn() == false) {
+                if(allTheSabasGathered[0].getOwn() == true){
 
                     // scale image
                     ImageIcon icon = new ImageIcon(sabaFilePath);
@@ -287,15 +310,15 @@ public class Window {
                     sabaButton.setBounds(xPos, yPos, 200, 200);
 
                     // add labels for name + SPS
-                    JLabel sabaName = new JLabel(AlfonsoClicker.allTheSabasGathered[i].getName());
+                    JLabel sabaName = new JLabel(allTheSabasGathered[i].getName());
                     sabaName.setBounds(xPos, yPos - 50, 200, 30);
                     sash.add(sabaName);
 
-                    JLabel sabaSPS = new JLabel(AlfonsoClicker.allTheSabasGathered[i].getSPS() + " sps");
+                    JLabel sabaSPS = new JLabel(allTheSabasGathered[i].getSPS() + " sps");
                     sabaSPS.setBounds(xPos, yPos - 25, 200, 30);
                     sash.add(sabaSPS);
 
-                    JLabel sabaCost = new JLabel("$"+AlfonsoClicker.allTheSabasGathered[i].getCost());
+                    JLabel sabaCost = new JLabel("$"+allTheSabasGathered[i].getCost());
                     sabaCost.setBounds(xPos, yPos - 75, 200, 30);
                     sash.add(sabaCost);
 
@@ -304,8 +327,8 @@ public class Window {
                     sabaButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e){
-                            if(AlfonsoClicker.buySaba(AlfonsoClicker.allTheSabasGathered, i)){
-                                AlfonsoClicker.allTheSabasGathered[i].setOwn(true);
+                            if(buySaba(allTheSabasGathered, i)){
+                                allTheSabasGathered[i].setOwn(true);
                             }
                             else{
                                 SwingUtilities.invokeLater(() -> {
@@ -355,15 +378,15 @@ public class Window {
                     sabaButton.setBounds(xPos, yPos, 200, 200);
 
                     // add labels for name + SPS
-                    JLabel sabaName = new JLabel(AlfonsoClicker.allTheSabasGathered[0].getName());
+                    JLabel sabaName = new JLabel(allTheSabasGathered[0].getName());
                     sabaName.setBounds(xPos, yPos - 50, 200, 30);
                     sash.add(sabaName);
 
-                    JLabel sabaSPS = new JLabel(AlfonsoClicker.allTheSabasGathered[0].getSPS() + " sps");
+                    JLabel sabaSPS = new JLabel(allTheSabasGathered[0].getSPS() + " sps");
                     sabaSPS.setBounds(xPos, yPos - 25, 200, 30);
                     sash.add(sabaSPS);
 
-                    JLabel sabaCost = new JLabel("$"+AlfonsoClicker.allTheSabasGathered[0].getCost());
+                    JLabel sabaCost = new JLabel("$"+allTheSabasGathered[0].getCost());
                     sabaCost.setBounds(xPos, yPos - 75, 200, 30);
                     sash.add(sabaCost);
 
@@ -372,8 +395,8 @@ public class Window {
                     sabaButton.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e){
-                            if(AlfonsoClicker.buySaba(AlfonsoClicker.allTheSabasGathered, 0)){
-                                AlfonsoClicker.allTheSabasGathered[0].setOwn(true);
+                            if(buySaba(allTheSabasGathered, 0)){
+                                allTheSabasGathered[0].setOwn(true);
                             }
                             else{
                                 SwingUtilities.invokeLater(() -> {
@@ -436,9 +459,9 @@ public class Window {
                 createStartUI(bonitaFrames);
                 int xPos = 375;
                 String sabaPath;
-                for(int i = 0; i < AlfonsoClicker.hand.length; i++){
-                    if(AlfonsoClicker.hand[i] != null){
-                        sabaPath = AlfonsoClicker.hand[i].getPath();
+                for(int i = 0; i < hand.length; i++){
+                    if(hand[i] != null){
+                        sabaPath = hand[i].getPath();
                     }
                     else{
                         sabaPath = null;
@@ -455,124 +478,124 @@ public class Window {
         String sabaFilePath;
         boolean hasSaba = false;
         //static String[] nameOfSaba = new String[]{"saba", "green saba", "incredibly demure saba", "evil saba", "business saba", "saba item shop", "rich saba", "bank saba", "pokemon trainer saba", "alien saba", "oompa loompa saba", "investor saba", "lucky saba", "non-political presidential saba", "old saba", "balatro saba",  "high contrast saba"}; // hc saba kills all sabas + new sabas with him in hand are negative but perm 10% cheaper while in hand plus 10% sps increase | balatro saba gives mult | shop keeper saba unlocks items beyond self serve machine and chefs
-        for(int iindex = 0; iindex < AlfonsoClicker.allTheSabasGathered.length; iindex++){
+        for(int iindex = 0; iindex < allTheSabasGathered.length; iindex++){
             final int i = iindex;
             if(i == 0){
                 sabaFilePath = "C:/Users/setha/Saba/IMG_3360.PNG";
-                if(AlfonsoClicker.allTheSabasGathered[0].getOwn()){
+                if(allTheSabasGathered[0].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 1){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\green saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[1].getOwn()){
+                if(allTheSabasGathered[1].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 2){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\real incredibly demure saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[2].getOwn()){
+                if(allTheSabasGathered[2].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 3){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\real evil saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[3].getOwn()){
+                if(allTheSabasGathered[3].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 4){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\business saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[4].getOwn()){
+                if(allTheSabasGathered[4].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 5){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\saba item shop.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[5].getOwn()){
+                if(allTheSabasGathered[5].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 6){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\rich saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[6].getOwn()){
+                if(allTheSabasGathered[6].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 7){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\bank saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[7].getOwn()){
+                if(allTheSabasGathered[7].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 8){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\pokemon trainer saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[8].getOwn()){
+                if(allTheSabasGathered[8].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 9){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\alien saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[9].getOwn()){
+                if(allTheSabasGathered[9].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 10){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\oompa loompa saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[10].getOwn()){
+                if(allTheSabasGathered[10].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 11){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\mark cuban saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[11].getOwn()){
+                if(allTheSabasGathered[11].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 12){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\idk how to spell it saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[12].getOwn()){
+                if(allTheSabasGathered[12].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 13){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\non political presidential saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[13].getOwn()){
+                if(allTheSabasGathered[13].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 14){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\old saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[14].getOwn()){
+                if(allTheSabasGathered[14].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 15){
                 sabaFilePath = "C:\\Users\\setha\\Saba\\balatro saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[15].getOwn()){
+                if(allTheSabasGathered[15].getOwn()){
                     hasSaba = true;
                 }
             }
             else{
                 sabaFilePath = "C:\\Users\\setha\\Saba\\high contrast saba.jpg";
-                if(AlfonsoClicker.allTheSabasGathered[16].getOwn()){
+                if(allTheSabasGathered[16].getOwn()){
                     hasSaba = true;
                 }
             }
             int sabaInvXPos;
             JButton sabaButton = new JButton();
             if(i < 7){
-                if(AlfonsoClicker.allTheSabasGathered[i].getOwn()){
+                if(allTheSabasGathered[i].getOwn()){
                     sabaInvXPos = 75 + (200 * i);
                     makeIcon(sabaInv, sabaInvXPos, 100, 200, 200, sabaFilePath);
                     sabaButton.setBounds(sabaInvXPos, 100, 200, 200);
                     JLabel sabaName = new JLabel();
-                    sabaName.setText(AlfonsoClicker.allTheSabasGathered[i].getName());
+                    sabaName.setText(allTheSabasGathered[i].getName());
                     sabaName.setBounds(sabaInvXPos, 50, 200, 30);
                     sabaName.setVisible(true);
                     sabaInv.add(sabaName);
                     JLabel sabaSPS = new JLabel();
-                    double spspsps = AlfonsoClicker.allTheSabasGathered[i].getSPS();
+                    double spspsps = allTheSabasGathered[i].getSPS();
                     String textSPS = Double.toString(spspsps);
                     sabaSPS.setText(textSPS+" sps");
                     sabaSPS.setBounds(sabaInvXPos, 75, 200, 30);
@@ -581,17 +604,17 @@ public class Window {
                 }
             }
             else if(i < 14){
-                if(AlfonsoClicker.allTheSabasGathered[i].getOwn()){
+                if(allTheSabasGathered[i].getOwn()){
                     int xTempPos = 75 + (200 * (i-7));
                     makeIcon(sabaInv, xTempPos, 450, 200, 200, sabaFilePath);
                     sabaButton.setBounds(xTempPos, 450, 200, 200);
                     JLabel sabaName = new JLabel();
-                    sabaName.setText(AlfonsoClicker.allTheSabasGathered[i].getName());
+                    sabaName.setText(allTheSabasGathered[i].getName());
                     sabaName.setBounds(xTempPos, 400, 200, 30);
                     sabaName.setVisible(true);
                     sabaInv.add(sabaName);
                     JLabel sabaSPS = new JLabel();
-                    double spspsps = AlfonsoClicker.allTheSabasGathered[i].getSPS();
+                    double spspsps = allTheSabasGathered[i].getSPS();
                     String textSPS = Double.toString(spspsps);
                     sabaSPS.setText(textSPS+" sps");
                     sabaSPS.setBounds(xTempPos, 425, 200, 30);
@@ -600,17 +623,17 @@ public class Window {
                 }
             }
             else{
-                if(AlfonsoClicker.allTheSabasGathered[i].getOwn()){
+                if(allTheSabasGathered[i].getOwn()){
                     int xTempPos = 75 + (200 * (i-14));
                     makeIcon(sabaInv, xTempPos, 750, 200, 200, sabaFilePath);
                     sabaButton.setBounds(xTempPos, 750, 200, 200); 
                     JLabel sabaName = new JLabel();
-                    sabaName.setText(AlfonsoClicker.allTheSabasGathered[i].getName());
+                    sabaName.setText(allTheSabasGathered[i].getName());
                     sabaName.setBounds(xTempPos, 700, 200, 30);
                     sabaName.setVisible(true);
                     sabaInv.add(sabaName);
                     JLabel sabaSPS = new JLabel();
-                    double spspsps = AlfonsoClicker.allTheSabasGathered[i].getSPS();
+                    double spspsps = allTheSabasGathered[i].getSPS();
                     String textSPS = Double.toString(spspsps);
                     sabaSPS.setText(textSPS+" sps");
                     sabaSPS.setBounds(xTempPos, 725, 200, 30);
@@ -632,17 +655,17 @@ public class Window {
                     // saba must be placed in null
                     // clicking a saba in hand results in removing that saba from hand
                     for(int j = 0; j < 3; j++){
-                         if (AlfonsoClicker.hand[j] == AlfonsoClicker.allTheSabasGathered[i]) {
+                         if (hand[j] == allTheSabasGathered[i]) {
                         // Shift everything left
-                        for (int k = j; k < AlfonsoClicker.hand.length - 1; k++) {
-                            AlfonsoClicker.hand[k] = AlfonsoClicker.hand[k + 1];
+                        for (int k = j; k < hand.length - 1; k++) {
+                            hand[k] = hand[k + 1];
                         }
                         // Null out the last slot
-                        AlfonsoClicker.hand[AlfonsoClicker.hand.length - 1] = null;
+                        hand[hand.length - 1] = null;
                         break; // stop after removing once
     }
-                        else if(AlfonsoClicker.hand[j] == null && added == false){
-                            AlfonsoClicker.hand[j] = AlfonsoClicker.allTheSabasGathered[i];
+                        else if(hand[j] == null && added == false){
+                            hand[j] = allTheSabasGathered[i];
                             added = true;
                             break;
                         }
@@ -650,12 +673,12 @@ public class Window {
                             System.out.println("Hand is full");
                         }
                     }
-                    for(int i = 0; i < AlfonsoClicker.hand.length; i++){
-                        if(AlfonsoClicker.hand[i] == null){
-                            System.out.println(AlfonsoClicker.hand[i]);
+                    for(int i = 0; i < hand.length; i++){
+                        if(hand[i] == null){
+                            System.out.println(hand[i]);
                             continue;
                         }
-                        System.out.println(AlfonsoClicker.hand[i].getName());
+                        System.out.println(hand[i].getName());
                     }
                 }
             });
@@ -671,7 +694,7 @@ public class Window {
         ImageIcon lInvIcon = new ImageIcon("C:\\Users\\setha\\Saba\\location icon.png");
         locationInv.setIconImage(lInvIcon.getImage());
         locationInv.setVisible(true);
-        if(AlfonsoClicker.allTheLocationsGathered[0].getLocationOwn()){
+        if(allTheLocationsGathered[0].getLocationOwn()){
             ImageIcon pdh = new ImageIcon("C:\\Users\\setha\\Saba\\purchase dining hall.png");
             JLabel label = new JLabel();  
             JButton pdhButton = new JButton(pdh);
@@ -688,11 +711,11 @@ public class Window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Button clicked!");
-                    AlfonsoClicker.eLocation = AlfonsoClicker.allTheLocationsGathered[0];
+                    eLocation = allTheLocationsGathered[0];
                 }
             });
         }
-        if(AlfonsoClicker.allTheLocationsGathered[2].getLocationOwn()){
+        if(allTheLocationsGathered[2].getLocationOwn()){
             ImageIcon h = new ImageIcon("C:\\Users\\setha\\Saba\\dining hub.jpg");
             JLabel label2 = new JLabel();  
             JButton hButton = new JButton(h);
@@ -709,11 +732,11 @@ public class Window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Button clicked!");
-                    AlfonsoClicker.eLocation = AlfonsoClicker.allTheLocationsGathered[2];
+                    eLocation = allTheLocationsGathered[2];
                 }
             });
         }
-        if(AlfonsoClicker.allTheLocationsGathered[1].getLocationOwn()){
+        if(allTheLocationsGathered[1].getLocationOwn()){
             ImageIcon sb = new ImageIcon("C:\\Users\\setha\\Saba\\sawbucks.png");
             Image img = sb.getImage();
             Image scaledImg = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
@@ -733,11 +756,11 @@ public class Window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Button clicked!");
-                    AlfonsoClicker.eLocation = AlfonsoClicker.allTheLocationsGathered[1];
+                    eLocation = allTheLocationsGathered[1];
                 }
             });
         }
-        if(AlfonsoClicker.allTheLocationsGathered[3].getLocationOwn()){
+        if(allTheLocationsGathered[3].getLocationOwn()){
             ImageIcon ss = new ImageIcon("C:\\Users\\setha\\Saba\\snack store.jpg");
             Image img2 = ss.getImage();
             Image scaledImg2 = img2.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
@@ -757,7 +780,7 @@ public class Window {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Button clicked!");
-                    AlfonsoClicker.eLocation = AlfonsoClicker.allTheLocationsGathered[3];
+                    eLocation = allTheLocationsGathered[3];
                 }
             });
         }
@@ -882,7 +905,7 @@ public class Window {
                 deactivatelocationShop(locationShop, bonitaFrames);
             }
         });
-        if(AlfonsoClicker.allTheLocationsGathered[2].getLocationOwn()){
+        if(allTheLocationsGathered[2].getLocationOwn()){
             makeIcon(locationShop, 0, 725, 200, 200, "C:\\Users\\setha\\Saba\\come here saba.png");
             JButton elsButton = new JButton();
             elsButton.setBounds(0, 725, 200, 200);
@@ -911,14 +934,14 @@ public class Window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int itemPos = 0;
-                for(int i = 0; i < AlfonsoClicker.allTheLocationsGathered.length; i++){
-                    if(AlfonsoClicker.allTheLocationsGathered[i].getLocationName().equals("dining hall")){
+                for(int i = 0; i < allTheLocationsGathered.length; i++){
+                    if(allTheLocationsGathered[i].getLocationName().equals("dining hall")){
                         System.out.println("Item found");
                         itemPos = i;
                     }
                 }
                 System.out.println("item bought");
-                if(AlfonsoClicker.buyLocation(AlfonsoClicker.allTheLocationsGathered, itemPos) == false){
+                if(buyLocation(allTheLocationsGathered, itemPos) == false){
                     SwingUtilities.invokeLater(() -> {
                     // Create splash screen
                     JWindow splash = new JWindow();
@@ -941,7 +964,7 @@ public class Window {
                     }).start();
                     });
                 }
-                System.out.println(AlfonsoClicker.allTheLocationsGathered[itemPos].getLocationOwn());
+                System.out.println(allTheLocationsGathered[itemPos].getLocationOwn());
                 System.out.println("Button clicked!");
             }
         });
@@ -978,14 +1001,14 @@ public class Window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int itemPos = 0;
-                for(int i = 0; i < AlfonsoClicker.allTheLocationsGathered.length; i++){
-                    if(AlfonsoClicker.allTheLocationsGathered[i].getLocationName().equals("hub")){
+                for(int i = 0; i < allTheLocationsGathered.length; i++){
+                    if(allTheLocationsGathered[i].getLocationName().equals("hub")){
                         System.out.println("Item found");
                         itemPos = i;
                     }
                 }
                 System.out.println("item bought");
-                if(AlfonsoClicker.buyLocation(AlfonsoClicker.allTheLocationsGathered, itemPos) == false){
+                if(buyLocation(allTheLocationsGathered, itemPos) == false){
                     SwingUtilities.invokeLater(() -> {
                     // Create splash screen
                     JWindow splash = new JWindow();
@@ -1008,7 +1031,7 @@ public class Window {
                     }).start();
                     });
                 }
-                System.out.println(AlfonsoClicker.allTheLocationsGathered[itemPos].getLocationOwn());
+                System.out.println(allTheLocationsGathered[itemPos].getLocationOwn());
                 System.out.println("Button clicked!");
             }
         });
@@ -1035,7 +1058,7 @@ public class Window {
         JLabel r = new JLabel();
         r.setText("You own this and cannot buy it again");
         r.setBounds(750, 225, 500, 100);
-        if(AlfonsoClicker.allTheLocationsGathered[2].getLocationOwn() == true){
+        if(allTheLocationsGathered[2].getLocationOwn() == true){
             r.setVisible(true);
         }
         else{
@@ -1072,7 +1095,7 @@ public class Window {
                 deactivateItemShop(bonitaFrames, itemShop);
             }
         });
-        if(AlfonsoClicker.allTheSabasGathered[5].getOwn()){
+        if(allTheSabasGathered[5].getOwn()){
             makeIcon(itemShop, 0, 725, 200, 200, "C:\\Users\\setha\\Saba\\come here saba.png");
             JButton chsButton = new JButton();
             chsButton.setBounds(0, 725, 200, 200);
@@ -1090,7 +1113,7 @@ public class Window {
             });
         }
         JLabel ssmLabel = new JLabel();
-        ssmLabel.setText("This costs "+AlfonsoClicker.allTheItemsGathered[0].getItemCost()+". It give 0.1 sps!");
+        ssmLabel.setText("This costs "+allTheItemsGathered[0].getItemCost()+". It give 0.1 sps!");
         ssmLabel.setBounds(275, 100, 500, 100);
         ssmLabel.setVisible(true);
         itemShop.add(ssmLabel);
@@ -1110,15 +1133,15 @@ public class Window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int itemPos = 0;
-                for(int i = 0; i < AlfonsoClicker.allTheItemsGathered.length; i++){
-                    if(AlfonsoClicker.allTheItemsGathered[i].getItemName().equals("self serve machine")){
+                for(int i = 0; i < allTheItemsGathered.length; i++){
+                    if(allTheItemsGathered[i].getItemName().equals("self serve machine")){
                         System.out.println("Item found");
                         itemPos = i;
                     }
                 }
                 System.out.println("item bought");
-                if(AlfonsoClicker.buyItem(AlfonsoClicker.allTheItemsGathered, itemPos)){
-                    ssmLabel.setText("This costs "+AlfonsoClicker.allTheItemsGathered[0].getItemCost()+" It give 0.1 sps!");
+                if(buyItem(allTheItemsGathered, itemPos)){
+                    ssmLabel.setText("This costs "+allTheItemsGathered[0].getItemCost()+" It give 0.1 sps!");
                 }
                 else{
                     SwingUtilities.invokeLater(() -> {
@@ -1144,13 +1167,13 @@ public class Window {
                 });
 
                 }
-                System.out.println(AlfonsoClicker.allTheItemsGathered[itemPos].getItemCount());
+                System.out.println(allTheItemsGathered[itemPos].getItemCount());
                 System.out.println("Button clicked!");
-                System.out.println(AlfonsoClicker.getSPStotal());
+                System.out.println(getSPStotal());
             }
         });
         JLabel chefLabel = new JLabel();
-        chefLabel.setText("This costs "+AlfonsoClicker.allTheItemsGathered[1].getItemCost()+". It give 0.4 sps!");
+        chefLabel.setText("This costs "+allTheItemsGathered[1].getItemCost()+". It give 0.4 sps!");
         chefLabel.setBounds(900, 100, 500, 100);
         chefLabel.setVisible(true);
         itemShop.add(chefLabel);
@@ -1170,15 +1193,15 @@ public class Window {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int itemPos = 0;
-                for(int i = 0; i < AlfonsoClicker.allTheItemsGathered.length; i++){
-                    if(AlfonsoClicker.allTheItemsGathered[i].getItemName().equals("chef")){
+                for(int i = 0; i < allTheItemsGathered.length; i++){
+                    if(allTheItemsGathered[i].getItemName().equals("chef")){
                         System.out.println("Item found");
                         itemPos = i;
                     }
                 }
                 System.out.println("item bought");
-                if(AlfonsoClicker.buyItem(AlfonsoClicker.allTheItemsGathered, itemPos)){
-                    chefLabel.setText("This costs "+AlfonsoClicker.allTheItemsGathered[1].getItemCost()+" It give 0.4 sps!");
+                if(buyItem(allTheItemsGathered, itemPos)){
+                    chefLabel.setText("This costs "+allTheItemsGathered[1].getItemCost()+" It give 0.4 sps!");
                 }
                 else{
                     SwingUtilities.invokeLater(() -> {
@@ -1203,7 +1226,7 @@ public class Window {
                     }).start();
                 });
                 }
-                System.out.println(AlfonsoClicker.allTheItemsGathered[itemPos].getItemCount());
+                System.out.println(allTheItemsGathered[itemPos].getItemCount());
                 System.out.println("Button clicked!");
             }
         });
@@ -1254,7 +1277,7 @@ public class Window {
             }
         });
         
-        for (int iindex = 2; iindex < AlfonsoClicker.allTheItemsGathered.length; iindex++) {
+        for (int iindex = 2; iindex < allTheItemsGathered.length; iindex++) {
             final int i = iindex;
             String itemFilePath;
 
@@ -1285,12 +1308,12 @@ public class Window {
                 itemButton.setBounds(xPos, yPos, 200, 200);
 
                 // add labels for name + SPS
-                JLabel itemName = new JLabel(AlfonsoClicker.allTheItemsGathered[i].getItemName());
+                JLabel itemName = new JLabel(allTheItemsGathered[i].getItemName());
                 itemName.setBounds(xPos, yPos - 50, 200, 30);
                 itemShop.add(itemName);
 
                 if(i != 8){
-                    JLabel itemSPS = new JLabel(AlfonsoClicker.allTheItemsGathered[i].getItemSPS() + " sps");
+                    JLabel itemSPS = new JLabel(allTheItemsGathered[i].getItemSPS() + " sps");
                     itemSPS.setBounds(xPos, yPos - 25, 200, 30);
                     itemShop.add(itemSPS);
                 }
@@ -1300,7 +1323,7 @@ public class Window {
                     itemShop.add(itemSPS);
                 }
 
-                JLabel itemCost = new JLabel("$"+AlfonsoClicker.allTheItemsGathered[i].getItemCost());
+                JLabel itemCost = new JLabel("$"+allTheItemsGathered[i].getItemCost());
                 itemCost.setBounds(xPos, yPos - 75, 200, 30);
                 itemShop.add(itemCost);
 
@@ -1309,8 +1332,8 @@ public class Window {
                 itemButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e){
-                        if(AlfonsoClicker.buyItem(AlfonsoClicker.allTheItemsGathered, i)){
-                            AlfonsoClicker.allTheItemsGathered[i].setItemCount(AlfonsoClicker.allTheItemsGathered[i].getItemCount() + 1);
+                        if(buyItem(allTheItemsGathered, i)){
+                            allTheItemsGathered[i].setItemCount(allTheItemsGathered[i].getItemCount() + 1);
                         }
                         else{
                             SwingUtilities.invokeLater(() -> {
@@ -1374,7 +1397,6 @@ public class Window {
 
 
     static void makingPhotoButton(JFrame frame, int lx, int ly, int bx, int by, int lw, int ll, int bw, int bl, String fileName, ActionListener ActionListener){
-        ImageIcon icon = new ImageIcon(fileName);
         JLabel label = new JLabel();
         JButton button = new JButton();
         button.setBorderPainted(false);
@@ -1408,15 +1430,18 @@ public class Window {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Button clicked!");
-            AlfonsoClicker.sabucks += clickPower;
-            System.out.println(AlfonsoClicker.sabucks);
-            System.out.println(AlfonsoClicker.eLocation);
+            if(rand.nextDouble() < doubleClickChance){
+                sabucks += clickPower;
+            }
+            sabucks += clickPower;
+            System.out.println(sabucks);
+            System.out.println(eLocation);
         }
     });
     }
     public static void displaySabuckCount(JFrame bonitaFrames, JLabel label){
         label.setVisible(false);
-        strSabucks = Double.toString(Math.ceil(AlfonsoClicker.sabucks * 10) / 10);
+        strSabucks = Double.toString(Math.ceil(sabucks * 10) / 10);
         label.setText("You have $"+strSabucks+" sabucks");
         label.setVisible(true);
         label.validate();
@@ -1491,21 +1516,27 @@ public class Window {
     }
     public static JLabel spsDisplay = new JLabel();
     public static void displaySPScountLive(JFrame bonitaFrames){
-        spsDisplay.setText(Math.ceil(AlfonsoClicker.sps * 10) / 10+" sps");
+        spsDisplay.setText(Math.ceil(sps * 10) / 10+" sps");
         spsDisplay.setBounds(700, 275, 250, 100);
         bonitaFrames.add(spsDisplay);
+    }
+
+    public static void overDrive(){
+        if(overdrive){
+            sps = getSPStotal() * 1.5;
+        }
     }
     public static void main(String[] args) {
 
         //create lists of stuff
-        AlfonsoClicker.fillSabaList();
-        AlfonsoClicker.fillItemList();
-        AlfonsoClicker.fillLocationList();
+        fillSabaList();
+        fillItemList();
+        fillLocationList();
         
         //sps thread
         Runnable idling = ()->{
             while(true){
-                AlfonsoClicker.sabucks += AlfonsoClicker.getSPStotal();
+                sabucks += getSPStotal();
                 try {
                     TimeUnit.SECONDS.sleep(1);
                 } catch (InterruptedException e) {
@@ -1553,5 +1584,16 @@ public class Window {
         Thread t3 = new Thread(spsing);
         t3.start();
 
+        Runnable overdriving = ()->{
+            overDrive();
+            try {
+                TimeUnit.SECONDS.sleep(30);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            overdrive = false;
+        };
+        Thread t4 = new Thread(overdriving);
+        t4.start();
     }
 }
