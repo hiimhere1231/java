@@ -27,12 +27,24 @@ import javax.swing.JOptionPane;
 public class Window extends AlfonsoClicker{
     public static String strSabucks = Double.toString(sabucks);
     public static JLabel sabucksCountLive = new JLabel("You have $"+strSabucks+" sabucks");
+
+
     public static int clickPower = 0;
     public static double doubleClickChance = 0;
     public static Random rand = new Random();
+
     public static boolean overdrive = false;
-    public static double critCost = 1000;
-    public static double powerCost = 1000;
+    public static double critCost = 10000;
+    public static double powerCost = 10000;
+    public static double twoXPowerCost = 100000;
+    public static double overdriveCost = 100000;
+
+    public static JLabel critLabelCost = new JLabel("This costs $"+critCost+" sabucks");
+    public static JLabel powerLabelCost = new JLabel("This costs $"+powerCost+" sabucks");
+    public static JLabel twoXPowerLabelCost = new JLabel("This costs $"+twoXPowerCost+" sabucks");
+    public static JLabel overdriveLabelCost = new JLabel("This costs $"+overdriveCost+" sabucks");
+
+
 
     static void deactivateItemShop(JFrame bonitaFrames, JFrame itemShop){
         itemShop.setVisible(false);
@@ -74,6 +86,17 @@ public class Window extends AlfonsoClicker{
         // +1 click power
         // 2x click power
         // double click chance
+        // overdrive
+
+        makeIcon(elsS, 200, 350, 200, 200, "C:\\Users\\setha\\Saba\\elestrals 1.png");
+        powerLabelCost.setBounds(225, 200, 200, 200);
+        powerLabelCost.setVisible(true);
+        elsS.add(powerLabelCost);
+        JLabel pwrAb = new JLabel("This elestral gives +1 click power.");
+        pwrAb.setBounds(225, 175, 200, 200);
+        pwrAb.setVisible(true);
+        elsS.add(pwrAb);
+        // add button
     }
     static void activateEliteLocationShop(JFrame itemShopClose, JFrame bonitaFrames){
         itemShopClose.setVisible(false);
