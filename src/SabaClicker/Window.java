@@ -9,13 +9,7 @@ import java.awt.*;
 import java.util.concurrent.TimeUnit;
 import java.util.Random;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JWindow;
-import javax.swing.SwingUtilities;
-import javax.swing.Timer;
+import javax.swing.*;
 
 
 public class Window extends AlfonsoClicker{
