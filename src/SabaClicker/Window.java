@@ -3,28 +3,19 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Font;
-import java.awt.Desktop.Action;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
-import java.awt.font.ImageGraphicAttribute;
-import java.awt.image.ImagingOpException;
 import java.util.concurrent.TimeUnit;
-import SabaClicker.AlfonsoClicker;
 import java.util.Random;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.*;
-import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-import javax.swing.JOptionPane;
 
 
 public class Window extends AlfonsoClicker{
@@ -33,7 +24,7 @@ public class Window extends AlfonsoClicker{
 
 
     public static int clickPower = 1;
-    public static double doubleClickChance = 0;
+    public static double doubleClickChance = 1;
     public static Random rand = new Random();
 
     public static boolean overdrive = false;
@@ -115,8 +106,9 @@ public class Window extends AlfonsoClicker{
                     sabucks -= powerCost;
                     powerCost = powerCost * 1.1;
                     clickPower += 1;
+                    powerLabelCost.setText("This costs $"+Math.ceil(powerCost / 10) * 10 +" sabucks");
                 }
-                else{
+                else {
                     SwingUtilities.invokeLater(() -> {
                         // Create splash screen
                         JWindow splash = new JWindow();
@@ -166,6 +158,7 @@ public class Window extends AlfonsoClicker{
                     sabucks -= twoXPowerCost;
                     twoXPowerCost = twoXPowerCost * 1.1;
                     clickPower *= 2;
+                    twoXPowerLabelCost.setText("This costs $"+Math.ceil(twoXPowerCost / 10) * 10+" sabucks");
                 }
                 else{
                     SwingUtilities.invokeLater(() -> {
@@ -217,6 +210,7 @@ public class Window extends AlfonsoClicker{
                     sabucks -= critCost;
                     critCost = critCost * 1.1;
                     doubleClickChance += 5;
+                    critLabelCost.setText("This costs $"+Math.ceil(critCost / 10) * 10+" sabucks");
                 }
                 else{
                     SwingUtilities.invokeLater(() -> {
@@ -244,6 +238,69 @@ public class Window extends AlfonsoClicker{
             }
         });
         elsS.add(el3);
+
+        makeIcon(elsS, 1100, 350, 200, 200, "C:\\Users\\setha\\Saba\\overdrive.png");
+        overdriveLabelCost.setBounds(1125, 200, 200, 200);
+        overdriveLabelCost.setVisible(true);
+        elsS.add(overdriveLabelCost);
+        JLabel odAb = new JLabel("This Elestral gives +50% sps for 30 seconds.");
+        odAb.setBounds(1125, 175, 300, 200);
+        odAb.setVisible(true);
+        elsS.add(odAb);
+        // add button
+        JButton el4 = new JButton();
+        el4.setBounds(1100, 350, 200, 200);
+        el4.setVisible(true);
+        el4.setOpaque(false);
+        el4.setContentAreaFilled(false);
+        el4.setBorderPainted(false);
+        el4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Button clicked!");
+                if (sabucks > overdriveCost && !overdrive) {
+                    sabucks -= overdriveCost;
+                    overdriveCost *= 1.1;
+                    overdrive = true;
+                    overdriveLabelCost.setText("This costs $"+Math.ceil(overdriveCost / 10) * 10+" sabucks");
+
+                    new Thread(() -> {
+                        overDrive();
+                        System.out.println(sps);
+                        try {
+                            TimeUnit.SECONDS.sleep(30);
+                        } catch (InterruptedException ex) {
+                            ex.printStackTrace();
+                        }
+                        overdrive = false;
+                    }).start();
+                }
+                else{
+                    SwingUtilities.invokeLater(() -> {
+                        // Create splash screen
+                        JWindow splash = new JWindow();
+
+                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        ImageIcon icon = new ImageIcon(path);
+
+                        JLabel label = new JLabel(icon);
+                        splash.getContentPane().add(label);
+
+                        splash.pack(); // size window to fit image
+                        splash.setLocationRelativeTo(null); // center on screen
+
+                        splash.setVisible(true);
+
+                        // Timer to hide after 1 seconds
+                        new Timer(1000, erxtx -> {
+                            splash.setVisible(false);
+                            splash.dispose();
+                        }).start();
+                    });
+                }
+            }
+        });
+        elsS.add(el4);
 
     }
     static void activateEliteLocationShop(JFrame itemShopClose, JFrame bonitaFrames){
@@ -1759,6 +1816,8 @@ public class Window extends AlfonsoClicker{
 
     public static void overDrive(){
         if(overdrive){
+            System.out.println("DEBUG");
+            System.err.println(new Throwable().getStackTrace()[0].getLineNumber());
             sps = getSPStotal() * 1.5;
         }
     }
@@ -1820,18 +1879,6 @@ public class Window extends AlfonsoClicker{
         Thread t3 = new Thread(spsing);
         t3.start();
 
-        Runnable overdriving = ()->{
-            if(overdrive) {
-                overDrive();
-                try {
-                    TimeUnit.SECONDS.sleep(30);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                overdrive = false;
-            }
-        };
-        Thread t4 = new Thread(overdriving);
-        t4.start();
+
     }
 }

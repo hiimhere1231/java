@@ -1,6 +1,6 @@
 make:
-elestrals powerups store
 make location abilites work
 make saba abilites work
 make bank of saba ui n stuff
+make the background the location equipped
 make hc saba do things
