@@ -2,10 +2,12 @@ package SabaClicker;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Image;
+import java.awt.Font;
 import java.awt.Desktop.Action;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.*;
 import java.awt.font.ImageGraphicAttribute;
 import java.awt.image.ImagingOpException;
 import java.util.concurrent.TimeUnit;
@@ -17,6 +19,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.*;
 import javax.swing.JPanel;
 import javax.swing.JWindow;
 import javax.swing.SwingUtilities;
@@ -29,7 +32,7 @@ public class Window extends AlfonsoClicker{
     public static JLabel sabucksCountLive = new JLabel("You have $"+strSabucks+" sabucks");
 
 
-    public static int clickPower = 0;
+    public static int clickPower = 1;
     public static double doubleClickChance = 0;
     public static Random rand = new Random();
 
@@ -88,6 +91,7 @@ public class Window extends AlfonsoClicker{
         // double click chance
         // overdrive
 
+
         makeIcon(elsS, 200, 350, 200, 200, "C:\\Users\\setha\\Saba\\elestrals 1.png");
         powerLabelCost.setBounds(225, 200, 200, 200);
         powerLabelCost.setVisible(true);
@@ -97,6 +101,7 @@ public class Window extends AlfonsoClicker{
         pwrAb.setVisible(true);
         elsS.add(pwrAb);
         // add button
+
     }
     static void activateEliteLocationShop(JFrame itemShopClose, JFrame bonitaFrames){
         itemShopClose.setVisible(false);
@@ -139,7 +144,7 @@ public class Window extends AlfonsoClicker{
                 @Override
                 public void actionPerformed(ActionEvent e){
                     System.out.println("Button clicked!");
-                    if(buyLocation(allTheLocationsGathered, 1) == false){
+                    if(!buyLocation(allTheLocationsGathered, 1)){
                         SwingUtilities.invokeLater(() -> {
                         // Create splash screen
                         JWindow splash = new JWindow();
@@ -182,7 +187,7 @@ public class Window extends AlfonsoClicker{
                 @Override
                 public void actionPerformed(ActionEvent e){
                     System.out.println("Button clicked!");
-                    if(buyLocation(allTheLocationsGathered, 3) == false){
+                    if(!buyLocation(allTheLocationsGathered, 3)){
                         SwingUtilities.invokeLater(() -> {
                         // Create splash screen
                         JWindow splash = new JWindow();
@@ -213,7 +218,7 @@ public class Window extends AlfonsoClicker{
                 }
             });
         }
-        if(allTheLocationsGathered[4].getLocationOwn() == false){
+        if(!allTheLocationsGathered[4].getLocationOwn()){
             JButton bankButton = new JButton();
             bankButton.setLayout(null);
             makeIcon(els, 950, 300, 200, 200, "C:\\Users\\setha\\Saba\\sabaBank.jpg");
@@ -227,7 +232,7 @@ public class Window extends AlfonsoClicker{
                 @Override
                 public void actionPerformed(ActionEvent e){
                     System.out.println("Button clicked!");
-                    if(buyLocation(allTheLocationsGathered, 4) == false){
+                    if(!buyLocation(allTheLocationsGathered, 4)){
                         SwingUtilities.invokeLater(() -> {
                         // Create splash screen
                         JWindow splash = new JWindow();
@@ -1436,6 +1441,16 @@ public class Window extends AlfonsoClicker{
         label.setVisible(true);
         button.setVisible(true);
     }
+
+    static Runnable sleep500 = ()->{
+        try {
+            TimeUnit.MILLISECONDS.sleep(500);
+        } catch (InterruptedException erxtt) {
+            erxtt.printStackTrace();
+        }
+    };
+
+
     static void makePhotoButton(JFrame bonitaFrames, int lx, int ly, int bx, int by, int lw, int ll, int bw, int bl, String buttonText, String fileName){
         ImageIcon sabaImage = new ImageIcon(fileName);
         JLabel label = new JLabel();  
@@ -1455,14 +1470,64 @@ public class Window extends AlfonsoClicker{
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Button clicked!");
-            if(rand.nextDouble() < doubleClickChance){
+            if ((rand.nextDouble() * 100) < doubleClickChance) {
+                sabucks += 2 * clickPower;
+
+                // Declare variable with the correct type so alpha is accessible
+                var critLabel = new JLabel("Crit!") {
+                    float alpha = 1.0f;
+
+                    @Override
+                    protected void paintComponent(Graphics g) {
+                        Graphics2D g2 = (Graphics2D) g.create();
+                        g2.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+                        super.paintComponent(g2);
+                        g2.dispose();
+                    }
+                };
+
+                Font currentFont = critLabel.getFont();
+                Font newFont = new Font(currentFont.getName(), Font.ITALIC, currentFont.getSize());
+                critLabel.setFont(newFont);
+                critLabel.setBounds(700, 325, 100, 100);
+                critLabel.setVisible(true);
+                bonitaFrames.add(critLabel);
+                bonitaFrames.repaint();
+
+                final int duration = 500; // ms
+                final int steps = 25;     // frames
+                final int delay = duration / steps;
+                final int floatDistance = 40;
+
+                final int[] count = {0};
+
+                Timer timer = new Timer(delay, ev -> {
+                    count[0]++;
+                    float progress = (float) count[0] / steps;
+
+                    // Move up
+                    int newY = 325 - (int) (progress * floatDistance);
+                    critLabel.setLocation(700, newY);
+
+                    // Fade out
+                    critLabel.alpha = 1.0f - progress; // Now works
+                    critLabel.repaint();
+
+                    if (progress >= 1.0f) {
+                        ((Timer) ev.getSource()).stop();
+                        bonitaFrames.remove(critLabel);
+                        bonitaFrames.repaint();
+                    }
+                });
+                timer.start();
+            }
+            else {
                 sabucks += clickPower;
             }
-            sabucks += clickPower;
-            System.out.println(sabucks);
-            System.out.println(eLocation);
+
         }
-    });
+
+        });
     }
     public static void displaySabuckCount(JFrame bonitaFrames, JLabel label){
         label.setVisible(false);
@@ -1610,13 +1675,15 @@ public class Window extends AlfonsoClicker{
         t3.start();
 
         Runnable overdriving = ()->{
-            overDrive();
-            try {
-                TimeUnit.SECONDS.sleep(30);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if(overdrive) {
+                overDrive();
+                try {
+                    TimeUnit.SECONDS.sleep(30);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                overdrive = false;
             }
-            overdrive = false;
         };
         Thread t4 = new Thread(overdriving);
         t4.start();
