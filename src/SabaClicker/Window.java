@@ -96,11 +96,154 @@ public class Window extends AlfonsoClicker{
         powerLabelCost.setBounds(225, 200, 200, 200);
         powerLabelCost.setVisible(true);
         elsS.add(powerLabelCost);
-        JLabel pwrAb = new JLabel("This elestral gives +1 click power.");
+        JLabel pwrAb = new JLabel("This Elestral gives +1 click power.");
         pwrAb.setBounds(225, 175, 200, 200);
         pwrAb.setVisible(true);
         elsS.add(pwrAb);
         // add button
+        JButton el1 = new JButton();
+        el1.setBounds(200, 350, 200, 200);
+        el1.setVisible(true);
+        el1.setOpaque(false);
+        el1.setContentAreaFilled(false);
+        el1.setBorderPainted(false);
+        el1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Button clicked!");
+                if(sabucks > powerCost){
+                    sabucks -= powerCost;
+                    powerCost = powerCost * 1.1;
+                    clickPower += 1;
+                }
+                else{
+                    SwingUtilities.invokeLater(() -> {
+                        // Create splash screen
+                        JWindow splash = new JWindow();
+
+                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        ImageIcon icon = new ImageIcon(path);
+
+                        JLabel label = new JLabel(icon);
+                        splash.getContentPane().add(label);
+
+                        splash.pack(); // size window to fit image
+                        splash.setLocationRelativeTo(null); // center on screen
+
+                        splash.setVisible(true);
+
+                        // Timer to hide after 1 seconds
+                        new Timer(1000, erxtx -> {
+                            splash.setVisible(false);
+                            splash.dispose();
+                        }).start();
+                    });
+                }
+            }
+        });
+        elsS.add(el1);
+
+        makeIcon(elsS, 500, 350, 200, 200, "C:\\Users\\setha\\Saba\\elestrals 2.png");
+        twoXPowerLabelCost.setBounds(525, 200, 200, 200);
+        twoXPowerLabelCost.setVisible(true);
+        elsS.add(twoXPowerLabelCost);
+        JLabel twoXAb = new JLabel("This Elestral gives 2x click power.");
+        twoXAb.setBounds(525, 175, 200, 200);
+        twoXAb.setVisible(true);
+        elsS.add(twoXAb);
+        // add button
+        JButton el2 = new JButton();
+        el2.setBounds(500, 350, 200, 200);
+        el2.setVisible(true);
+        el2.setOpaque(false);
+        el2.setContentAreaFilled(false);
+        el2.setBorderPainted(false);
+        el2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Button clicked!");
+                if(sabucks > twoXPowerCost){
+                    sabucks -= twoXPowerCost;
+                    twoXPowerCost = twoXPowerCost * 1.1;
+                    clickPower *= 2;
+                }
+                else{
+                    SwingUtilities.invokeLater(() -> {
+                        // Create splash screen
+                        JWindow splash = new JWindow();
+
+                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        ImageIcon icon = new ImageIcon(path);
+
+                        JLabel label = new JLabel(icon);
+                        splash.getContentPane().add(label);
+
+                        splash.pack(); // size window to fit image
+                        splash.setLocationRelativeTo(null); // center on screen
+
+                        splash.setVisible(true);
+
+                        // Timer to hide after 1 seconds
+                        new Timer(1000, erxtx -> {
+                            splash.setVisible(false);
+                            splash.dispose();
+                        }).start();
+                    });
+                }
+            }
+        });
+        elsS.add(el2);
+
+        makeIcon(elsS, 800, 350, 200, 200, "C:\\Users\\setha\\Saba\\elestrals 3.png");
+        critLabelCost.setBounds(825, 200, 200, 200);
+        critLabelCost.setVisible(true);
+        elsS.add(critLabelCost);
+        JLabel critAb = new JLabel("This Elestral gives +5% crit chance.");
+        critAb.setBounds(825, 175, 300, 200);
+        critAb.setVisible(true);
+        elsS.add(critAb);
+        // add button
+        JButton el3 = new JButton();
+        el3.setBounds(800, 350, 200, 200);
+        el3.setVisible(true);
+        el3.setOpaque(false);
+        el3.setContentAreaFilled(false);
+        el3.setBorderPainted(false);
+        el3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Button clicked!");
+                if(sabucks > critCost){
+                    sabucks -= critCost;
+                    critCost = critCost * 1.1;
+                    doubleClickChance += 5;
+                }
+                else{
+                    SwingUtilities.invokeLater(() -> {
+                        // Create splash screen
+                        JWindow splash = new JWindow();
+
+                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        ImageIcon icon = new ImageIcon(path);
+
+                        JLabel label = new JLabel(icon);
+                        splash.getContentPane().add(label);
+
+                        splash.pack(); // size window to fit image
+                        splash.setLocationRelativeTo(null); // center on screen
+
+                        splash.setVisible(true);
+
+                        // Timer to hide after 1 seconds
+                        new Timer(1000, erxtx -> {
+                            splash.setVisible(false);
+                            splash.dispose();
+                        }).start();
+                    });
+                }
+            }
+        });
+        elsS.add(el3);
 
     }
     static void activateEliteLocationShop(JFrame itemShopClose, JFrame bonitaFrames){
@@ -1524,6 +1667,9 @@ public class Window extends AlfonsoClicker{
             else {
                 sabucks += clickPower;
             }
+            System.out.println(clickPower);
+            System.out.println(doubleClickChance);
+
 
         }
 
