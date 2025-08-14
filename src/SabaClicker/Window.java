@@ -6,8 +6,10 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.Random;
+import java.util.HashMap;
 
 import javax.swing.*;
 
@@ -43,6 +45,57 @@ public class Window extends AlfonsoClicker{
         frame.setVisible(false);
         bonitaFrames.setVisible(true);
     }
+
+    static void bank(JFrame locationInv){
+        HashMap<String, String> accounts = new HashMap<>();
+        boolean running = true;
+
+        while (running) {
+            String[] options = {"Register", "Login", "Exit"};
+            int choice = JOptionPane.showOptionDialog(locationInv, "Welcome to the Bank System!", "Bank Menu", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+
+            if (choice == 0) { // Register
+                String username = JOptionPane.showInputDialog("Enter new username:");
+                if (username == null || username.isEmpty()) continue;
+
+                if (accounts.containsKey(username)) {
+                    JOptionPane.showMessageDialog(null, "Username already exists!");
+                    continue;
+                }
+
+                String password = JOptionPane.showInputDialog("Enter new password:");
+                if (password == null || password.isEmpty()) continue;
+
+                accounts.put(username, password);
+                JOptionPane.showMessageDialog(null, "Registration successful!");
+
+            } else if (choice == 1) { // Login
+                String username = JOptionPane.showInputDialog("Enter username:");
+                String password = JOptionPane.showInputDialog("Enter password:");
+
+                if (accounts.containsKey(username) && accounts.get(username).equals(password)) {
+                    JOptionPane.showMessageDialog(null, "Login successful! Welcome, " + username + "!");
+                    String[] dowS = {"Withdraw", "Deposit", "Exit"};
+                    int dow = JOptionPane.showOptionDialog(null, "Choose your action", "Bank account", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, dowS, null);
+                    if(dow == 3){
+                        break;
+                    }
+                    if(dow == 2){
+
+                    }
+                    if(dow == 3){
+
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Invalid username or password.");
+                }
+
+            } else if (choice == 2 || choice == JOptionPane.CLOSED_OPTION) { // Exit
+                running = false;
+            }
+        }
+    }
+
 
     static void activateElestralsShop(JFrame bonitaFrames){
         bonitaFrames.setVisible(false);
@@ -1008,6 +1061,30 @@ public class Window extends AlfonsoClicker{
                 }
             });
         }
+        if(allTheLocationsGathered[4].getLocationOwn()){
+            ImageIcon ss = new ImageIcon("C:\\Users\\setha\\Saba\\click here lolz.png");
+            Image img2 = ss.getImage();
+            Image scaledImg2 = img2.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
+            ss = new ImageIcon(scaledImg2);
+            JLabel label4 = new JLabel();
+            JButton ssButton = new JButton(ss);
+            ssButton.setBorderPainted(false);
+            ssButton.setContentAreaFilled(false);
+            ssButton.setFocusPainted(false);
+            ssButton.setOpaque(false);
+            ssButton.setBounds(1060, 450, 500, 500);
+            label4.setBounds(1060, 450, 500, 500);
+            locationInv.add(ssButton);
+            locationInv.add(label4);
+            ssButton.setVisible(true);
+            ssButton.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Button clicked!");
+                    bank(locationInv);
+                }
+            });
+        }
         ImageIcon bs = new ImageIcon("C:\\Users\\setha\\Saba\\saba bank ad.jpg");
         Image img3 = bs.getImage();
         Image scaledImg3 = img3.getScaledInstance(500, 315, java.awt.Image.SCALE_SMOOTH);
@@ -1718,6 +1795,7 @@ public class Window extends AlfonsoClicker{
             else {
                 sabucks += clickPower;
             }
+
             System.out.println(clickPower);
             System.out.println(doubleClickChance);
 

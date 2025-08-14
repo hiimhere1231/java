@@ -8,25 +8,19 @@ public class AlfonsoClicker implements  Runnable{
 
 
     public static Location eLocation;
-    public static double sabucks = 0;
-    public static double getSabucks(){
-        return sabucks;
-    }
-    public static void setSabucks(double sabuks){
-        sabucks = sabuks;
-    }
+    public static double sabucks = 293878764;
     static double sps = 0;
-    //saba unlockes the ability to buy more/different sabas
+    //saba unlocks the ability to buy more/different sabas
     static String[] itemName = new String[]{"self serve machine", "chef", "john risman", "dominic marino", "osbourne hoilett", "martin keanneally", "shawn carvajal", "cesar", "alfonso saba"};
     static int[] itemCost = new int[]{4, 12, 1000, 20000, 50000, 100000, 300000, 1000000, 10000000};
     static int[] itemCount = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
     static double[] itemSPS = new double[]{0.1, 0.4, 1.3, 6, 15, 30, 45, 75, itemCount[0]};
     static Items[] allTheItemsGathered = new Items[itemName.length];
     // locations
-    //can only have one at a time
+    // can only have one at a time
     static String[] locationName = new String[]{"dining hall", "sawbucks", "hub", "snackstops", "bank of saba"};
     static int[] locationCost = new int[]{100000, 250000, 1000000, 100000, 1000000};
-    static boolean[] locationOwn = new boolean[]{false, false, false, false, false};
+    static boolean[] locationOwn = new boolean[]{false, false, false, false, true};
     static double[] locationSPS = new double[]{110, 130, 150, 30, 0};
     static String[] locationAbility = new String[]{"makes items x% cheaper", "can attract female sabas (glorious photo of saba with wig and bow and pink hearts with pink border), unlocks marriage MUST BE UNLOCKED WITH HUB", "unlocks more locations", "holding 's' will provide x sabucks per 10 seconds MUST BE UNLOCKED WITH HUB", "passively gains 25% of sabas invested in bank every TBD minutes MUST BE UNLOCKED WITH HUB"};
     static Location[] allTheLocationsGathered = new Location[5];
