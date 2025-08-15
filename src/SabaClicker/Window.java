@@ -34,7 +34,7 @@ public class Window extends AlfonsoClicker{
     public static JLabel twoXPowerLabelCost = new JLabel("This costs $"+twoXPowerCost+" sabucks");
     public static JLabel overdriveLabelCost = new JLabel("This costs $"+overdriveCost+" sabucks");
 
-
+    public static HashMap<Accounts, Double> accounts = new HashMap<>();
 
     static void deactivateItemShop(JFrame bonitaFrames, JFrame itemShop){
         itemShop.setVisible(false);
@@ -47,10 +47,10 @@ public class Window extends AlfonsoClicker{
     }
 
     static void bank(JFrame locationInv){
-        HashMap<String, String> accounts = new HashMap<>();
         boolean running = true;
 
         while (running) {
+
             String[] options = {"Register", "Login", "Exit"};
             int choice = JOptionPane.showOptionDialog(locationInv, "Welcome to the Bank System!", "Bank Menu", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
@@ -58,7 +58,7 @@ public class Window extends AlfonsoClicker{
                 String username = JOptionPane.showInputDialog("Enter new username:");
                 if (username == null || username.isEmpty()) continue;
 
-                if (accounts.containsKey(username)) {
+                if (accounts.containsKey(new Accounts(username, ""))) {
                     JOptionPane.showMessageDialog(null, "Username already exists!");
                     continue;
                 }
@@ -66,25 +66,47 @@ public class Window extends AlfonsoClicker{
                 String password = JOptionPane.showInputDialog("Enter new password:");
                 if (password == null || password.isEmpty()) continue;
 
-                accounts.put(username, password);
+                accounts.put(new Accounts(username, password), 0.0);
                 JOptionPane.showMessageDialog(null, "Registration successful!");
 
             } else if (choice == 1) { // Login
                 String username = JOptionPane.showInputDialog("Enter username:");
                 String password = JOptionPane.showInputDialog("Enter password:");
 
-                if (accounts.containsKey(username) && accounts.get(username).equals(password)) {
+                if (accounts.containsKey(new Accounts(username, password))) {
                     JOptionPane.showMessageDialog(null, "Login successful! Welcome, " + username + "!");
+
                     String[] dowS = {"Withdraw", "Deposit", "Exit"};
                     int dow = JOptionPane.showOptionDialog(null, "Choose your action", "Bank account", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, dowS, null);
-                    if(dow == 3){
+                    if(dow == 2){
                         break;
                     }
-                    if(dow == 2){
-
+                    if(dow == 1){
+                        String dep = JOptionPane.showInputDialog("How much would you like to deposit?");
+                        if(Double.parseDouble(dep) <= sabucks){
+                            sabucks -= Double.parseDouble(dep);
+                            double currentBalance = accounts.get(new Accounts(username, password));
+                            double newBalance = currentBalance += Double.parseDouble(dep);
+                            accounts.put(new Accounts(username, password), newBalance);
+                        }
+                        else{
+                            JOptionPane.showOptionDialog(null, "Invalid amount", "Invalid", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[]{"Ok"}, null);
+                        }
                     }
-                    if(dow == 3){
-
+                    if(dow == 0){
+                        String with = JOptionPane.showInputDialog("How much would you like to withdraw? You have $"+accounts.get(new Accounts(username, password))+" in your account.");
+                        if(Double.parseDouble(with) <= accounts.get(new Accounts(username, password))){
+                            sabucks += Double.parseDouble(with);
+                            Double england = Double.parseDouble(with);
+                            Double current = accounts.get(new Accounts(username, password));
+                            if(current != null){
+                                current -= england;
+                                accounts.put(new Accounts(username, password), current);
+                            }
+                        }
+                        else{
+                            JOptionPane.showOptionDialog(null, "Invalid amount", "Invalid", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, new String[]{"Ok"}, null);
+                        }
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Invalid username or password.");

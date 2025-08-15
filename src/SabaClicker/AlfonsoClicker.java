@@ -8,7 +8,7 @@ public class AlfonsoClicker implements  Runnable{
 
 
     public static Location eLocation;
-    public static double sabucks = 293878764;
+    public static double sabucks = 0;
     static double sps = 0;
     //saba unlocks the ability to buy more/different sabas
     static String[] itemName = new String[]{"self serve machine", "chef", "john risman", "dominic marino", "osbourne hoilett", "martin keanneally", "shawn carvajal", "cesar", "alfonso saba"};
