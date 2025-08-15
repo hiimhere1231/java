@@ -20,7 +20,7 @@ public class AlfonsoClicker implements  Runnable{
     // can only have one at a time
     static String[] locationName = new String[]{"dining hall", "sawbucks", "hub", "snackstops", "bank of saba"};
     static int[] locationCost = new int[]{100000, 250000, 1000000, 100000, 1000000};
-    static boolean[] locationOwn = new boolean[]{false, false, false, false, true};
+    static boolean[] locationOwn = new boolean[]{false, false, false, false, false};
     static double[] locationSPS = new double[]{110, 130, 150, 30, 0};
     static String[] locationAbility = new String[]{"makes items x% cheaper", "can attract female sabas (glorious photo of saba with wig and bow and pink hearts with pink border), unlocks marriage MUST BE UNLOCKED WITH HUB", "unlocks more locations", "holding 's' will provide x sabucks per 10 seconds MUST BE UNLOCKED WITH HUB", "passively gains 25% of sabas invested in bank every TBD minutes MUST BE UNLOCKED WITH HUB"};
     static Location[] allTheLocationsGathered = new Location[5];
@@ -117,7 +117,7 @@ public class AlfonsoClicker implements  Runnable{
             if(sabucks >= allTheLocationsGathered[locationPos].getLocationCost()){
                 if(allTheLocationsGathered[locationPos].getLocationOwn() == false){
                     allTheLocationsGathered[locationPos].setLocationOwn(true);
-                    System.out.println("Requested purchase: index=" + locationPos 
+                    System.out.println("Requested purchase: index=" + locationPos
                     + " (" + allTheLocationsGathered[locationPos].getLocationName() + ")");
                     sabucks -= allTheLocationsGathered[locationPos].getLocationCost();
                     return true;
@@ -165,6 +165,9 @@ public class AlfonsoClicker implements  Runnable{
             }
             else{
                 sabaSPStatol += hand[i].getSPS();
+            }
+            if(hand[i].getName().equals("balatro saba")){
+                sabaSPStatol *= 2;
             }
         }
         double locSPS;

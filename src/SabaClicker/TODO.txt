@@ -1,5 +1,4 @@
-make:
-make bank of saba ui n stuff
-make location abilites work
-make saba abilites work
+OTAs:
+make bank do something
+make sawbucks work
 make hc saba do things

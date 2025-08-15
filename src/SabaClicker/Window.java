@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.Random;
@@ -127,10 +128,10 @@ public class Window extends AlfonsoClicker{
         elsS.getContentPane().setBackground(Color.yellow);
         elsS.setVisible(true);
         elsS.setTitle("Saba's very own unique Elestrals power up store!");
-        ImageIcon eIcon = new ImageIcon("C:\\Users\\setha\\Saba\\elestrals logo.png");
+        ImageIcon eIcon = new ImageIcon(Window.class.getResource("/resources/elestrals logo.png"));
         elsS.setIconImage(eIcon.getImage());
-        
-        makeIcon(elsS, 1462, 25, 50, 50, "C:\\Users\\setha\\Saba\\x.png");
+
+        makeIcon(elsS, 1462, 25, 50, 50, "/resources/x.png");
         JButton xButton = new JButton();
         xButton.setBounds(1462, 25, 50, 50);
         xButton.setVisible(true);
@@ -145,14 +146,14 @@ public class Window extends AlfonsoClicker{
                 deactivateItemShop(bonitaFrames, elsS);
             }
         });
-        
+
         // +1 click power
         // 2x click power
         // double click chance
         // overdrive
 
 
-        makeIcon(elsS, 200, 350, 200, 200, "C:\\Users\\setha\\Saba\\elestrals 1.png");
+        makeIcon(elsS, 200, 350, 200, 200, "/resources/elestrals 1.png");
         powerLabelCost.setBounds(225, 200, 200, 200);
         powerLabelCost.setVisible(true);
         elsS.add(powerLabelCost);
@@ -182,7 +183,7 @@ public class Window extends AlfonsoClicker{
                         // Create splash screen
                         JWindow splash = new JWindow();
 
-                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                         ImageIcon icon = new ImageIcon(path);
 
                         JLabel label = new JLabel(icon);
@@ -204,7 +205,7 @@ public class Window extends AlfonsoClicker{
         });
         elsS.add(el1);
 
-        makeIcon(elsS, 500, 350, 200, 200, "C:\\Users\\setha\\Saba\\elestrals 2.png");
+        makeIcon(elsS, 500, 350, 200, 200, "/resources/elestrals 2.png");
         twoXPowerLabelCost.setBounds(525, 200, 200, 200);
         twoXPowerLabelCost.setVisible(true);
         elsS.add(twoXPowerLabelCost);
@@ -234,7 +235,7 @@ public class Window extends AlfonsoClicker{
                         // Create splash screen
                         JWindow splash = new JWindow();
 
-                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                         ImageIcon icon = new ImageIcon(path);
 
                         JLabel label = new JLabel(icon);
@@ -256,7 +257,7 @@ public class Window extends AlfonsoClicker{
         });
         elsS.add(el2);
 
-        makeIcon(elsS, 800, 350, 200, 200, "C:\\Users\\setha\\Saba\\elestrals 3.png");
+        makeIcon(elsS, 800, 350, 200, 200, "/resources/elestrals 3.png");
         critLabelCost.setBounds(825, 200, 200, 200);
         critLabelCost.setVisible(true);
         elsS.add(critLabelCost);
@@ -286,7 +287,7 @@ public class Window extends AlfonsoClicker{
                         // Create splash screen
                         JWindow splash = new JWindow();
 
-                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                         ImageIcon icon = new ImageIcon(path);
 
                         JLabel label = new JLabel(icon);
@@ -308,7 +309,7 @@ public class Window extends AlfonsoClicker{
         });
         elsS.add(el3);
 
-        makeIcon(elsS, 1100, 350, 200, 200, "C:\\Users\\setha\\Saba\\overdrive.png");
+        makeIcon(elsS, 1100, 350, 200, 200, "/resources/overdrive.png");
         overdriveLabelCost.setBounds(1125, 200, 200, 200);
         overdriveLabelCost.setVisible(true);
         elsS.add(overdriveLabelCost);
@@ -349,7 +350,7 @@ public class Window extends AlfonsoClicker{
                         // Create splash screen
                         JWindow splash = new JWindow();
 
-                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                         ImageIcon icon = new ImageIcon(path);
 
                         JLabel label = new JLabel(icon);
@@ -380,10 +381,10 @@ public class Window extends AlfonsoClicker{
         els.getContentPane().setBackground(Color.yellow);
         els.setVisible(true);
         els.setTitle("Saba's very own ELITE location shop!");
-        ImageIcon EliteIcon = new ImageIcon("C:\\Users\\setha\\Saba\\elite subscription.png");
+        ImageIcon EliteIcon = new ImageIcon(Window.class.getResource("/resources/elite subscription.png"));
         els.setIconImage(EliteIcon.getImage());
-        
-        makeIcon(els, 1462, 25, 50, 50, "C:\\Users\\setha\\Saba\\x.png");
+
+        makeIcon(els, 1462, 25, 50, 50, "/resources/x.png");
         JButton xButton = new JButton();
         xButton.setBounds(1462, 25, 50, 50);
         xButton.setVisible(true);
@@ -402,7 +403,7 @@ public class Window extends AlfonsoClicker{
         if(allTheLocationsGathered[1].getLocationOwn() == false){
             JButton sawButton = new JButton();
             sawButton.setLayout(null);
-            makeIcon(els, 300, 300, 200, 200, "C:\\Users\\setha\\Saba\\sawbucks.png");
+            makeIcon(els, 300, 300, 200, 200, "/resources/sawbucks.png");
             sawButton.setBounds(300, 300, 200, 200);
             sawButton.setVisible(true);
             sawButton.setBorderPainted(false);
@@ -418,7 +419,7 @@ public class Window extends AlfonsoClicker{
                         // Create splash screen
                         JWindow splash = new JWindow();
 
-                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                         ImageIcon icon = new ImageIcon(path);
 
                         JLabel label = new JLabel(icon);
@@ -445,7 +446,7 @@ public class Window extends AlfonsoClicker{
         if(allTheLocationsGathered[3].getLocationOwn() == false){
             JButton snaButton = new JButton();
             snaButton.setLayout(null);
-            makeIcon(els, 650, 300, 200, 200, "C:\\Users\\setha\\Saba\\snack store.jpg");
+            makeIcon(els, 650, 300, 200, 200, "/resources/snack store.jpg");
             snaButton.setBounds(650, 300, 200, 200);
             snaButton.setVisible(true);
             snaButton.setBorderPainted(false);
@@ -461,7 +462,7 @@ public class Window extends AlfonsoClicker{
                         // Create splash screen
                         JWindow splash = new JWindow();
 
-                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                         ImageIcon icon = new ImageIcon(path);
 
                         JLabel label = new JLabel(icon);
@@ -490,7 +491,7 @@ public class Window extends AlfonsoClicker{
         if(!allTheLocationsGathered[4].getLocationOwn()){
             JButton bankButton = new JButton();
             bankButton.setLayout(null);
-            makeIcon(els, 950, 300, 200, 200, "C:\\Users\\setha\\Saba\\sabaBank.jpg");
+            makeIcon(els, 950, 300, 200, 200, "/resources/sabaBank.jpg");
             bankButton.setBounds(950, 300, 200, 200);
             bankButton.setVisible(true);
             bankButton.setBorderPainted(false);
@@ -506,7 +507,7 @@ public class Window extends AlfonsoClicker{
                         // Create splash screen
                         JWindow splash = new JWindow();
 
-                        String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                        URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                         ImageIcon icon = new ImageIcon(path);
 
                         JLabel label = new JLabel(icon);
@@ -534,12 +535,12 @@ public class Window extends AlfonsoClicker{
         sash.setLayout(null);
         sash.setSize(1920, 1080);
         sash.getContentPane().setBackground(Color.yellow);
-        ImageIcon sashIcon = new ImageIcon("C:\\Users\\setha\\Saba\\inventory.png");
+        ImageIcon sashIcon = new ImageIcon(Window.class.getResource("/resources/inventory.png"));
         sash.setIconImage(sashIcon.getImage());
         sash.setVisible(true);
         sash.setTitle("Saba's very own Saba shop");
 
-        makeIcon(sash, 1462, 25, 50, 50, "C:\\Users\\setha\\Saba\\x.png");
+        makeIcon(sash, 1462, 25, 50, 50, "/resources/x.png");
         JButton xButton = new JButton();
         xButton.setBounds(1462, 25, 50, 50);
         xButton.setVisible(true);
@@ -557,26 +558,26 @@ public class Window extends AlfonsoClicker{
         // saba
         for (int iindex = 0; iindex < allTheSabasGathered.length; iindex++) {
             final int i = iindex;
-            String sabaFilePath;
+            URL sabaFilePath;
 
             // pick correct file path
-            if (i == 0) sabaFilePath = "C:\\Users\\setha\\Saba\\IMG_3360.PNG";
-            else if (i == 1) sabaFilePath = "C:\\Users\\setha\\Saba\\green saba.jpg";
-            else if (i == 2) sabaFilePath = "C:\\Users\\setha\\Saba\\real incredibly demure saba.jpg";
-            else if (i == 3) sabaFilePath = "C:\\Users\\setha\\Saba\\real evil saba.jpg";
-            else if (i == 4) sabaFilePath = "C:\\Users\\setha\\Saba\\business saba.jpg";
-            else if (i == 5) sabaFilePath = "C:\\Users\\setha\\Saba\\saba item shop.jpg";
-            else if (i == 6) sabaFilePath = "C:\\Users\\setha\\Saba\\rich saba.jpg";
-            else if (i == 7) sabaFilePath = "C:\\Users\\setha\\Saba\\bank saba.jpg";
-            else if (i == 8) sabaFilePath = "C:\\Users\\setha\\Saba\\pokemon trainer saba.jpg";
-            else if (i == 9) sabaFilePath = "C:\\Users\\setha\\Saba\\alien saba.jpg";
-            else if (i == 10) sabaFilePath = "C:\\Users\\setha\\Saba\\oompa loompa saba.jpg";
-            else if (i == 11) sabaFilePath = "C:\\Users\\setha\\Saba\\mark cuban saba.jpg";
-            else if (i == 12) sabaFilePath = "C:\\Users\\setha\\Saba\\idk how to spell it saba.jpg";
-            else if (i == 13) sabaFilePath = "C:\\Users\\setha\\Saba\\non political presidential saba.jpg";
-            else if (i == 14) sabaFilePath = "C:\\Users\\setha\\Saba\\old saba.jpg";
-            else if (i == 15) sabaFilePath = "C:\\Users\\setha\\Saba\\balatro saba.jpg";
-            else sabaFilePath = "C:\\Users\\setha\\Saba\\high contrast saba.jpg";
+            if (i == 0) sabaFilePath = Window.class.getResource("/resources/IMG_3360.PNG");
+            else if (i == 1) sabaFilePath = Window.class.getResource("/resources/green saba.jpg");
+            else if (i == 2) sabaFilePath = Window.class.getResource("/resources/real incredibly demure saba.jpg");
+            else if (i == 3) sabaFilePath = Window.class.getResource("/resources/real evil saba.jpg");
+            else if (i == 4) sabaFilePath = Window.class.getResource("/resources/business saba.jpg");
+            else if (i == 5) sabaFilePath = Window.class.getResource("/resources/saba item shop.jpg");
+            else if (i == 6) sabaFilePath = Window.class.getResource("/resources/rich saba.jpg");
+            else if (i == 7) sabaFilePath = Window.class.getResource("/resources/bank saba.jpg");
+            else if (i == 8) sabaFilePath = Window.class.getResource("/resources/pokemon trainer saba.jpg");
+            else if (i == 9) sabaFilePath = Window.class.getResource("/resources/alien saba.jpg");
+            else if (i == 10) sabaFilePath = Window.class.getResource("/resources/oompa loompa saba.jpg");
+            else if (i == 11) sabaFilePath = Window.class.getResource("/resources/mark cuban saba.jpg");
+            else if (i == 12) sabaFilePath = Window.class.getResource("/resources/idk how to spell it saba.jpg");
+            else if (i == 13) sabaFilePath = Window.class.getResource("/resources/non political presidential saba.jpg");
+            else if (i == 14) sabaFilePath = Window.class.getResource("/resources/old saba.jpg");
+            else if (i == 15) sabaFilePath = Window.class.getResource("/resources/balatro saba.jpg");
+            else sabaFilePath = Window.class.getResource("/resources/high contrast saba.jpg");
 
             // only display if player owns this Saba
             if (allTheSabasGathered[i].getOwn() == false) {
@@ -634,7 +635,7 @@ public class Window extends AlfonsoClicker{
                                 // Create splash screen
                                 JWindow splash = new JWindow();
 
-                                String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                                URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                                 ImageIcon icon = new ImageIcon(path);
 
                                 JLabel label = new JLabel(icon);
@@ -702,7 +703,7 @@ public class Window extends AlfonsoClicker{
                                 // Create splash screen
                                 JWindow splash = new JWindow();
 
-                                String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                                URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                                 ImageIcon icon = new ImageIcon(path);
 
                                 JLabel label = new JLabel(icon);
@@ -734,12 +735,12 @@ public class Window extends AlfonsoClicker{
         sabaInv.setSize(1920, 1080);
         sabaInv.getContentPane().setBackground(Color.YELLOW);
         sabaInv.setTitle("You're very own Saba inventory!");
-        ImageIcon sabaInvIcon = new ImageIcon("C:\\Users\\setha\\Saba\\saba cookie.png");
+        ImageIcon sabaInvIcon = new ImageIcon(Window.class.getResource("/resources/saba cookie.png"));
         sabaInv.setIconImage(sabaInvIcon.getImage());
         sabaInv.setVisible(true);
 
         // x button
-        makeIcon(sabaInv, 1462, 25, 50, 50, "C:\\Users\\setha\\Saba\\x.png");
+        makeIcon(sabaInv, 1462, 25, 50, 50, "/resources/x.png");
         JButton xButton = new JButton();
         xButton.setBounds(1462, 25, 50, 50);
         xButton.setVisible(true);
@@ -752,7 +753,7 @@ public class Window extends AlfonsoClicker{
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Button clicked!");
                 deactivateItemShop(bonitaFrames, sabaInv);
-                
+
                 // the hand
                 bonitaFrames.getContentPane().removeAll();
                 createStartUI(bonitaFrames);
@@ -780,103 +781,103 @@ public class Window extends AlfonsoClicker{
         for(int iindex = 0; iindex < allTheSabasGathered.length; iindex++){
             final int i = iindex;
             if(i == 0){
-                sabaFilePath = "C:/Users/setha/Saba/IMG_3360.PNG";
+                sabaFilePath = "/resources/IMG_3360.PNG";
                 if(allTheSabasGathered[0].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 1){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\green saba.jpg";
+                sabaFilePath = "/resources/green saba.jpg";
                 if(allTheSabasGathered[1].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 2){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\real incredibly demure saba.jpg";
+                sabaFilePath = "/resources/real incredibly demure saba.jpg";
                 if(allTheSabasGathered[2].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 3){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\real evil saba.jpg";
+                sabaFilePath = "/resources/real evil saba.jpg";
                 if(allTheSabasGathered[3].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 4){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\business saba.jpg";
+                sabaFilePath = "/resources/business saba.jpg";
                 if(allTheSabasGathered[4].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 5){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\saba item shop.jpg";
+                sabaFilePath = "/resources/saba item shop.jpg";
                 if(allTheSabasGathered[5].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 6){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\rich saba.jpg";
+                sabaFilePath = "/resources/rich saba.jpg";
                 if(allTheSabasGathered[6].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 7){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\bank saba.jpg";
+                sabaFilePath = "/resources/bank saba.jpg";
                 if(allTheSabasGathered[7].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 8){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\pokemon trainer saba.jpg";
+                sabaFilePath = "/resources/pokemon trainer saba.jpg";
                 if(allTheSabasGathered[8].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 9){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\alien saba.jpg";
+                sabaFilePath = "/resources/alien saba.jpg";
                 if(allTheSabasGathered[9].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 10){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\oompa loompa saba.jpg";
+                sabaFilePath = "/resources/oompa loompa saba.jpg";
                 if(allTheSabasGathered[10].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 11){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\mark cuban saba.jpg";
+                sabaFilePath = "/resources/mark cuban saba.jpg";
                 if(allTheSabasGathered[11].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 12){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\idk how to spell it saba.jpg";
+                sabaFilePath = "/resources/idk how to spell it saba.jpg";
                 if(allTheSabasGathered[12].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 13){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\non political presidential saba.jpg";
+                sabaFilePath = "/resources/non political presidential saba.jpg";
                 if(allTheSabasGathered[13].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 14){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\old saba.jpg";
+                sabaFilePath = "/resources/old saba.jpg";
                 if(allTheSabasGathered[14].getOwn()){
                     hasSaba = true;
                 }
             }
             else if(i == 15){
-                sabaFilePath = "C:\\Users\\setha\\Saba\\balatro saba.jpg";
+                sabaFilePath = "/resources/balatro saba.jpg";
                 if(allTheSabasGathered[15].getOwn()){
                     hasSaba = true;
                 }
             }
             else{
-                sabaFilePath = "C:\\Users\\setha\\Saba\\high contrast saba.jpg";
+                sabaFilePath = "/resources/high contrast saba.jpg";
                 if(allTheSabasGathered[16].getOwn()){
                     hasSaba = true;
                 }
@@ -925,7 +926,7 @@ public class Window extends AlfonsoClicker{
                 if(allTheSabasGathered[i].getOwn()){
                     int xTempPos = 75 + (200 * (i-14));
                     makeIcon(sabaInv, xTempPos, 750, 200, 200, sabaFilePath);
-                    sabaButton.setBounds(xTempPos, 750, 200, 200); 
+                    sabaButton.setBounds(xTempPos, 750, 200, 200);
                     JLabel sabaName = new JLabel();
                     sabaName.setText(allTheSabasGathered[i].getName());
                     sabaName.setBounds(xTempPos, 700, 200, 30);
@@ -990,16 +991,16 @@ public class Window extends AlfonsoClicker{
         locationInv.setSize(1920, 1080);
         locationInv.getContentPane().setBackground(Color.YELLOW);
         locationInv.setTitle("You're very own location inventory!");
-        ImageIcon lInvIcon = new ImageIcon("C:\\Users\\setha\\Saba\\location icon.png");
+        ImageIcon lInvIcon = new ImageIcon(Window.class.getResource("/resources/location icon.png"));
         locationInv.setIconImage(lInvIcon.getImage());
         locationInv.setVisible(true);
         if(allTheLocationsGathered[0].getLocationOwn()){
-            ImageIcon pdh = new ImageIcon("C:\\Users\\setha\\Saba\\purchase dining hall.png");
-            JLabel label = new JLabel();  
+            ImageIcon pdh = new ImageIcon(Window.class.getResource("/resources/purchase dining hall.png"));
+            JLabel label = new JLabel();
             JButton pdhButton = new JButton(pdh);
             pdhButton.setBorderPainted(false);
-            pdhButton.setContentAreaFilled(false); 
-            pdhButton.setFocusPainted(false); 
+            pdhButton.setContentAreaFilled(false);
+            pdhButton.setFocusPainted(false);
             pdhButton.setOpaque(false);
             pdhButton.setBounds(200, 100, 200, 200);
             label.setBounds(200, 100, 200, 200);
@@ -1015,12 +1016,12 @@ public class Window extends AlfonsoClicker{
             });
         }
         if(allTheLocationsGathered[2].getLocationOwn()){
-            ImageIcon h = new ImageIcon("C:\\Users\\setha\\Saba\\dining hub.jpg");
-            JLabel label2 = new JLabel();  
+            ImageIcon h = new ImageIcon(Window.class.getResource("/resources/dining hub.jpg"));
+            JLabel label2 = new JLabel();
             JButton hButton = new JButton(h);
             hButton.setBorderPainted(false);
-            hButton.setContentAreaFilled(false); 
-            hButton.setFocusPainted(false); 
+            hButton.setContentAreaFilled(false);
+            hButton.setFocusPainted(false);
             hButton.setOpaque(false);
             hButton.setBounds(415, 100, 200, 200);
             label2.setBounds(415, 100, 200, 200);
@@ -1036,15 +1037,15 @@ public class Window extends AlfonsoClicker{
             });
         }
         if(allTheLocationsGathered[1].getLocationOwn()){
-            ImageIcon sb = new ImageIcon("C:\\Users\\setha\\Saba\\sawbucks.png");
+            ImageIcon sb = new ImageIcon(Window.class.getResource("/resources/sawbucks.png"));
             Image img = sb.getImage();
             Image scaledImg = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
             sb = new ImageIcon(scaledImg);
-            JLabel label3 = new JLabel();  
+            JLabel label3 = new JLabel();
             JButton sButton = new JButton(sb);
             sButton.setBorderPainted(false);
-            sButton.setContentAreaFilled(false); 
-            sButton.setFocusPainted(false); 
+            sButton.setContentAreaFilled(false);
+            sButton.setFocusPainted(false);
             sButton.setOpaque(false);
             sButton.setBounds(630, 100, 200, 200);
             label3.setBounds(630, 100, 200, 200);
@@ -1060,15 +1061,15 @@ public class Window extends AlfonsoClicker{
             });
         }
         if(allTheLocationsGathered[3].getLocationOwn()){
-            ImageIcon ss = new ImageIcon("C:\\Users\\setha\\Saba\\snack store.jpg");
+            ImageIcon ss = new ImageIcon(Window.class.getResource("/resources/snack store.jpg"));
             Image img2 = ss.getImage();
             Image scaledImg2 = img2.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
             ss = new ImageIcon(scaledImg2);
-            JLabel label4 = new JLabel();  
+            JLabel label4 = new JLabel();
             JButton ssButton = new JButton(ss);
             ssButton.setBorderPainted(false);
-            ssButton.setContentAreaFilled(false); 
-            ssButton.setFocusPainted(false); 
+            ssButton.setContentAreaFilled(false);
+            ssButton.setFocusPainted(false);
             ssButton.setOpaque(false);
             ssButton.setBounds(845, 100, 200, 200);
             label4.setBounds(845, 100, 200, 200);
@@ -1084,7 +1085,7 @@ public class Window extends AlfonsoClicker{
             });
         }
         if(allTheLocationsGathered[4].getLocationOwn()){
-            ImageIcon ss = new ImageIcon("C:\\Users\\setha\\Saba\\click here lolz.png");
+            ImageIcon ss = new ImageIcon(Window.class.getResource("/resources/click here lolz.png"));
             Image img2 = ss.getImage();
             Image scaledImg2 = img2.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH);
             ss = new ImageIcon(scaledImg2);
@@ -1107,15 +1108,15 @@ public class Window extends AlfonsoClicker{
                 }
             });
         }
-        ImageIcon bs = new ImageIcon("C:\\Users\\setha\\Saba\\saba bank ad.jpg");
+        ImageIcon bs = new ImageIcon(Window.class.getResource("/resources/saba bank ad.jpg"));
         Image img3 = bs.getImage();
         Image scaledImg3 = img3.getScaledInstance(500, 315, java.awt.Image.SCALE_SMOOTH);
         bs = new ImageIcon(scaledImg3);
-        JLabel label5 = new JLabel();  
+        JLabel label5 = new JLabel();
         JButton bsButton = new JButton(bs);
         bsButton.setBorderPainted(false);
-        bsButton.setContentAreaFilled(false); 
-        bsButton.setFocusPainted(false); 
+        bsButton.setContentAreaFilled(false);
+        bsButton.setFocusPainted(false);
         bsButton.setOpaque(false);
         bsButton.setBounds(600, 550, 500, 315);
         label5.setBounds(600, 550, 500, 315);
@@ -1129,7 +1130,7 @@ public class Window extends AlfonsoClicker{
             }
         });
 
-        makeIcon(locationInv, 1462, 25, 50, 50, "C:\\Users\\setha\\Saba\\x.png");
+        makeIcon(locationInv, 1462, 25, 50, 50, "/resources/x.png");
         JButton xButton = new JButton();
         xButton.setBounds(1462, 25, 50, 50);
         xButton.setVisible(true);
@@ -1149,14 +1150,14 @@ public class Window extends AlfonsoClicker{
     static void activateInventory(JFrame bonitaFrames){
         bonitaFrames.setVisible(false);
         JFrame invFrame = new JFrame();
-        ImageIcon invIcon = new ImageIcon("C:\\\\Users\\\\User\\\\Desktop\\\\Saba\\\\inventory.png");
+        ImageIcon invIcon = new ImageIcon(Window.class.getResource("/resources/inventory.png"));
         invFrame.setIconImage(invIcon.getImage());
         invFrame.setSize(1920, 1080);
         invFrame.getContentPane().setBackground(Color.yellow);
         invFrame.setTitle("Saba's very own inventory opener");
         invFrame.setVisible(true);
-        
-        ImageIcon lIcon = new ImageIcon("C:\\Users\\setha\\Saba\\location icon.png");
+
+        ImageIcon lIcon = new ImageIcon(Window.class.getResource("/resources/location icon.png"));
         Image img = lIcon.getImage();
         Image l = img.getScaledInstance(500, 500, java.awt.Image.SCALE_SMOOTH);
         lIcon = new ImageIcon(l);
@@ -1179,14 +1180,14 @@ public class Window extends AlfonsoClicker{
         });
         label.add(lButton);
 
-        ImageIcon sIcon = new ImageIcon("C:\\Users\\setha\\Saba\\saba cookie.png");
+        ImageIcon sIcon = new ImageIcon(Window.class.getResource("/resources/saba cookie.png"));
         Image img2 = sIcon.getImage();
         Image s = img2.getScaledInstance(500, 500, java.awt.Image.SCALE_SMOOTH);
         sIcon = new ImageIcon(s);
         JLabel label2 = new JLabel();
         label2.setIcon(sIcon);
         label2.setVisible(true);
-        invFrame.add(label2, BorderLayout.EAST);    
+        invFrame.add(label2, BorderLayout.EAST);
         JButton sButton = new JButton();
         sButton.setBounds(0, 215, 500, 500);
         label2.add(sButton);
@@ -1211,9 +1212,9 @@ public class Window extends AlfonsoClicker{
         locationShop.setTitle("Saba's very own basic location shop");
         locationShop.getContentPane().setBackground(Color.PINK);
         locationShop.setVisible(true);
-        ImageIcon basicSubscription = new ImageIcon("C:\\Users\\setha\\Saba\\basic subscription.png");
+        ImageIcon basicSubscription = new ImageIcon(Window.class.getResource("/resources/basic subscription.png"));
         locationShop.setIconImage(basicSubscription.getImage());
-        makeIcon(locationShop, 1462, 25, 50, 50, "C:\\Users\\setha\\Saba\\x.png");
+        makeIcon(locationShop, 1462, 25, 50, 50, "/resources/x.png");
         JButton xButton = new JButton();
         xButton.setBounds(1462, 25, 50, 50);
         xButton.setVisible(true);
@@ -1229,7 +1230,7 @@ public class Window extends AlfonsoClicker{
             }
         });
         if(allTheLocationsGathered[2].getLocationOwn()){
-            makeIcon(locationShop, 0, 725, 200, 200, "C:\\Users\\setha\\Saba\\come here saba.png");
+            makeIcon(locationShop, 0, 725, 200, 200, "/resources/come here saba.png");
             JButton elsButton = new JButton();
             elsButton.setBounds(0, 725, 200, 200);
             elsButton.setVisible(true);
@@ -1239,13 +1240,13 @@ public class Window extends AlfonsoClicker{
             locationShop.add(elsButton);
             elsButton.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e) { 
+                public void actionPerformed(ActionEvent e) {
                     System.out.println("Button clicked!");
                     activateEliteLocationShop(locationShop, bonitaFrames);
                 }
             });
         }
-        makeIcon(locationShop, 150, 300, 500, 300, "C:\\Users\\setha\\Saba\\purchase dining hall.png");
+        makeIcon(locationShop, 150, 300, 500, 300, "/resources/purchase dining hall.png");
         JButton dHButton = new JButton();
         dHButton.setBounds(150, 300, 500, 300);
         dHButton.setVisible(true);
@@ -1269,7 +1270,7 @@ public class Window extends AlfonsoClicker{
                     // Create splash screen
                     JWindow splash = new JWindow();
 
-                    String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                    URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                     ImageIcon icon = new ImageIcon(path);
 
                     JLabel label = new JLabel(icon);
@@ -1311,8 +1312,8 @@ public class Window extends AlfonsoClicker{
         din.setBounds(350, 200, 400, 100);
         din.setVisible(false);
         locationShop.add(din);
-        
-        makeIcon(locationShop, 700, 300, 500, 300, "C:\\Users\\setha\\Saba\\dining hub.jpg");
+
+        makeIcon(locationShop, 700, 300, 500, 300, "/resources/dining hub.jpg");
         JButton hButton = new JButton();
         hButton.setBounds(700, 300, 500, 300);
         hButton.setVisible(true);
@@ -1336,7 +1337,7 @@ public class Window extends AlfonsoClicker{
                     // Create splash screen
                     JWindow splash = new JWindow();
 
-                    String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                    URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                     ImageIcon icon = new ImageIcon(path);
 
                     JLabel label = new JLabel(icon);
@@ -1401,9 +1402,9 @@ public class Window extends AlfonsoClicker{
         itemShop.getContentPane().setBackground(Color.yellow);
         itemShop.setTitle("Saba's very own basic item shop");
         itemShop.setVisible(true);
-        ImageIcon basicSubscription = new ImageIcon("C:\\Users\\setha\\Saba\\basic subscription.png");
+        ImageIcon basicSubscription = new ImageIcon(Window.class.getResource("/resources/basic subscription.png"));
         itemShop.setIconImage(basicSubscription.getImage());
-        makeIcon(itemShop, 1462, 25, 50, 50, "C:\\Users\\setha\\Saba\\x.png");
+        makeIcon(itemShop, 1462, 25, 50, 50, "/resources/x.png");
         JButton xButton = new JButton();
         xButton.setBounds(1462, 25, 50, 50);
         xButton.setVisible(true);
@@ -1413,13 +1414,13 @@ public class Window extends AlfonsoClicker{
         itemShop.add(xButton);
         xButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { 
+            public void actionPerformed(ActionEvent e) {
                 System.out.println("Button clicked!");
                 deactivateItemShop(bonitaFrames, itemShop);
             }
         });
         if(allTheSabasGathered[5].getOwn()){
-            makeIcon(itemShop, 0, 725, 200, 200, "C:\\Users\\setha\\Saba\\come here saba.png");
+            makeIcon(itemShop, 0, 725, 200, 200, "/resources/come here saba.png");
             JButton chsButton = new JButton();
             chsButton.setBounds(0, 725, 200, 200);
             chsButton.setVisible(true);
@@ -1429,7 +1430,7 @@ public class Window extends AlfonsoClicker{
             itemShop.add(chsButton);
             chsButton.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e) { 
+                public void actionPerformed(ActionEvent e) {
                     System.out.println("Button clicked!");
                     activateEliteItemShop(bonitaFrames, itemShop);
                 }
@@ -1440,12 +1441,12 @@ public class Window extends AlfonsoClicker{
         ssmLabel.setBounds(275, 100, 500, 100);
         ssmLabel.setVisible(true);
         itemShop.add(ssmLabel);
-        ImageIcon ssm = new ImageIcon("C:\\Users\\setha\\Saba\\self serve machine.png");
-        JLabel label = new JLabel();  
+        ImageIcon ssm = new ImageIcon(Window.class.getResource("/resources/self serve machine.png"));
+        JLabel label = new JLabel();
         JButton ssmButton = new JButton(ssm);
         ssmButton.setBorderPainted(false);
-        ssmButton.setContentAreaFilled(false); 
-        ssmButton.setFocusPainted(false); 
+        ssmButton.setContentAreaFilled(false);
+        ssmButton.setFocusPainted(false);
         ssmButton.setOpaque(false);
         ssmButton.setBounds(100, 100, 500, 700);
         label.setBounds(100, 100, 500, 700);
@@ -1471,7 +1472,7 @@ public class Window extends AlfonsoClicker{
                     // Create splash screen
                     JWindow splash = new JWindow();
 
-                    String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                    URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                     ImageIcon icon = new ImageIcon(path);
 
                     JLabel label = new JLabel(icon);
@@ -1500,12 +1501,12 @@ public class Window extends AlfonsoClicker{
         chefLabel.setBounds(900, 100, 500, 100);
         chefLabel.setVisible(true);
         itemShop.add(chefLabel);
-        ImageIcon chef = new ImageIcon("C:\\Users\\setha\\Saba\\mario.png");
-        JLabel labelChef = new JLabel();  
+        ImageIcon chef = new ImageIcon(Window.class.getResource("/resources/mario.png"));
+        JLabel labelChef = new JLabel();
         JButton chefButton = new JButton(chef);
         chefButton.setBorderPainted(false);
-        chefButton.setContentAreaFilled(false); 
-        chefButton.setFocusPainted(false); 
+        chefButton.setContentAreaFilled(false);
+        chefButton.setFocusPainted(false);
         chefButton.setOpaque(false);
         chefButton.setBounds(700, 100, 500, 700);
         labelChef.setBounds(700, 100, 500, 700);
@@ -1531,7 +1532,7 @@ public class Window extends AlfonsoClicker{
                     // Create splash screen
                     JWindow splash = new JWindow();
 
-                    String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                    URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                     ImageIcon icon = new ImageIcon(path);
 
                     JLabel label = new JLabel(icon);
@@ -1553,12 +1554,12 @@ public class Window extends AlfonsoClicker{
                 System.out.println("Button clicked!");
             }
         });
-        ImageIcon sign = new ImageIcon("C:\\Users\\setha\\Saba\\for sale sign.png");
-        JLabel signLabel = new JLabel();  
+        ImageIcon sign = new ImageIcon(Window.class.getResource("/resources/for sale sign.png"));
+        JLabel signLabel = new JLabel();
         JButton signButton = new JButton(sign);
         signButton.setBorderPainted(false);
-        signButton.setContentAreaFilled(false); 
-        signButton.setFocusPainted(false); 
+        signButton.setContentAreaFilled(false);
+        signButton.setFocusPainted(false);
         signButton.setOpaque(false);
         signButton.setBounds(1325, 750, 200, 200);
         signLabel.setBounds(1325, 750, 200, 200);
@@ -1568,7 +1569,7 @@ public class Window extends AlfonsoClicker{
         signButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent erx) {
-                activateBasicLocationShop(itemShop, bonitaFrames); 
+                activateBasicLocationShop(itemShop, bonitaFrames);
             }
         });
     }
@@ -1580,11 +1581,11 @@ public class Window extends AlfonsoClicker{
         itemShop.getContentPane().setBackground(Color.yellow);
         itemShop.setTitle("Saba's very own ELITE item shop");
         itemShop.setVisible(true);
-        ImageIcon eisIcon = new ImageIcon("C:\\Users\\setha\\Saba\\elite subscription.png");
+        ImageIcon eisIcon = new ImageIcon(Window.class.getResource("/resources/elite subscription.png"));
         itemShop.setIconImage(eisIcon.getImage());
 
         //x button
-        makeIcon(itemShop, 1462, 25, 50, 50, "C:\\Users\\setha\\Saba\\x.png");
+        makeIcon(itemShop, 1462, 25, 50, 50, "/resources/x.png");
         JButton xButton = new JButton();
         xButton.setBounds(1462, 25, 50, 50);
         xButton.setVisible(true);
@@ -1594,24 +1595,24 @@ public class Window extends AlfonsoClicker{
         itemShop.add(xButton);
         xButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) { 
+            public void actionPerformed(ActionEvent e) {
                 System.out.println("Button clicked!");
                 deactivateItemShop(bonitaFrames, itemShop);
             }
         });
-        
+
         for (int iindex = 2; iindex < allTheItemsGathered.length; iindex++) {
             final int i = iindex;
-            String itemFilePath;
+            URL itemFilePath;
 
             // pick correct file path
-            if (i == 2){ itemFilePath = "C:\\Users\\setha\\Saba\\rizzman.PNG";}
-            else if (i == 3){ itemFilePath = "C:\\Users\\setha\\Saba\\dominic.png";}
-            else if (i == 4){ itemFilePath = "C:\\Users\\setha\\Saba\\osbourne.png";}
-            else if (i == 5){ itemFilePath = "C:\\Users\\setha\\Saba\\martin.png";}
-            else if (i == 6){ itemFilePath = "C:\\Users\\setha\\Saba\\shawn.png";}
-            else if (i == 7){ itemFilePath = "C:\\Users\\setha\\Saba\\cesar replacement.jpg";}
-            else{ itemFilePath = "C:\\Users\\setha\\Saba\\normal saba2.jpg";}
+            if (i == 2){ itemFilePath = Window.class.getResource("/resources/rizzman.PNG");}
+            else if (i == 3){ itemFilePath = Window.class.getResource("/resources/dominic.png");}
+            else if (i == 4){ itemFilePath = Window.class.getResource("/resources/osbourne.png");}
+            else if (i == 5){ itemFilePath = Window.class.getResource("/resources/martin.png");}
+            else if (i == 6){ itemFilePath = Window.class.getResource("/resources/shawn.png");}
+            else if (i == 7){ itemFilePath = Window.class.getResource("/resources/cesar replacement.jpg");}
+            else{ itemFilePath = Window.class.getResource("/resources/normal saba2.jpg");}
 
                 // scale image
                 ImageIcon icon = new ImageIcon(itemFilePath);
@@ -1663,7 +1664,7 @@ public class Window extends AlfonsoClicker{
                             // Create splash screen
                             JWindow splash = new JWindow();
 
-                            String path = "C:/Users/setha/Saba/cachedImage.png"; // <-- update path
+                            URL path = Window.class.getResource("/resources/cachedImage.png"); // <-- update path
                             ImageIcon icon = new ImageIcon(path);
 
                             JLabel label = new JLabel(icon);
@@ -1706,7 +1707,7 @@ public class Window extends AlfonsoClicker{
     }
 
     static void makeIcon(JFrame frame, int x, int y, int l, int w, String fileName){
-        ImageIcon sabaPhotoIcon = new ImageIcon(fileName);
+        ImageIcon sabaPhotoIcon = new ImageIcon(Window.class.getResource(fileName));
         Image img = sabaPhotoIcon.getImage();
         Image scaledImg = img.getScaledInstance(l, w, java.awt.Image.SCALE_SMOOTH);
         sabaPhotoIcon = new ImageIcon(scaledImg);
@@ -1723,8 +1724,8 @@ public class Window extends AlfonsoClicker{
         JLabel label = new JLabel();
         JButton button = new JButton();
         button.setBorderPainted(false);
-        button.setContentAreaFilled(false); 
-        button.setFocusPainted(false); 
+        button.setContentAreaFilled(false);
+        button.setFocusPainted(false);
         button.setOpaque(false);
         button.setBounds(bx, by, bw, bl);
         label.setBounds(lx, ly, lw, ll);
@@ -1745,12 +1746,12 @@ public class Window extends AlfonsoClicker{
 
 
     static void makePhotoButton(JFrame bonitaFrames, int lx, int ly, int bx, int by, int lw, int ll, int bw, int bl, String buttonText, String fileName){
-        ImageIcon sabaImage = new ImageIcon(fileName);
-        JLabel label = new JLabel();  
+        ImageIcon sabaImage = new ImageIcon(Window.class.getResource(fileName));
+        JLabel label = new JLabel();
         JButton button = new JButton(sabaImage);
         button.setBorderPainted(false);
-        button.setContentAreaFilled(false); 
-        button.setFocusPainted(false); 
+        button.setContentAreaFilled(false);
+        button.setFocusPainted(false);
         button.setOpaque(false);
         button.setBounds(bx, by, bw, bl);
         label.setBounds(lx, ly, lw, ll);
@@ -1836,12 +1837,12 @@ public class Window extends AlfonsoClicker{
         bonitaFrames.add(label);
     }
     public static void createStartUI(JFrame bonitaFrames){
-        makeIcon(bonitaFrames, 0, 300, 600, 400, "C:\\Users\\setha\\Saba\\saba item shop.jpg");
-        makeIcon(bonitaFrames, 1000, 300, 400, 150, "C:\\Users\\setha\\Saba\\purchase dining logo.png");
-        makeIcon(bonitaFrames, 0, 700 , 1530, 312, "C:\\Users\\setha\\Saba\\real elestrals ad.jpg");
-        makeIcon(bonitaFrames, 350, -45, 1000, 400, "C:\\Users\\setha\\Saba\\the nether.png");
-        makeIcon(bonitaFrames, 100, 100, 100, 100, "C:\\Users\\setha\\Saba\\inventory.png");
-        makePhotoButton(bonitaFrames, 700, 350, 700, 350, 300, 300, 250, 350, "", "C:\\Users\\setha\\Saba\\saba cookie.png");
+        makeIcon(bonitaFrames, 0, 300, 600, 400, "/resources/saba item shop.jpg");
+        makeIcon(bonitaFrames, 1000, 300, 400, 150, "/resources/purchase dining logo.png");
+        makeIcon(bonitaFrames, 0, 700 , 1530, 312, "/resources/real elestrals ad.jpg");
+        makeIcon(bonitaFrames, 350, -45, 1000, 400, "/resources/the nether.png");
+        makeIcon(bonitaFrames, 100, 100, 100, 100, "/resources/inventory.png");
+        makePhotoButton(bonitaFrames, 700, 350, 700, 350, 300, 300, 250, 350, "", "/resources/saba cookie.png");
 
         JButton ELESTRALS = new JButton();
         ELESTRALS.setBounds(0, 700, 1530, 312);
@@ -1921,7 +1922,7 @@ public class Window extends AlfonsoClicker{
         fillSabaList();
         fillItemList();
         fillLocationList();
-        
+
         //sps thread
         Runnable idling = ()->{
             while(true){
@@ -1933,7 +1934,7 @@ public class Window extends AlfonsoClicker{
                 };
             }
         };
-        
+
         Thread t1 = new Thread(idling);
         t1.start();
         JFrame bonitaFrames = new JFrame();
@@ -1943,7 +1944,9 @@ public class Window extends AlfonsoClicker{
         Color lightBlue = new Color(0, 209, 255);
         bonitaFrames.getContentPane().setBackground(lightBlue);
         bonitaFrames.setVisible(true);
-        ImageIcon sabaIconCookie = new ImageIcon("C:\\Users\\setha\\Saba\\balatro saba.jpg");
+        URL url = Window.class.getResource("/resources/balatro saba.jpg");
+        System.out.println(url);
+        ImageIcon sabaIconCookie = new ImageIcon(Window.class.getResource("/resources/balatro saba.jpg"));
         bonitaFrames.setIconImage(sabaIconCookie.getImage());
         createStartUI(bonitaFrames);
         
