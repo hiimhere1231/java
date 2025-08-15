@@ -1917,7 +1917,6 @@ public class Window extends AlfonsoClicker{
         }
     }
     public static void main(String[] args) {
-
         //create lists of stuff
         fillSabaList();
         fillItemList();
@@ -1944,8 +1943,6 @@ public class Window extends AlfonsoClicker{
         Color lightBlue = new Color(0, 209, 255);
         bonitaFrames.getContentPane().setBackground(lightBlue);
         bonitaFrames.setVisible(true);
-        URL url = Window.class.getResource("/resources/balatro saba.jpg");
-        System.out.println(url);
         ImageIcon sabaIconCookie = new ImageIcon(Window.class.getResource("/resources/balatro saba.jpg"));
         bonitaFrames.setIconImage(sabaIconCookie.getImage());
         createStartUI(bonitaFrames);

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="SabaClicker:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SabaClicker_jar</output-path>
+    <root id="archive" name="SabaClicker.jar">
+      <element id="module-output" name="SabaClicker" />
+    </root>
+  </artifact>
+</component>
