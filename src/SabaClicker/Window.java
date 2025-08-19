@@ -1606,13 +1606,20 @@ public class Window extends AlfonsoClicker{
             URL itemFilePath;
 
             // pick correct file path
-            if (i == 2){ itemFilePath = Window.class.getResource("/resources/rizzman.PNG");}
-            else if (i == 3){ itemFilePath = Window.class.getResource("/resources/dominic.png");}
-            else if (i == 4){ itemFilePath = Window.class.getResource("/resources/osbourne.png");}
-            else if (i == 5){ itemFilePath = Window.class.getResource("/resources/martin.png");}
-            else if (i == 6){ itemFilePath = Window.class.getResource("/resources/shawn.png");}
-            else if (i == 7){ itemFilePath = Window.class.getResource("/resources/cesar replacement.jpg");}
-            else{ itemFilePath = Window.class.getResource("/resources/normal saba2.jpg");}
+            if (i == 2){ itemFilePath = Window.class.getResource("/resources/rizzman.PNG");
+                System.out.println(Window.class.getResource("/resources/rizzman.png"));}
+            else if (i == 3){ itemFilePath = Window.class.getResource("/resources/dominic.png");
+                System.out.println(Window.class.getResource("/resources/dominic.png"));}
+            else if (i == 4){ itemFilePath = Window.class.getResource("/resources/osbourne.png");
+                System.out.println(Window.class.getResource("/resources/osbourne.png"));}
+            else if (i == 5){ itemFilePath = Window.class.getResource("/resources/martin.png");
+                System.out.println(Window.class.getResource("/resources/martin.png"));}
+            else if (i == 6){ itemFilePath = Window.class.getResource("/resources/shawn.png");
+                System.out.println(Window.class.getResource("/resources/shawn.png"));}
+            else if (i == 7){ itemFilePath = Window.class.getResource("/resources/cesar replacement.jpg");
+                System.out.println(Window.class.getResource("/resources/cesar replacement.jpg"));}
+            else{ itemFilePath = Window.class.getResource("/resources/normal saba2.jpg");
+                System.out.println(Window.class.getResource("/resources/normal saba2.jpg"));}
 
                 // scale image
                 ImageIcon icon = new ImageIcon(itemFilePath);
