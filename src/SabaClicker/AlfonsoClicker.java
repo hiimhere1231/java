@@ -19,7 +19,7 @@ public class AlfonsoClicker implements  Runnable{
     // locations
     // can only have one at a time
     static String[] locationName = new String[]{"dining hall", "sawbucks", "hub", "snackstops", "bank of saba"};
-    static int[] locationCost = new int[]{100000, 250000, 1000000, 100000, 1000000};
+    static int[] locationCost = new int[]{100000, 250000, 1000000, 100000, 10000};
     static boolean[] locationOwn = new boolean[]{false, false, false, false, false};
     static double[] locationSPS = new double[]{110, 130, 150, 30, 0};
     static String[] locationAbility = new String[]{"makes items x% cheaper", "can attract female sabas (glorious photo of saba with wig and bow and pink hearts with pink border), unlocks marriage MUST BE UNLOCKED WITH HUB", "unlocks more locations", "holding 's' will provide x sabucks per 10 seconds MUST BE UNLOCKED WITH HUB", "passively gains 25% of sabas invested in bank every TBD minutes MUST BE UNLOCKED WITH HUB"};
@@ -152,7 +152,7 @@ public class AlfonsoClicker implements  Runnable{
     }
     static String[] nameOfSaba = new String[]{"saba", "green saba", "incredibly demure saba", "evil saba", "business saba", "Shop Keeper Saba", "rich saba", "bank saba", "pokemon trainer saba", "alien saba", "oompa loompa saba", "investor saba", "lucky saba", "non-political presidential saba", "old saba", "balatro saba",  "high contrast saba"}; // hc saba kills all sabas + new sabas with him in hand are negative but perm 10% cheaper while in hand plus 10% sps increase | balatro saba gives mult | shop keeper saba unlocks items beyond self serve machine and chefs
     static boolean[] sabaOwns = new boolean[]{false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
-    static double[] sabaCost = new double[]{10000, 12500, 22222, 66666, 211212, 500000, 777777, 2000000, 7500000, 100000000, 231514111, 300000000, 777777777, 1000000000, 2000000000, 2147483647, -1};
+    static double[] sabaCost = new double[]{1000, 12500, 22222, 66666, 211212, 500000, 777777, 2000000, 7500000, 100000000, 231514111, 300000000, 777777777, 1000000000, 2000000000, 2147483647, -1};
     static String[] sabaFilePaths = {"/resources/IMG_3360.PNG","/resources/green saba.jpg","/resources/real incredibly demure saba.jpg","/resources/real evil saba.jpg","/resources/business saba.jpg","/resources/saba item shop.jpg","/resources/rich saba.jpg","/resources/bank saba.jpg","/resources/pokemon trainer saba.jpg","/resources/alien saba.jpg","/resources/oompa loompa saba.jpg","/resources/mark cuban saba.jpg","/resources/idk how to spell it saba.jpg","/resources/non political presidential saba.jpg","/resources/old saba.jpg","/resources/balatro saba.jpg","/resources/high contrast saba.jpg"};
     static double[] sabaSPSstat = new double[]{60, 65, 75, 80, 212, 100 ,350, 1000, 75000, 85000, 100000, 100000, 777777, 1000000, 1960, 0, -1};
     static Saba[] allTheSabasGathered = new Saba[nameOfSaba.length];

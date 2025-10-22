@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
 import java.net.URL;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 import java.util.Random;
@@ -16,12 +17,15 @@ import javax.swing.*;
 
 
 public class Window extends AlfonsoClicker{
+
     public static String strSabucks = Double.toString(sabucks);
     public static JLabel sabucksCountLive = new JLabel("You have $"+strSabucks+" sabucks");
 
 
     public static int clickPower = 1;
-    public static double doubleClickChance = 1;
+    public static JLabel clickPowerLive = new JLabel("Your click power is: "+clickPower);
+    public static int doubleClickChance = 1;
+    public static JLabel critChanceLive = new JLabel("You have a "+doubleClickChance+"% to crit");
     public static Random rand = new Random();
 
     public static boolean overdrive = false;
@@ -35,8 +39,7 @@ public class Window extends AlfonsoClicker{
     public static JLabel twoXPowerLabelCost = new JLabel("This costs $"+twoXPowerCost+" sabucks");
     public static JLabel overdriveLabelCost = new JLabel("This costs $"+overdriveCost+" sabucks");
 
-    public static HashMap<Accounts, Double> accounts = new HashMap<>();
-
+    public static HashMap<Accounts, Double> accounts = new HashMap<>(){};
     static void deactivateItemShop(JFrame bonitaFrames, JFrame itemShop){
         itemShop.setVisible(false);
         bonitaFrames.setVisible(true);
@@ -53,7 +56,7 @@ public class Window extends AlfonsoClicker{
         while (running) {
 
             String[] options = {"Register", "Login", "Exit"};
-            int choice = JOptionPane.showOptionDialog(locationInv, "Welcome to the Bank System!", "Bank Menu", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+            int choice = JOptionPane.showOptionDialog(locationInv, "Welcome to the Bank of Saba!", "Bank Menu", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
 
             if (choice == 0) { // Register
                 String username = JOptionPane.showInputDialog("Enter new username:");
@@ -123,6 +126,7 @@ public class Window extends AlfonsoClicker{
     static void activateElestralsShop(JFrame bonitaFrames){
         bonitaFrames.setVisible(false);
         JFrame elsS = new JFrame();
+        elsS.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         elsS.setLayout(null);
         elsS.setSize(1920, 1080);
         elsS.getContentPane().setBackground(Color.yellow);
@@ -174,7 +178,7 @@ public class Window extends AlfonsoClicker{
                 System.out.println("Button clicked!");
                 if(sabucks > powerCost){
                     sabucks -= powerCost;
-                    powerCost = powerCost * 1.1;
+                    powerCost = powerCost * 1.3;
                     clickPower += 1;
                     powerLabelCost.setText("This costs $"+Math.ceil(powerCost / 10) * 10 +" sabucks");
                 }
@@ -226,7 +230,7 @@ public class Window extends AlfonsoClicker{
                 System.out.println("Button clicked!");
                 if(sabucks > twoXPowerCost){
                     sabucks -= twoXPowerCost;
-                    twoXPowerCost = twoXPowerCost * 1.1;
+                    twoXPowerCost = twoXPowerCost * 1.3;
                     clickPower *= 2;
                     twoXPowerLabelCost.setText("This costs $"+Math.ceil(twoXPowerCost / 10) * 10+" sabucks");
                 }
@@ -278,7 +282,7 @@ public class Window extends AlfonsoClicker{
                 System.out.println("Button clicked!");
                 if(sabucks > critCost){
                     sabucks -= critCost;
-                    critCost = critCost * 1.1;
+                    critCost = critCost * 1.3;
                     doubleClickChance += 5;
                     critLabelCost.setText("This costs $"+Math.ceil(critCost / 10) * 10+" sabucks");
                 }
@@ -330,7 +334,7 @@ public class Window extends AlfonsoClicker{
                 System.out.println("Button clicked!");
                 if (sabucks > overdriveCost && !overdrive) {
                     sabucks -= overdriveCost;
-                    overdriveCost *= 1.1;
+                    overdriveCost *= 1.3;
                     overdrive = true;
                     overdriveLabelCost.setText("This costs $"+Math.ceil(overdriveCost / 10) * 10+" sabucks");
 
@@ -376,6 +380,7 @@ public class Window extends AlfonsoClicker{
     static void activateEliteLocationShop(JFrame itemShopClose, JFrame bonitaFrames){
         itemShopClose.setVisible(false);
         JFrame els = new JFrame();
+        els.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         els.setLayout(null);
         els.setSize(1920, 1080);
         els.getContentPane().setBackground(Color.yellow);
@@ -532,6 +537,7 @@ public class Window extends AlfonsoClicker{
     static void activateSabaShop(JFrame bonitaFrames){
         bonitaFrames.setVisible(false);
         JFrame sash = new JFrame();
+        sash.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         sash.setLayout(null);
         sash.setSize(1920, 1080);
         sash.getContentPane().setBackground(Color.yellow);
@@ -628,6 +634,27 @@ public class Window extends AlfonsoClicker{
                         @Override
                         public void actionPerformed(ActionEvent e){
                             if(buySaba(allTheSabasGathered, i)){
+                                SwingUtilities.invokeLater(() -> {
+                                    // Create splash screen
+                                    JWindow splash = new JWindow();
+
+                                    URL path = Window.class.getResource("/resources/whos that pokemon.jpg"); // <-- update path
+                                    ImageIcon icon = new ImageIcon(path);
+
+                                    JLabel label = new JLabel(icon);
+                                    splash.getContentPane().add(label);
+
+                                    splash.pack(); // size window to fit image
+                                    splash.setLocationRelativeTo(null); // center on screen
+
+                                    splash.setVisible(true);
+
+                                    // Timer to hide after 1 seconds
+                                    new Timer(1000, erxtx -> {
+                                        splash.setVisible(false);
+                                        splash.dispose();
+                                    }).start();
+                                });
                                 allTheSabasGathered[i].setOwn(true);
                             }
                             else{
@@ -696,6 +723,27 @@ public class Window extends AlfonsoClicker{
                         @Override
                         public void actionPerformed(ActionEvent e){
                             if(buySaba(allTheSabasGathered, 0)){
+                                SwingUtilities.invokeLater(() -> {
+                                    // Create splash screen
+                                    JWindow splash = new JWindow();
+
+                                    URL path = Window.class.getResource("/resources/whos that pokemon.jpg"); // <-- update path
+                                    ImageIcon icon = new ImageIcon(path);
+
+                                    JLabel label = new JLabel(icon);
+                                    splash.getContentPane().add(label);
+
+                                    splash.pack(); // size window to fit image
+                                    splash.setLocationRelativeTo(null); // center on screen
+
+                                    splash.setVisible(true);
+
+                                    // Timer to hide after 1 seconds
+                                    new Timer(1000, erxtx -> {
+                                        splash.setVisible(false);
+                                        splash.dispose();
+                                    }).start();
+                                });
                                 allTheSabasGathered[0].setOwn(true);
                             }
                             else{
@@ -731,6 +779,7 @@ public class Window extends AlfonsoClicker{
     static void activateSabaInv(JFrame frame, JFrame bonitaFrames){
         frame.setVisible(false);
         JFrame sabaInv = new JFrame();
+        sabaInv.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         sabaInv.setLayout(null);
         sabaInv.setSize(1920, 1080);
         sabaInv.getContentPane().setBackground(Color.YELLOW);
@@ -987,6 +1036,7 @@ public class Window extends AlfonsoClicker{
     static void activateLocationInv(JFrame frame, JFrame bonitaFrames){
         frame.setVisible(false);
         JFrame locationInv = new JFrame();
+        locationInv.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         locationInv.setLayout(null);
         locationInv.setSize(1920, 1080);
         locationInv.getContentPane().setBackground(Color.YELLOW);
@@ -1150,6 +1200,7 @@ public class Window extends AlfonsoClicker{
     static void activateInventory(JFrame bonitaFrames){
         bonitaFrames.setVisible(false);
         JFrame invFrame = new JFrame();
+        invFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         ImageIcon invIcon = new ImageIcon(Window.class.getResource("/resources/inventory.png"));
         invFrame.setIconImage(invIcon.getImage());
         invFrame.setSize(1920, 1080);
@@ -1207,6 +1258,7 @@ public class Window extends AlfonsoClicker{
     static void activateBasicLocationShop(JFrame itemShop, JFrame bonitaFrames){
         itemShop.setVisible(false);
         JFrame locationShop = new JFrame();
+        locationShop.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         locationShop.setSize(1920, 1080);
         locationShop.getContentPane().setBackground(Color.yellow);
         locationShop.setTitle("Saba's very own basic location shop");
@@ -1398,6 +1450,7 @@ public class Window extends AlfonsoClicker{
     static void activateBasicItemShop(JFrame bonitaFrames){
         bonitaFrames.setVisible(false);
         JFrame itemShop = new JFrame();
+        itemShop.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         itemShop.setSize(1920, 1080);
         itemShop.getContentPane().setBackground(Color.yellow);
         itemShop.setTitle("Saba's very own basic item shop");
@@ -1576,6 +1629,7 @@ public class Window extends AlfonsoClicker{
     static void activateEliteItemShop(JFrame bonitaFrames, JFrame preFrame){
         preFrame.setVisible(false);
         JFrame itemShop = new JFrame();
+        itemShop.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         itemShop.setLayout(null);
         itemShop.setSize(1920, 1080);
         itemShop.getContentPane().setBackground(Color.yellow);
@@ -1834,7 +1888,7 @@ public class Window extends AlfonsoClicker{
 
         });
     }
-    public static void displaySabuckCount(JFrame bonitaFrames, JLabel label){
+    public static void displaySabuckCount(JFrame bonitaFrames, JLabel label, JLabel critLabel, JLabel clickPowerLabel){
         label.setVisible(false);
         strSabucks = Double.toString(Math.ceil(sabucks * 10) / 10);
         label.setText("You have $"+strSabucks+" sabucks");
@@ -1842,14 +1896,72 @@ public class Window extends AlfonsoClicker{
         label.validate();
         label.setBounds(700, 250, 250, 100);
         bonitaFrames.add(label);
+
+        critLabel.setVisible(false);
+        critLabel.setText("You have a "+doubleClickChance+"% to crit");
+        critLabel.setVisible(true);
+        critLabel.validate();
+        critLabel.setBounds(1000, 475, 250, 100);
+        bonitaFrames.add(critLabel);
+
+        clickPowerLabel.setVisible(false);
+        clickPowerLabel.setText("Your click power is: "+clickPower);
+        clickPowerLabel.setVisible(true);
+        clickPowerLabel.validate();
+        clickPowerLabel.setBounds(1000, 500, 250, 100);
+        bonitaFrames.add(clickPowerLabel);
     }
     public static void createStartUI(JFrame bonitaFrames){
+        //come back to
+        System.out.println("HELLO");
+        makeIcon(bonitaFrames, 1200, 525, 50, 50, "/resources/save.png");
+        makeIcon(bonitaFrames, 1300, 525, 50, 50, "/resources/load.png");
         makeIcon(bonitaFrames, 0, 300, 600, 400, "/resources/saba item shop.jpg");
         makeIcon(bonitaFrames, 1000, 300, 400, 150, "/resources/purchase dining logo.png");
         makeIcon(bonitaFrames, 0, 700 , 1530, 312, "/resources/real elestrals ad.jpg");
         makeIcon(bonitaFrames, 350, -45, 1000, 400, "/resources/the nether.png");
         makeIcon(bonitaFrames, 100, 100, 100, 100, "/resources/inventory.png");
         makePhotoButton(bonitaFrames, 700, 350, 700, 350, 300, 300, 250, 350, "", "/resources/saba cookie.png");
+
+        JLabel madeBy = new JLabel("Made by Seth");
+        madeBy.setBounds(1375, -50, 200, 200);
+        madeBy.setVisible(true);
+        bonitaFrames.add(madeBy);
+
+        JButton saveButton = new JButton();
+        saveButton.setBounds(1200, 525, 50, 50);
+        saveButton.setVisible(true);
+        saveButton.setOpaque(false);
+        saveButton.setBorderPainted(false);
+        saveButton.setContentAreaFilled(false);
+        bonitaFrames.add(saveButton);
+        saveButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int saveChoice = JOptionPane.showOptionDialog(bonitaFrames, "This will save your game and overwrite your current save file.", "Save", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, new String[]{"Ok", "Cancel"}, null);
+                if(saveChoice == 0){
+                    SaveSystem.saveGame(sps, allTheSabasGathered, allTheItemsGathered, allTheLocationsGathered, accounts, doubleClickChance, clickPower, critCost, twoXPowerCost, overdriveCost, powerCost);
+                }
+            }
+        });
+
+        JButton loadButton = new JButton();
+        loadButton.setBounds(1300, 525, 50, 50);
+        loadButton.setVisible(true);
+        loadButton.setOpaque(false);
+        loadButton.setBorderPainted(false);
+        loadButton.setContentAreaFilled(false);
+        bonitaFrames.add(loadButton);
+        loadButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int saveChoice = JOptionPane.showOptionDialog(bonitaFrames, "This will load your last save file and overwrite your current instance.", "Load", JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, new String[]{"Ok", "Cancel"}, null);
+                if(saveChoice == 0){
+                    SaveSystem.loadGame();
+                    createStartUI(bonitaFrames);
+                }
+            }
+        });
 
         JButton ELESTRALS = new JButton();
         ELESTRALS.setBounds(0, 700, 1530, 312);
@@ -1944,6 +2056,7 @@ public class Window extends AlfonsoClicker{
         Thread t1 = new Thread(idling);
         t1.start();
         JFrame bonitaFrames = new JFrame();
+        bonitaFrames.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         bonitaFrames.setLayout(null);
         bonitaFrames.setSize(1550, 1080);
         bonitaFrames.setTitle("Saba Clicker. The super awesome game featuring the celebrity, ALFONSO SABA!!!!!! YOU CANT SEE HIM!!! AND HIS NAME IS ALFONSO SABA");
@@ -1967,7 +2080,7 @@ public class Window extends AlfonsoClicker{
         
         Runnable chilling = ()->{
             while(true){
-                displaySabuckCount(bonitaFrames, sabucksCountLive);
+                displaySabuckCount(bonitaFrames, sabucksCountLive, critChanceLive, clickPowerLive);
                 try {
                     TimeUnit.MILLISECONDS.sleep(100);
                 } catch (InterruptedException e) {
